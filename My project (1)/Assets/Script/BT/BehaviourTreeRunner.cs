@@ -10,9 +10,6 @@ public class BehaviourTreeRunner : MonoBehaviour
     private void Start()
     {
         info = GetComponent<Information>();
-
-        Debug.Log(info);
-        Debug.Log(transform);
         tree = tree.Clone(info, transform);
         /*Debug.Log(info);
         tree = ScriptableObject.CreateInstance<BehaviourTree>();
@@ -61,10 +58,10 @@ public class BehaviourTreeRunner : MonoBehaviour
 
     private void Update()
     {
-/*        if (info.OnUpdate)
-        {*/
+        if (info.OnUpdate)
+        {
             tree.Update();
-      //  }
+        }
     }
 }
  

@@ -1356,7 +1356,8 @@ PrefabInstance:
         type: 3}
       propertyPath: tree
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 0ef4cc39a88e33d488f5016eea60f091,
+        type: 2}
     - target: {fileID: 8191577384546497380, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: m_Name
