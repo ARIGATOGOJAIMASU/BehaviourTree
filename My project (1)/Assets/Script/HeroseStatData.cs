@@ -7,7 +7,7 @@ public enum HEROSECALSS { NORMAL, EXCELLENT, RARE, ELITE, EPIC, LEFGENDARY }
 //Å¸ÀÔ
 public enum HEROSETYPE { ATTACK, DEFENSE, SUPPORT }
 //ÆÄ¹ú
-public enum HEROSEFRACTION { OBSERVERS, SONE_OF_THE_WASTELAND, VOLUNTERRTARMY, AVENGERS }
+public enum HEROSEFRACTION { Minutemen, Vindicators, Wildlings, Watchers }
 
 [System.Serializable]
 public struct HeroseStat

@@ -14,15 +14,15 @@ public class DeadCheckNode : ActionNode
 
     protected override State OnUpdate()
     {
-        Debug.Log("데드 체크");
         if (!Info.IsDead)
         {
+            Debug.Log("w");
             return State.Success;
         }
 
+        Debug.Log("d");
         Info.OnUpdate = false;
-        Debug.Log("죽음");
-        OwnerTransform.Rotate(Vector3.forward * -90, Space.World);
+        OwnerTransform.gameObject.SetActive(false);
         return State.Failure;
     }
 }

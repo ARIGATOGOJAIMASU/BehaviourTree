@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum PlayrType { Player, Enemy}
 
+[DefaultExecutionOrder(-1)]
 public class Information : MonoBehaviour
 {
     [SerializeField] HeroseStatData heroseDate;

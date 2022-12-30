@@ -14,7 +14,6 @@ public class TurnCheckNode : ActionNode
 
     protected override State OnUpdate()
     {
-        Debug.Log("무조건 들어감");
         if(GameManager.Instance.TurnChracter == Info.num)
         {
             //자신의 턴일 시

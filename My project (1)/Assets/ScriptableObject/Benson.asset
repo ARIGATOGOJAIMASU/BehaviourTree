@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
-  m_Name: Zombi5
+  m_Name: Benson
   m_EditorClassIdentifier: 
   heroseStat:
-    heroseName: Zombi5
-    heroseClass: 0
+    heroseName: Benson
+    heroseClass: 4
     heroseType: 0
     heroseFraction: 3
-    hp: 50
-    strong: 5
-    intelligence: 5
-    agility: 5
-    vital: 5
-    luck: 5
+    hp: 2000
+    strong: 53
+    intelligence: 39
+    agility: 80
+    vital: 39
+    luck: 53

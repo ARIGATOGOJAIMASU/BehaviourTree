@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
-  m_Name: Herose Stat 3
+  m_Name: Zombi 5
   m_EditorClassIdentifier: 
   heroseStat:
-    heroseName: "\uC900\uD45C"
-    heroseClass: 4
+    heroseName: Zombi5
+    heroseClass: 0
     heroseType: 0
     heroseFraction: 3
-    strong: 5
+    hp: 500
+    strong: 200
     intelligence: 5
     agility: 5
     vital: 5

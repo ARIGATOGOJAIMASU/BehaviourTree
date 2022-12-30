@@ -13,7 +13,7 @@ public class SelectorNode : CompositeNode
         //자식 객체중 하나라도 Success가 나올경우 검사 종료
         for (int i= 0; i < children.Count; ++i)
         {
-            if (children[i].Update() == State.Success)
+            if (children[i].Update() == State.Success && children[i].Update() == State.Running)
             {
                 return State.Success;
             }

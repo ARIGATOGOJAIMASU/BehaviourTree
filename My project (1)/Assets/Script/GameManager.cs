@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     public List<Information> allInformations = new();
     public Queue<int> TurnPreferentially = new Queue<int>();
 
+    public GameObject winUI;
+    public GameObject loseUI;
+
     private void Start()
     {
         int Number = 0;
@@ -87,8 +90,8 @@ public class GameManager : MonoBehaviour
 
     public void NextTrun()
     {
-        if (playerInformations.Count == 0) Debug.Log("ÆÐ¹è");
-        if (enemyInformations.Count == 0) Debug.Log("½Â¸®");
+        if (playerInformations.Count == 0) loseUI.SetActive(true);
+        if (enemyInformations.Count == 0) winUI.SetActive(true);
 
         ++turn;
         TurnChracter = TurnPreferentially.Dequeue();
@@ -109,11 +112,16 @@ public class GameManager : MonoBehaviour
         }
 
         allInformations.Remove(daedObj);
+
+        List<int> infos = new();
+        infos.AddRange(TurnPreferentially.ToArray());
+        infos.Remove(daedObj.num);
+
         TurnPreferentially.Clear();
 
-        foreach (Information info in allInformations)
+        foreach (int info in infos)
         {
-            TurnPreferentially.Enqueue(info.num);
+            TurnPreferentially.Enqueue(info);
         }
     }
 }

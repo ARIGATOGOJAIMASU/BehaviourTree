@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <Style src="project://database/Assets/UI_Builder/NodeViewStyle.uss?fileID=7433441132597879392&amp;guid=56952446ac1f2054dba8adcf1a4c9d42&amp;type=3#NodeViewStyle" />
-    <ui:VisualElement name="node-state" style="background-color: rgb(255, 4, 4); position: relative;" />
+    <ui:VisualElement name="node-state" style="background-color: rgb(255, 4, 4); position: relative; -unity-slice-left: 1; -unity-slice-top: 1; -unity-slice-right: 1; -unity-slice-bottom: 1;" />
     <ui:VisualElement name="node-border" style="-unity-text-align: upper-center;">
         <ui:VisualElement name="contents">
             <ui:VisualElement name="top">

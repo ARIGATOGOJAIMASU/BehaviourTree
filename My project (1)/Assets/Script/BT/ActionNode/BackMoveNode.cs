@@ -20,6 +20,7 @@ public class BackMoveNode : ActionNode
             return State.Running;
         }
 
+        Debug.Log("µé¾î °¬´Ù³×");
         return State.Success;
     }
 }
