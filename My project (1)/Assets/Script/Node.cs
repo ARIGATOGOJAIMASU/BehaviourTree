@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Node : ScriptableObject
-{
+{ 
+    private Information _information;
+    private Transform _ownerTransform;
+
+    public Information Info { get { return _information; } set { _information = value; } }
+    public Transform OwnerTransform { get { return _ownerTransform; } set { _ownerTransform = value; } }
+
     public enum State
     {
         Running,
@@ -13,6 +19,8 @@ public abstract class Node : ScriptableObject
 
     public State state = State.Running;
     public bool started = false;
+    public string guid;
+    public Vector2 position;
 
     public State Update()
     {
@@ -37,6 +45,11 @@ public abstract class Node : ScriptableObject
         }
 
         return state;
+    }
+
+    public virtual Node Clone()
+    {
+        return Instantiate(this);
     }
 
     protected abstract void OnStart();
