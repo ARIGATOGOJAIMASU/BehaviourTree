@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
   m_Name: Zombi 2
   m_EditorClassIdentifier: 
-  heroseStat:
-    heroseName: Zombi2
-    heroseClass: 0
-    heroseType: 0
-    heroseFraction: 3
-    hp: 500
-    strong: 200
-    intelligence: 5
-    agility: 5
-    vital: 5
-    luck: 5
+  heroseName: Zombi 2
+  heroseClass: 0
+  heroseType: 0
+  heroseFraction: 0
+  hp: 150
+  mp: 50
+  strong: 30
+  intelligence: 30
+  agility: 30
+  vital: 30
+  luck: 30

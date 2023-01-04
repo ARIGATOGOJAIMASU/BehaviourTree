@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class AnimationNode : MonoBehaviour
 {
-    Animator animator;
+    /*Animator animator;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     public void AnimationPlay(string aniname)
     {
         //현재 상황을 받음
@@ -14,5 +18,5 @@ public class AnimationNode : MonoBehaviour
         if (aniInfor.IsName(aniname)) { return; }
        
         animator.Play(aniname);     
-    }
+    }*/
 }

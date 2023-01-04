@@ -19,14 +19,7 @@ public class AttackMoveNode : ActionNode
     {
         if(targetInfo == null)
         {
-            if (Info.playrType == PlayrType.Player)
-            {
-                targetInfo = GameManager.Instance.enemyInformations[Random.Range(0, GameManager.Instance.enemyInformations.Count - 1)];
-            }
-            else
-            {
-                targetInfo = GameManager.Instance.playerInformations[Random.Range(0, GameManager.Instance.playerInformations.Count - 1)];
-            }
+            targetInfo = BattleManager.Instance.GetBaseAttackTarget(Info.playrType);
         }
 
         //타켓을 쫓아감
@@ -39,7 +32,8 @@ public class AttackMoveNode : ActionNode
         else
         {
             //다음턴을 넘김
-            GameManager.Instance.Attack(Info ,targetInfo);
+            BattleManager.Instance.Attack(Info ,targetInfo);
+            //Info.runTimeStat
         }
 
         return State.Success;

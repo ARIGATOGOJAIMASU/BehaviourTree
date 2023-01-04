@@ -1,18 +1,23 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <Style src="project://database/Assets/UI_Builder/NodeViewStyle.uss?fileID=7433441132597879392&amp;guid=56952446ac1f2054dba8adcf1a4c9d42&amp;type=3#NodeViewStyle" />
-    <ui:VisualElement name="node-state" style="background-color: rgb(255, 4, 4); position: relative; -unity-slice-left: 1; -unity-slice-top: 1; -unity-slice-right: 1; -unity-slice-bottom: 1;" />
-    <ui:VisualElement name="node-border" style="-unity-text-align: upper-center;">
+    <Style src="project://database/Assets/UI_Builder/NodeView.uss?fileID=7433441132597879392&amp;guid=d4e770d01c2819d44802ed87e50f71e1&amp;type=3#NodeView" />
+    <ui:VisualElement name="node-state" style="flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
+    <ui:VisualElement name="node-border">
         <ui:VisualElement name="contents">
-            <ui:VisualElement name="top">
-                <ui:VisualElement name="input" />
-                <ui:VisualElement name="divider" class="vertical" style="border-left-color: rgb(128, 128, 128); border-right-color: rgb(128, 128, 128); border-top-color: rgb(128, 128, 128); border-bottom-color: rgb(128, 128, 128);" />
-                <ui:VisualElement name="title">
-                    <ui:Label name="title-label" text="RepeatNode" class="unity-text-element unity-label" />
+            <ui:VisualElement name="top" style="min-height: auto;">
+                <ui:VisualElement name="input" style="align-items: center; justify-content: relative;" />
+                <ui:VisualElement name="divider" class="horizontal" style="min-height: 1px; background-color: rgb(101, 101, 101); -unity-text-outline-color: rgb(210, 210, 210);" />
+                <ui:VisualElement name="title" style="font-size: 20px;">
+                    <ui:Label name="title-label" text="BackMoveNode" class="unity-text-element unity-label" style="font-size: 15px;" />
+                    <ui:VisualElement name="title-button-container">
+                        <ui:VisualElement name="collapse-button">
+                            <ui:VisualElement name="icon" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:Label text="This is so perpect" display-tooltip-when-elided="true" name="description" />
-                <ui:VisualElement name="divider" class="horizontal" style="min-height: 1px; -unity-text-outline-color: rgb(84, 84, 84); border-left-color: rgb(128, 128, 128); border-right-color: rgb(128, 128, 128); border-top-color: rgb(128, 128, 128); border-bottom-color: rgb(128, 128, 128);" />
+                <ui:VisualElement name="divider" class="vertical" style="background-color: rgb(101, 101, 101); min-height: 1px;" />
                 <ui:VisualElement name="output" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="selection-border" picking-mode="Ignore" />
 </ui:UXML>

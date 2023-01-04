@@ -9,17 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
-  m_Name: Zombi 5
+  m_Script: {fileID: 11500000, guid: 18039c4f531cd5643ae58f6250a366f5, type: 3}
+  m_Name: TestSkillData
   m_EditorClassIdentifier: 
-  heroseName: Zombi 5
-  heroseClass: 0
-  heroseType: 0
-  heroseFraction: 0
-  hp: 150
-  mp: 50
-  strong: 30
-  intelligence: 30
-  agility: 30
-  vital: 30
-  luck: 30
+  _skillType: 0
+  _targetRange: 0
+  _targetPriority: 0
+  IsBuff: 0
+  _buff:
+    buffType: 0
+    buffTarget: 1
+    duration: 0
+    buffValue: 0

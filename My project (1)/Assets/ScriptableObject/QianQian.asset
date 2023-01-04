@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
   m_Name: QianQian
   m_EditorClassIdentifier: 
-  heroseStat:
-    heroseName: QianQian
-    heroseClass: 4
-    heroseType: 0
-    heroseFraction: 3
-    hp: 2000
-    strong: 80
-    intelligence: 39
-    agility: 53
-    vital: 26
-    luck: 66
+  heroseName: QianQian
+  heroseClass: 0
+  heroseType: 0
+  heroseFraction: 3
+  hp: 300
+  mp: 50
+  strong: 80
+  intelligence: 39
+  agility: 53
+  vital: 26
+  luck: 66

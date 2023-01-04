@@ -362,6 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownerInfo: {fileID: 7879452663062117726}
   HP_Bar: {fileID: 7363979991563796050}
+  MP_Bar: {fileID: 7560719447581758980}
   heroName: {fileID: 8765965674161187929}
 --- !u!1 &8191577384546497380
 GameObject:
@@ -477,23 +478,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroseDate: {fileID: 11400000, guid: 212785b9012eca547b7702355d982c58, type: 2}
-  heroseStat:
-    heroseName: 
-    heroseClass: 0
-    heroseType: 0
-    heroseFraction: 0
-    hp: 0
-    strong: 0
-    intelligence: 0
-    agility: 0
-    vital: 0
-    luck: 0
-  IsDead: 0
-  num: 0
   playrType: 0
-  Hurt: 0
-  StartPos: {x: 0, y: 0, z: 0}
-  maxHP: 0
+  runTimeStat:
+    MaxHP: 0
+    CurHP: 0
+    MaxMP: 0
+    CurMP: 0
+    STR: 0
+    INT: 0
+    AGI: 0
+    VLT: 0
+    LUK: 0
+  num: 0
+  IsHurt: 0
+  startPos: {x: 0, y: 0, z: 0}
+  IsDead: 0
   OnUpdate: 1
 --- !u!114 &1138179608954804650
 MonoBehaviour:

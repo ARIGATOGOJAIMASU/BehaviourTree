@@ -7,15 +7,17 @@ public class UI_Update : MonoBehaviour
 {
     [SerializeField] Information ownerInfo;
     [SerializeField] Image HP_Bar;
+    [SerializeField] Image MP_Bar;
     [SerializeField] TextMesh heroName;
 
     private void Start()
     {
-        heroName.text = ownerInfo.heroseStat.HeroseName;
+        heroName.text = ownerInfo.heroseDate.HeroseName;
     }
 
     private void Update()
     {
-        HP_Bar.fillAmount = ownerInfo.heroseStat.HP / ownerInfo.maxHP;
+        HP_Bar.fillAmount = (float)ownerInfo.runTimeStat.CurHP / (float)ownerInfo.runTimeStat.MaxHP;
+        MP_Bar.fillAmount = (float)ownerInfo.runTimeStat.CurMP / (float)ownerInfo.runTimeStat.MaxMP;
     }
 }

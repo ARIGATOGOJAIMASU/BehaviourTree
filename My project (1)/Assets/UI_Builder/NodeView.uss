@@ -1,0 +1,87 @@
+#node-border {
+    background-color: rgb(60, 60, 60);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-width: 150px;
+}
+
+#input {
+}
+
+#output {
+    align-items: center;
+    justify-content: center;
+}
+
+#selection-border {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-left-color: rgba(0, 255, 243, 255);
+    border-right-color: rgba(0, 255, 243, 255);
+    border-top-color: rgba(0, 255, 243, 255);
+    border-bottom-color: rgba(0, 255, 243, 255);
+}
+
+.node {
+    min-width: 150px;
+}
+
+.action #input {
+    background-color: rgba(92, 250, 0, 255);
+    position: relative;
+}
+
+.composite #input {
+    background-color: rgba(142, 76, 255, 255);
+}
+
+.decorator #input {
+    background-color: rgba(195, 113, 113, 255);
+}
+
+.root #output {
+    background-color: rgba(255, 0, 0, 255);
+}
+
+.running #node-state {
+    background-color: rgba(255, 255, 0, 255);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.success #node-state {
+    background-color: rgba(0, 255, 0, 255);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.failure #node-state {
+    background-color: rgba(255, 0, 0, 255);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}

@@ -19,7 +19,7 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         this.viewDataKey = node.guid;
 
         style.left = node.position.x;
-        style.top = node.position.y; 
+        style.top = node.position.y;
 
         CreateInputPorts();
         CreateOutputPorts();
@@ -28,9 +28,9 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
 
     private void SetupClasses()
     {
-        if(node is ActionNode)
+        if (node is ActionNode)
         {
-            AddToClassList("Action");
+            AddToClassList("action");
         }
         else if (node is CompositeNode)
         {
@@ -48,30 +48,30 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
 
     private void CreateInputPorts()
     {
-        if(node is ActionNode)
+        if (node is ActionNode)
         {
             input = InstantiatePort(Orientation.Vertical, Direction.Input, Port.Capacity.Single, typeof(bool));
         }
-        else if(node is CompositeNode)
+        else if (node is CompositeNode)
         {
             input = InstantiatePort(Orientation.Vertical, Direction.Input, Port.Capacity.Single, typeof(bool));
         }
-        else if(node is DecoratorNode)
+        else if (node is DecoratorNode)
         {
             input = InstantiatePort(Orientation.Vertical, Direction.Input, Port.Capacity.Single, typeof(bool));
         }
-        else if(node is RootNode)
+        else if (node is RootNode)
         {
 
         }
 
-        if(input != null)
-        { 
+        if (input != null)
+        {
             input.portName = "";
             input.style.flexDirection = FlexDirection.Column;
             inputContainer.Add(input);
         }
-    } 
+    }
 
     private void CreateOutputPorts()
     {
@@ -87,20 +87,20 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         {
             output = InstantiatePort(Orientation.Vertical, Direction.Output, Port.Capacity.Single, typeof(bool));
         }
-        else if(node is RootNode)
+        else if (node is RootNode)
         {
             output = InstantiatePort(Orientation.Vertical, Direction.Output, Port.Capacity.Single, typeof(bool));
         }
 
-        if (output != null) 
+        if (output != null)
         {
             output.portName = "";
             output.style.flexDirection = FlexDirection.ColumnReverse;
             outputContainer.Add(output);
         }
+        
+    }
 
-    } 
-     
     public override void SetPosition(Rect newPos)
     {
         base.SetPosition(newPos);
@@ -113,7 +113,7 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     public override void OnSelected()
     {
         base.OnSelected();
-        if(OnNodeSelected != null)
+        if (OnNodeSelected != null)
         {
             OnNodeSelected.Invoke(this);
         }
@@ -123,7 +123,7 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     {
         CompositeNode composite = node as CompositeNode;
 
-        if(composite)
+        if (composite)
         {
             composite.children.Sort(SortByHorizontalPosition);
         }
@@ -145,24 +145,24 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
             switch (node.state)
             {
                 case Node.State.Running:
-                    if(node.started)
+                    if (node.started)
                     {
-                        AddToClassList("running"); 
+                        AddToClassList("running");
                     }
                     break;
                 case Node.State.Failure:
                     if (node.started)
                     {
                         AddToClassList("failure");
-                    }              
+                    }
                     break;
                 case Node.State.Success:
                     if (node.started)
                     {
                         AddToClassList("success");
-                    }                   
+                    }
                     break;
             }
         }
     }
-} 
+}

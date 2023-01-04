@@ -7,13 +7,13 @@ public enum HEROSECALSS { NORMAL, EXCELLENT, RARE, ELITE, EPIC, LEFGENDARY }
 //Å¸ÀÔ
 public enum HEROSETYPE { ATTACK, DEFENSE, SUPPORT }
 //ÆÄ¹ú
-public enum HEROSEFRACTION { Minutemen, Vindicators, Wildlings, Watchers }
+public enum HEROSEFRACTION { MINUTEMEN, VINDICATORS, WILDINGS, WATCHERS }
 
-[System.Serializable]
-public struct HeroseStat
+[CreateAssetMenu(fileName = "HeroseStatData", menuName = "Scriptable Object/HeroseStatData", order = int.MaxValue)]
+public class HeroseStatData : ScriptableObject
 {
     [SerializeField] private string heroseName;
-    public string HeroseName { get { return heroseName; } set { heroseName = value; } }
+    public string HeroseName { get { return heroseName; } }
 
     [SerializeField] private HEROSECALSS heroseClass;
     public HEROSECALSS HeroseClass { get { return heroseClass; } }
@@ -24,28 +24,24 @@ public struct HeroseStat
     [SerializeField] private HEROSEFRACTION heroseFraction;
     public HEROSEFRACTION HeroseFraction { get { return heroseFraction; } }
 
-    [SerializeField] private float hp;
-    public float HP { get { return hp; } set { hp = value; } }
+    [SerializeField] private int hp;
+    public int HP { get { return hp; }}
 
-    [SerializeField] private float strong;
-    public float STR { get { return strong; } set { strong = value; } }
+    [SerializeField] private int mp;
+    public int MP { get { return mp; } }
 
-    [SerializeField] private float intelligence;
-    public float INT { get { return intelligence; } set { intelligence = value; } }
+    [SerializeField] private int strong;
+    public int STR { get { return strong; }}
 
-    [SerializeField] private float agility;
-    public float AGI { get { return agility; } set { agility = value; } }
+    [SerializeField] private int intelligence;
+    public int INT { get { return intelligence; }}
 
-    [SerializeField] private float vital;
-    public float VLT { get { return vital; } set { vital = value; } }
+    [SerializeField] private int agility;
+    public int AGI { get { return agility; }}
 
-    [SerializeField] private float luck;
-    public float LUK { get { return luck; } set { luck = value; } }
-}
+    [SerializeField] private int vital;
+    public int VLT { get { return vital; }}
 
-[CreateAssetMenu(fileName = "HeroseStatData", menuName = "Scriptable Object/HeroseStatData", order = int.MaxValue)]
-public class HeroseStatData : ScriptableObject
-{
-    [SerializeField] private HeroseStat heroseStat;
-    public HeroseStat HeroseStat { get { return heroseStat; } set { heroseStat = value; } }
+    [SerializeField] private int luck;
+    public int LUK { get { return luck; }}
 }
