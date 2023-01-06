@@ -35,7 +35,7 @@ public class SkillNode : ActionNode
             if (Info.skillDatas[0].SkillPosition == SkillPosition.Front
                 && (OwnerTransform.position - SkillPos).magnitude > 0.5f)
             {
-                OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, SkillPos, Time.deltaTime * 20f);
+                OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, SkillPos, Time.deltaTime * 30f);
                 return State.Running;
             }
             //지정 위치에 도달 시 스킬 실행

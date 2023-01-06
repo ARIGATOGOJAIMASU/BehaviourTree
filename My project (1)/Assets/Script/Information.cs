@@ -12,7 +12,7 @@ public struct RunTimeStat
         MaxHP = base_HP;
         CurHP = base_HP;
         MaxMP = base_MP;
-        CurMP = base_MP;
+        CurMP = 0;
         STR = base_STR;
         INT= base_INT;
         AGI = base_AGI;
@@ -118,7 +118,6 @@ public class Information : MonoBehaviour
         int finalAGI = runTimeStat.AGI;
 
         finalAGI += GetBuffValue(Stat.AGI);
-
         return runTimeStat.AGI;
     }
 
@@ -219,6 +218,24 @@ public class Information : MonoBehaviour
         }
 
         return buffValue;
+    }
+
+    public void Hurt(int damage)
+    {
+        //방어력 검사 및 데미지 감소 버프들 확인
+        damage -= (GetAGI()/ 5) + (int)((float)damage * (GetBuffValue(Stat.Damage) / 100.0f));
+
+        if (GetBuffValue(Stat.Damage) != 0)
+        {
+            Debug.Log((int)((float)damage * (GetBuffValue(Stat.Damage) / 100.0f)));
+        }
+
+        if (damage > 0) runTimeStat.CurHP -= damage;
+
+        if (runTimeStat.CurHP <= 0)
+        {
+            BattleManager.Instance.DeadChracter(this);
+        }
     }
 
     public void OnMouseEnter()

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillType: 0
   _targetPlayerType: 1
-  _targetRange: 0
+  _targetRange: 3
   _targetPriority: 0
   _skillPosition: 0
   _bonusStatType: 2

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
   m_Name: Harman
   m_EditorClassIdentifier: 
-  heroseName: 
+  heroseName: Harnan
   heroseClass: 4
   heroseType: 1
   heroseFraction: 2
-  hp: 500
+  hp: 760
   mp: 50
   strong: 38
   intelligence: 50

@@ -64,6 +64,17 @@ public class BattleManager : MonoBehaviour
         NextTurn();
     }
 
+    public void WaitTurn()
+    {
+        StartCoroutine(WaitTurnCorountine());
+    }
+
+    IEnumerator WaitTurnCorountine()
+    {
+        yield return new WaitForSeconds(2.0f);
+        NextChracter();
+    }
+
     private void NextTurn()
     {
         ++turn;
@@ -132,6 +143,7 @@ public class BattleManager : MonoBehaviour
                 allInformations[i] = allInformations[i + 1];
                 allInformations[i + 1] = tempinfo;
 
+                i = 0;
                 continue;
             }
         }
@@ -198,9 +210,9 @@ public class BattleManager : MonoBehaviour
 
     public void Attack(Information attackObj, Information targetObj)
     {
-        targetObj.runTimeStat.CurHP -= attackObj.GetSTR();
+        targetObj.Hurt(attackObj.GetSTR());
 
-        Playlog.text = $"{attackObj.heroseDate.HeroseName}가 {targetObj.heroseDate.HeroseName}를 공격.";
+        Playlog.text = $"{attackObj.heroseDate.HeroseName}가 {targetObj.heroseDate.HeroseName}에게 {attackObj.GetSTR()}의 기본 공격을 함.";
 
         //0보다 작을 시 사망 처리
         if (targetObj.runTimeStat.CurHP <= 0)
@@ -280,8 +292,11 @@ public class BattleManager : MonoBehaviour
         switch (skillData.TargetRange)
         {
             case TargetArea.Self:
-                oppositeCamps.Clear();
-                oppositeCamps.Add(allInformations[playerNum]);
+                {
+                    List<Information> tempInfos = new();
+                    tempInfos.Add(allInformations[playerNum]);
+                    oppositeCamps = tempInfos;
+                }
                 break;
 
             case TargetArea.FrontRow:
@@ -346,23 +361,10 @@ public class BattleManager : MonoBehaviour
         //피격 당하는 대상. 데미지 관련 버프 Check
         foreach (Information target in targetObjs)
         {
-
-            int finalDamage = Damage;
-            finalDamage -= (int)((float)Damage * ((float)target.GetBuffValue(Stat.Damage) / 100.0f));
-
-            target.runTimeStat.CurHP -= finalDamage;
+            target.Hurt(Damage);
         }
 
-        Playlog.text = $"{useSkillObj.heroseDate.HeroseName}가 스킬 공격";
-
-        //0보다 작을 시 사망 처리
-        foreach (Information info in targetObjs)
-        {
-            if (info.runTimeStat.CurHP <= 0)
-            {
-                DeadChracter(info);
-            }
-        }
+        Playlog.text = $"{useSkillObj.heroseDate.HeroseName}가 {Damage}데미지의 스킬 공격";
     }
 
     public void SKillHeal(Information useSkillObj, Information[] targetObjs, SkillData skillData)
@@ -373,7 +375,7 @@ public class BattleManager : MonoBehaviour
             else target.runTimeStat.CurHP += useSkillObj.GetSkillValue();
         }
 
-        Playlog.text = $"{useSkillObj.heroseDate.HeroseName}가 힐스킬 사용";
+        Playlog.text = $"{useSkillObj.heroseDate.HeroseName}가 {useSkillObj.GetSkillValue()}의 힐을 사용";
     }
 
     public void SkillBuff(Information useSkillObj, Information[] targetObjs, BuffSkillData skillData)

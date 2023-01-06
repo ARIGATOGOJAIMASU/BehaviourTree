@@ -16,7 +16,7 @@ MonoBehaviour:
   _targetPlayerType: 0
   _targetRange: 0
   _targetPriority: 0
-  _skillPosition: 0
+  _skillPosition: 1
   _bonusStatType: 3
   _bonusStatValue: 35
   _buff:
