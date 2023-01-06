@@ -14,7 +14,7 @@ public class TurnCheckNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if(GameManager.Instance.TurnChracter == Info.num)
+        if(BattleManager.Instance.TurnChracter == Info.num)
         {
             //자신의 턴일 시
             return State.Success;

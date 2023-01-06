@@ -4,38 +4,35 @@ using UnityEngine;
 
 public enum SKILLTYPE { ATTACK, HELL, BUFF }
 
-public enum TARGETRANGE { SINGEL, FRONTROW, BACKROW, ALL }
+public enum TargetArea { All, Single, Self, FrontRow, BackRow }
 
-public enum TARGETPRIORITY { RANDOM, Hight_HP, Low_HP }
+public enum TARGETPRIORITY { None, Random, Hight_HP, Low_HP }
 
-public enum Stat { HP, STR, INT, AGI, VLT, LUK }
+public enum Stat { None, HP, STR, INT, AGI, VLT, LUK, Damage }
 
-public enum BuffType { Pus, Minus, Multiply, Division }
-
-[System.Serializable]
-public struct Buff
-{
-    public BuffType buffType;
-    public Stat buffTarget;
-    public int duration;
-    public int buffValue;
-}
+public enum SkillPosition { Front, StartPos }
 
 [CreateAssetMenu(fileName = "SkillData", menuName = "Scriptable Object/SkillData", order = int.MaxValue)]
 public class SkillData : ScriptableObject
 {
     [SerializeField] SKILLTYPE _skillType;
-    public SKILLTYPE SKILLTYPE { get { return _skillType; } }
+    public SKILLTYPE SkillType { get { return _skillType; } }
 
-    [SerializeField] TARGETRANGE _targetRange;
-    public TARGETRANGE TargetRange { get { return _targetRange; } }
+    [SerializeField] PlayerType _targetPlayerType;
+    public PlayerType TargetPlayerType { get { return _targetPlayerType; } }
+
+    [SerializeField] TargetArea _targetRange;
+    public TargetArea TargetRange { get { return _targetRange; } }
 
     [SerializeField] TARGETPRIORITY _targetPriority;
     public TARGETPRIORITY TargetPriority { get { return _targetPriority; } }
 
-    [SerializeField] bool IsBuff;
-    public bool GetIsBuffer { get { return IsBuff; } }
+    [SerializeField] SkillPosition _skillPosition;
+    public SkillPosition SkillPosition { get { return _skillPosition; } }
 
-    [SerializeField] Buff _buff;
-    public Buff GetBuff { get { return _buff; } }
+    [SerializeField] Stat _bonusStatType;
+    public Stat BonusStatType { get { return _bonusStatType; } }
+
+    [SerializeField] float _bonusStatValue;
+    public float BonusStatValue { get { return _bonusStatValue; } }
 }

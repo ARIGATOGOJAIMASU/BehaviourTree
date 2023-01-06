@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UI_Update : MonoBehaviour
 {
     [SerializeField] Information ownerInfo;
     [SerializeField] Image HP_Bar;
     [SerializeField] Image MP_Bar;
-    [SerializeField] TextMesh heroName;
+    [SerializeField] TextMeshProUGUI heroName;
 
     private void Start()
     {

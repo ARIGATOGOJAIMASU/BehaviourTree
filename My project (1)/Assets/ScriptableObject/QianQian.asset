@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: QianQian
   m_EditorClassIdentifier: 
   heroseName: QianQian
-  heroseClass: 0
+  heroseClass: 4
   heroseType: 0
   heroseFraction: 3
-  hp: 300
+  hp: 500
   mp: 50
-  strong: 80
-  intelligence: 39
-  agility: 53
-  vital: 26
-  luck: 66
+  strong: 76
+  intelligence: 38
+  agility: 50
+  vital: 25
+  luck: 63

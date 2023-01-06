@@ -33,7 +33,8 @@ public class AttackMoveNode : ActionNode
         {
             //다음턴을 넘김
             BattleManager.Instance.Attack(Info ,targetInfo);
-            //Info.runTimeStat
+            //MP업
+            Info.runTimeStat.CurMP += 30;
         }
 
         return State.Success;

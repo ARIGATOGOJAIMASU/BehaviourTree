@@ -16,7 +16,7 @@ MonoBehaviour:
   heroseClass: 0
   heroseType: 1
   heroseFraction: 0
-  hp: 200
+  hp: 500
   mp: 50
   strong: 53
   intelligence: 39

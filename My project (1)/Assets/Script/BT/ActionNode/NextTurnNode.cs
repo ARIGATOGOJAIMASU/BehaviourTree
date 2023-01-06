@@ -16,7 +16,7 @@ public class NextTurnNode : ActionNode
 
     protected override State OnUpdate()
     {
-        GameManager.Instance.NextChracter();
+        BattleManager.Instance.NextChracter();
         return State.Success;
     }
 }

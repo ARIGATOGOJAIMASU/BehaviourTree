@@ -14,6 +14,6 @@ public class TurnCheck_UI : MonoBehaviour
 
     private void Update()
     {
-        turnUI.text = "현재의 턴 : " + GameManager.Instance.turn.ToString();
+        turnUI.text = "현재의 턴 : " + BattleManager.Instance.turn.ToString();
     }
 }

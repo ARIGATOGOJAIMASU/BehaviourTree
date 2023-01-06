@@ -14,7 +14,7 @@ public class BackMoveNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if((OwnerTransform.position - Info.startPos).magnitude > 0.5f)
+        if ((OwnerTransform.position - Info.startPos).magnitude > 0.5f)
         {
             OwnerTransform.position = Vector3.Lerp(OwnerTransform.position, Info.startPos, Time.deltaTime * 4);
             return State.Running;

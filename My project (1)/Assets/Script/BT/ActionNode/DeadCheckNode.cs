@@ -16,11 +16,9 @@ public class DeadCheckNode : ActionNode
     {
         if (!Info.IsDead)
         {
-            Debug.Log("w");
             return State.Success;
         }
 
-        Debug.Log("d");
         Info.OnUpdate = false;
         OwnerTransform.gameObject.SetActive(false);
         return State.Failure;
