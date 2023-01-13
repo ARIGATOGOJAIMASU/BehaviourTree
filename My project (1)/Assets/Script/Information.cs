@@ -71,8 +71,14 @@ public class Information : MonoBehaviour
 
     //고유 번호
     public int num = 0;
-    public bool IsHurt;
+
+    //자신의위치
     public Vector3 startPos;
+
+    //자기 자리의 인덱스번호
+    public int indexNum = 0;
+
+    public bool IsHurt;
     public bool IsDead = false;
     public bool OnUpdate = true;
     public bool UseSkill = false;
@@ -90,9 +96,6 @@ public class Information : MonoBehaviour
     //Delegate
     public List<Delegate.GetTarget> getTargetDelegates = new();
     public List<Delegate.Action> actionDelegates = new();
-
-    //자신의 상태를 나타냄
-    public CharacterState characterState;
 
     private void Start()
     {
@@ -232,30 +235,5 @@ public class Information : MonoBehaviour
             //Delegate호출
             deadChracter(num);
         }
-    }
-
-    public void OnMouseEnter()
-    {
-        if(characterState.GetState() == State.Battle)
-            OnInfomation();
-    }
-
-    public void OnMouseExit()
-    {
-        if (characterState.GetState() == State.Battle)
-            OffInfomation();
-    }
-
-    //StatUI호출 및 Setting
-    public void OnInfomation()
-    {
-        BattleManager.Instance.statExpantionUI.SetStatExplanation(this);
-        BattleManager.Instance.statExpantionUI.gameObject.SetActive(true);
-    }
-
-    //StatUI비활성화
-    public void OffInfomation()
-    {
-        BattleManager.Instance.statExpantionUI.gameObject.SetActive(false);
     }
 }

@@ -4,31 +4,48 @@ using UnityEngine;
 
 public class MouseRayCast : MonoBehaviour
 {
-    public float distance;
     [SerializeField] LayerMask layerMask;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] bool IsHold = false;
+    int readyNum;
 
     // Update is called once per frame
     void Update()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit;
+
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit;
+            layerMask = LayerMask.GetMask("Character");
 
             //맞을 때까지 레이저를 쏨
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
-                Information info  = hit.transform.GetComponent<Information>();
-                if (info.characterState.GetState() != State.Ready)
+                MouseEvent mouseEvent = hit.transform.GetComponent<MouseEvent>();
+                if (mouseEvent.characterState.GetState() != State.Ready)
                     return;
+
+                ReadySenter.Instance().OnStartPosCollider();
+                readyNum = mouseEvent.num;
+                IsHold = true;
             }
+        }
+        else if(Input.GetMouseButtonUp(0) && IsHold)
+        {
+            layerMask = LayerMask.GetMask("StartPos");
+
+            //맞을 때까지 레이저를 쏨
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+            {
+                Transform StartPosition = hit.transform;
+                ReadySenter.Instance().ChracterChangePosition(readyNum, StartPosition);
+            }
+
+            //Collider다시 비활성화 
+            ReadySenter.Instance().OffStartPosCollider();
+
+            IsHold = false;
         }
     }
 }
