@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AttackMoveNode : ActionNode
 {
-    Information targetInfo;
+    Information[] AttackTarget;
 
     protected override void OnStart()
     {
-        targetInfo = null;
+        AttackTarget = null;
     }
 
     protected override void OnStop()
@@ -17,22 +17,22 @@ public class AttackMoveNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if(targetInfo == null)
+        if(AttackTarget == null)
         {
-            targetInfo = BattleManager.Instance.GetBaseAttackTarget(Info.playrType);
+            AttackTarget = Info.getTargetDelegates[0](Info.num);
         }
 
         //타켓을 쫓아감
-        if ((OwnerTransform.position - targetInfo.transform.position).magnitude > 0.5f)
+        if ((OwnerTransform.position - AttackTarget[0].transform.position).magnitude > 0.5f)
         {
-            OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, targetInfo.transform.position, Time.deltaTime * 30f);
+            OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, AttackTarget[0].transform.position, Time.deltaTime * 30f);
             return State.Running;
         }
         //타켓 앞까지 옴
         else
         {
             //다음턴을 넘김
-            BattleManager.Instance.Attack(Info ,targetInfo);
+            Info.actionDelegates[0](Info.num , AttackTarget);
             //MP업
             Info.runTimeStat.CurMP += Random.Range(0 , 50);
         }

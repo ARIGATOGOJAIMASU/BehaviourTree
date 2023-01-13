@@ -13,7 +13,7 @@ public class UI_Update : MonoBehaviour
 
     private void Start()
     {
-        heroName.text = ownerInfo.heroseDate.HeroseName;
+        heroName.text = ownerInfo.heroseDate.HeroseName.ToString();
     }
 
     private void Update()

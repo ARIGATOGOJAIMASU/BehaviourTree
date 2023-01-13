@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouseRayCast : MonoBehaviour
 {
     public float distance;
+    [SerializeField] LayerMask layerMask;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +23,11 @@ public class MouseRayCast : MonoBehaviour
             RaycastHit hit;
 
             //맞을 때까지 레이저를 쏨
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask))
             {
-                Debug.DrawRay(ray.origin, ray.direction * 20, Color.red, 5f);
+                Information info  = hit.transform.GetComponent<Information>();
+                if (info.characterState.GetState() != State.Ready)
+                    return;
             }
         }
     }

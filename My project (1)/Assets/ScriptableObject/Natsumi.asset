@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
   m_Name: Natsumi
   m_EditorClassIdentifier: 
-  heroseName: Natsumi
+  heroseName: 7
   heroseClass: 4
   heroseType: 0
   heroseFraction: 3
+  heroSprite: {fileID: 21300000, guid: 22c328886e6dda14aa245d54fba9e8b5, type: 3}
   hp: 500
   mp: 50
   strong: 38

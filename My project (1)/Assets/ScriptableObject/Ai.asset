@@ -15,27 +15,9 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 09ac537f54c0b654685326079c95df1e
-  position: {x: 5.9999714, y: 250.82962}
+  position: {x: 18.000057, y: 257.251}
   children:
   - {fileID: -6056937287592520961}
-  - {fileID: -7267274085922338176}
---- !u!114 &-7267274085922338176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 269d0b7e7368b2f418d1160849d7321f, type: 3}
-  m_Name: SequencerNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: f638d1f1ed9bee746a02f038d3af410a
-  position: {x: 360.99994, y: 383.86365}
-  children:
   - {fileID: -3095674165028772043}
 --- !u!114 &-6678357003722534030
 MonoBehaviour:
@@ -52,7 +34,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0cc89f7f99146c5418eb9541a8a031b6
-  position: {x: 8.000038, y: 34.850006}
+  position: {x: 26.000074, y: 39.940376}
   child: {fileID: 1260321690256885183}
 --- !u!114 &-6056937287592520961
 MonoBehaviour:
@@ -106,7 +88,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b1325c678c033164695b75946aaeda5d
-  position: {x: 44.032505, y: 567}
+  position: {x: 17.999985, y: 567}
 --- !u!114 &-3095674165028772043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +104,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 51ada5c005d0db743a36352d7a0980c1
-  position: {x: 352.89777, y: 542.9999}
+  position: {x: 291.22504, y: 387.585}
 --- !u!114 &-2836741500811136582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +120,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 26fbed93bfa4a3247b16f0adf884c33a
-  position: {x: -153.77281, y: 562}
+  position: {x: -196.00012, y: 559.42}
 --- !u!114 &-1153998750049017453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +157,6 @@ MonoBehaviour:
   nodes:
   - {fileID: -6678357003722534030}
   - {fileID: -6056937287592520961}
-  - {fileID: -7267274085922338176}
   - {fileID: 9143072367999447354}
   - {fileID: -2836741500811136582}
   - {fileID: -3095674165028772043}
@@ -200,7 +181,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6f67356b3e4c5984aaaa089c0e62ca7f
-  position: {x: 0.000014305115, y: 125.944016}
+  position: {x: 26.000074, y: 135.99998}
   child: {fileID: -9046480659353627988}
 --- !u!114 &2264342883733821087
 MonoBehaviour:

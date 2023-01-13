@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
   m_Name: Harman
   m_EditorClassIdentifier: 
-  heroseName: Harnan
+  heroseName: 4
   heroseClass: 4
   heroseType: 1
   heroseFraction: 2
+  heroSprite: {fileID: 21300000, guid: ee2bdc0dd8ed03443b79fe9f75cd6d28, type: 3}
   hp: 760
   mp: 50
   strong: 38

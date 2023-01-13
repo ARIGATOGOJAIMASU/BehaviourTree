@@ -42,7 +42,7 @@ public class SkillNode : ActionNode
             else
             {
                 //스킬 사용
-                BattleManager.Instance.UseSkill(Info, targetInfos, Info.skillDatas[index]);
+                Info.actionDelegates[(int)DelegateType.Skill](Info.num, targetInfos);
 
                 //다음 인덱스 ++
                 ++index;
@@ -68,7 +68,7 @@ public class SkillNode : ActionNode
 
     void SetSkillPosition(int index)
     {
-        targetInfos = BattleManager.Instance.GetSkillTarget(Info.num ,Info.skillDatas[index], Info.playrType);
+        targetInfos = Info.getTargetDelegates[(int)DelegateType.Skill](Info.num);
 
         switch (Info.skillDatas[index].SkillPosition)
         {

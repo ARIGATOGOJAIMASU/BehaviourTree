@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alisa
   m_EditorClassIdentifier: 
   heroseName: Alisa
-  heroseClass: 0
+  heroseClass: 4
   heroseType: 0
   heroseFraction: 0
   hp: 200

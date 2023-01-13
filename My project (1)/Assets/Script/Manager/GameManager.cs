@@ -18,4 +18,7 @@ public class GameManager : MonoBehaviour
             return _Instance;
         }
     }
+
+    //Player가 가지고 있는 영웅들
+    public HoldHeros[] holdHeros;
 }

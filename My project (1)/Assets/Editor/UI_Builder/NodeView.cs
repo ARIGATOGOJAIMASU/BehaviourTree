@@ -2,19 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-#if UNITY_EDITOR_64
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor;
 
+#if UNITY_EDITOR
 public class NodeView : UnityEditor.Experimental.GraphView.Node
 {
     public Action<NodeView> OnNodeSelected;
     public Node node;
     public Port input;
     public Port output;
-    public NodeView(Node node) : base("Assets/UI_Builder/NodeView.uxml")
+    public NodeView(Node node) : base("Assets/Editor/UI_Builder/NodeView.uxml")
     {
         this.node = node;
         this.title = node.name;
@@ -168,4 +167,5 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         }
     }
 }
+
 #endif

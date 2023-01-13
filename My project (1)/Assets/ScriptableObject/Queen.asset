@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
   m_Name: Queen
   m_EditorClassIdentifier: 
-  heroseName: Queen
+  heroseName: 9
   heroseClass: 4
   heroseType: 0
   heroseFraction: 1
+  heroSprite: {fileID: 21300000, guid: fd8c3437fdd1dd8499800c7946efb2a0, type: 3}
   hp: 500
   mp: 50
   strong: 38

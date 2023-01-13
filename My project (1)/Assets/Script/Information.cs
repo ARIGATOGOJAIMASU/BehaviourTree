@@ -12,7 +12,7 @@ public struct RunTimeStat
         MaxHP = base_HP;
         CurHP = base_HP;
         MaxMP = base_MP;
-        CurMP = 0;
+        CurMP = base_MP;
         STR = base_STR;
         INT= base_INT;
         AGI = base_AGI;
@@ -69,17 +69,30 @@ public class Information : MonoBehaviour
 
     public List<MyBuff> buffs = new ();
 
-    //식별을 위한 고유번호
+    //고유 번호
     public int num = 0;
     public bool IsHurt;
     public Vector3 startPos;
     public bool IsDead = false;
     public bool OnUpdate = true;
     public bool UseSkill = false;
-    public Area charcterArea;
-    public GameObject buffUI_Base;
+
+    //현재 실행중인 SkillIndex
     public int curSkillIndex = 0;
+
+    //자신의 위치
+    public Area charcterArea;
+
+    //Buff
+    public GameObject buffUI_Base;
     [SerializeField] BuffManager buffUiManager;
+
+    //Delegate
+    public List<Delegate.GetTarget> getTargetDelegates = new();
+    public List<Delegate.Action> actionDelegates = new();
+
+    //자신의 상태를 나타냄
+    public CharacterState characterState;
 
     private void Start()
     {
@@ -90,68 +103,56 @@ public class Information : MonoBehaviour
         SettingRunTimeStat();
     }
 
+    //스태틱값들을 미리 계산
     public void SettingRunTimeStat()
     {
         runTimeStat = new RunTimeStat(heroseDate.HP, heroseDate.MP, heroseDate.STR, heroseDate.INT, heroseDate.AGI, heroseDate.VLT, heroseDate.LUK);
+
+        /////////////////////////////////////////////////////////
+        ///레벨 계산
+        /////////////////////////////////////////////////////////     
+
+        //////////////////////////////////////////////////////////
+        ///아이템 효과 계산
+        //////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////
+        ///Acitive Skill 확인
+        //////////////////////////////////////////////////////////
     }
 
-    public int GetSTR()
+    public int GetStatValue(Stat stat)
     {
-        int finalSTR = runTimeStat.STR;
+        int finalValue = 0;
 
-        finalSTR += GetBuffValue(Stat.STR);
+        switch (stat)
+        {
+            case Stat.STR:
+                finalValue = runTimeStat.STR;
+                break;
+            case Stat.INT:
+                finalValue = runTimeStat.INT;
+                break;
+            case Stat.AGI:
+                finalValue = runTimeStat.AGI;
+                break;
+            case Stat.VLT:
+                finalValue = runTimeStat.VLT;
+                break;
+            case Stat.LUK:
+                finalValue = runTimeStat.LUK;
+                break;
+        }
 
-        return runTimeStat.STR;
-    }
+        finalValue += GetBuffValue(stat);
 
-    public int GetINT()
-    {
-        int finalINT = runTimeStat.INT;
-
-        finalINT += GetBuffValue(Stat.INT);
-
-        return runTimeStat.INT;
-    }
-
-    public int GetAGI()
-    {
-        int finalAGI = runTimeStat.AGI;
-
-        finalAGI += GetBuffValue(Stat.AGI);
-        return runTimeStat.AGI;
-    }
-
-    public int GetVLT()
-    {
-        int finalVLT = runTimeStat.VLT;
-
-        finalVLT += GetBuffValue(Stat.VLT);
-
-        return runTimeStat.VLT;
-    }
-
-    public int GetLUK()
-    {
-        int finalLUK = runTimeStat.LUK;
-
-        finalLUK += GetBuffValue(Stat.LUK);
-
-        return runTimeStat.LUK;
+        return finalValue;
     }
 
     public int GetSkillValue()
     {
-        int Value = 0;
-
-        switch(skillDatas[curSkillIndex].BonusStatType)
-        {
-            case Stat.INT:
-                Value = GetINT() + (int)((float)GetINT() * (skillDatas[curSkillIndex].BonusStatValue/ 100));
-                break;
-            case Stat.STR:
-                Value = GetSTR() + (int)((float)GetSTR() * (skillDatas[curSkillIndex].BonusStatValue / 100));
-                break;
-        }
+        int Value = GetStatValue(skillDatas[curSkillIndex].BonusStatType) +
+            (int)((float)GetStatValue(skillDatas[curSkillIndex].BonusStatType) * (skillDatas[curSkillIndex].BonusStatValue / 100));
 
         Value += GetBuffValue(Stat.Damage);
 
@@ -165,12 +166,11 @@ public class Information : MonoBehaviour
         //UI추가
         BuffUI buffUI = Instantiate(buffUI_Base, buffUiManager.transform).GetComponent<BuffUI>();
         buffUI.Setting(buff);
-
         buffUiManager.AddBuffUI(buffUI);
     }
 
     //버프 Duration감소 및 Check
-    public void BuffCheck()
+    public void BuffCheck(Delegate.DeadChracter deadChracter)
     {
         for(int i = 0; i < buffs.Count; ++i)
         {
@@ -180,7 +180,7 @@ public class Information : MonoBehaviour
 
                 if(runTimeStat.CurHP <= 0)
                 {
-                    BattleManager.Instance.DeadChracter(this);
+                    deadChracter(num);
                     return;
                 }
             }
@@ -193,7 +193,7 @@ public class Information : MonoBehaviour
             }
         }
 
-        //UiCheck
+        //buffUiCheck
         buffUiManager.BuffsDurationCheck();
     }
 
@@ -220,40 +220,40 @@ public class Information : MonoBehaviour
         return buffValue;
     }
 
-    public void Hurt(int damage)
+    public void Hurt(int damage, Delegate.DeadChracter deadChracter)
     {
         //방어력 검사 및 데미지 감소 버프들 확인
-        damage -= (GetAGI()/ 5) + (int)((float)damage * (GetBuffValue(Stat.Damage) / 100.0f));
-
-        if (GetBuffValue(Stat.Damage) != 0)
-        {
-            Debug.Log((int)((float)damage * (GetBuffValue(Stat.Damage) / 100.0f)));
-        }
+        damage -= (GetStatValue(Stat.AGI)/ 5) + (int)((float)damage * (GetBuffValue(Stat.Damage) / 100.0f));
 
         if (damage > 0) runTimeStat.CurHP -= damage;
 
         if (runTimeStat.CurHP <= 0)
         {
-            BattleManager.Instance.DeadChracter(this);
+            //Delegate호출
+            deadChracter(num);
         }
     }
 
     public void OnMouseEnter()
     {
-        OnInfomation();
+        if(characterState.GetState() == State.Battle)
+            OnInfomation();
     }
 
     public void OnMouseExit()
     {
-        OffInfomation();
+        if (characterState.GetState() == State.Battle)
+            OffInfomation();
     }
 
+    //StatUI호출 및 Setting
     public void OnInfomation()
     {
         BattleManager.Instance.statExpantionUI.SetStatExplanation(this);
         BattleManager.Instance.statExpantionUI.gameObject.SetActive(true);
     }
 
+    //StatUI비활성화
     public void OffInfomation()
     {
         BattleManager.Instance.statExpantionUI.gameObject.SetActive(false);
