@@ -26,8 +26,8 @@ public class BattleManager : MonoBehaviour
     public int turn;
     public int TurnChracter;
 
-    int playerCount = 5;
-    int enemyCount = 10;
+    public int playerCount = 5;
+    public int enemyCount = 5;
 
     //PlayerData
     [SerializeField] List<Information> playerInfors;
@@ -46,37 +46,48 @@ public class BattleManager : MonoBehaviour
 
     //Delegate
     List<Delegate.SkillAction> skillAction = new();
-    Delegate.DeadChracter deadChracterFuntion;
 
-    private void Awake()
+    public void GameStart(List<Information> playerCharacters)
     {
         //Delegate설정
         skillAction.Add(SkillAttack);
         skillAction.Add(SKillHeal);
         skillAction.Add(SkillBuff);
-        deadChracterFuntion = DeadChracter;
 
-        playerCount = playerInfors.Count;
-        enemyCount = enemyInfors.Count;
+        //준비된 정보받기
+        playerInfors = playerCharacters;
+
+        int Count = 0;
 
         //고유 번호 할당 및 playerType 지정
-        for (int i = 0; i < playerCount; ++i)
+        for (int i = 0; i < 5; ++i)
         {
-            playerInfors[i].playrType = PlayerType.Player;
+            if (playerInfors[i] != null)
+            {
+                playerInfors[i].playrType = PlayerType.Player;
 
-            //Delegate설정
-            playerInfors[i].getTargetDelegates.Add(GetBaseAttackTarget);
-            playerInfors[i].getTargetDelegates.Add(GetSkillTarget);
+                //Delegate설정
+                playerInfors[i].getTargetDelegates.Add(GetBaseAttackTarget);
+                playerInfors[i].getTargetDelegates.Add(GetSkillTarget);
 
-            playerInfors[i].actionDelegates.Add(Attack);
-            playerInfors[i].actionDelegates.Add(UseSkill);
+                playerInfors[i].actionDelegates.Add(Attack);
+                playerInfors[i].actionDelegates.Add(UseSkill);
 
-            if (i < 2) playerInfors[i].charcterArea = Area.Front;
-            else playerInfors[i].charcterArea = Area.Back;
+                playerInfors[i].GetComponent<CharacterState>().CurState = State.Battle;
+
+                if (i < 2) playerInfors[i].charcterArea = Area.Front;
+                else playerInfors[i].charcterArea = Area.Back;
+
+                playerInfors[i].num = Count;
+                ++Count;
+            }
         }
 
-        for (int i = 0; i < enemyCount; ++i)
+        while (playerInfors.Remove(null)) ;
+
+        for (int i = 0; i < 5; ++i)
         {
+            enemyInfors[i].gameObject.SetActive(true);
             enemyInfors[i].playrType = PlayerType.Enemy;
 
             //Delegate설정
@@ -86,12 +97,22 @@ public class BattleManager : MonoBehaviour
             enemyInfors[i].actionDelegates.Add(Attack);
             enemyInfors[i].actionDelegates.Add(UseSkill);
 
+            enemyInfors[i].GetComponent<CharacterState>().CurState = State.Battle;
+
             if (i < 2) enemyInfors[i].charcterArea = Area.Front;
             else enemyInfors[i].charcterArea = Area.Back;
+
+            enemyInfors[i].num = Count;
+            ++Count;
         }
 
         allInformations.AddRange(playerInfors);
         allInformations.AddRange(enemyInfors);
+
+        playerCount = playerInfors.Count;
+        enemyCount = enemyInfors.Count;
+
+        GamePlay();
 
         NextTurn();
     }
@@ -114,7 +135,8 @@ public class BattleManager : MonoBehaviour
         //buff Check구간
         foreach(Information info in allInformations)
         {
-            info.BuffCheck(deadChracterFuntion);
+            if(!info.IsDead)
+            info.BuffCheck();
         }
 
         //게임 진행이 가능한지 Check
@@ -159,7 +181,7 @@ public class BattleManager : MonoBehaviour
     public bool PossibleNextGame()
     {
         //한쪽 진영 전멸 시 게임종료
-        if (playerCount == 0 || enemyCount == 0) return false;
+        if (playerInfors.Count <= 0 || enemyInfors.Count <= 0) return false;
 
         return true;
     }
@@ -168,25 +190,24 @@ public class BattleManager : MonoBehaviour
     {
         //LUK를 통한 순서 결정
         //오름차순으로 정렬
-        for (int i = 0; i < allInformations.Count - 1; ++i)
+        Information[] Infos = allInformations.ToArray();
+
+
+        for (int i = 0; i < Infos.Length - 1; ++i)
         {
-            if (allInformations[i].GetStatValue(Stat.LUK) < allInformations[i + 1].GetStatValue(Stat.LUK))
+            if (Infos[i].GetStatValue(Stat.LUK) < Infos[i + 1].GetStatValue(Stat.LUK))
             {
-                Information tempinfo = allInformations[i];
-                allInformations[i] = allInformations[i + 1];
-                allInformations[i + 1] = tempinfo;
+                Information tempinfo = Infos[i];
+                Infos[i] = Infos[i + 1];
+                Infos[i + 1] = tempinfo;
 
                 i = 0;
                 continue;
             }
         }
 
-        int Count = 0;
-
-        foreach (Information info in allInformations)
+        foreach (Information info in Infos)
         {
-            info.num = Count;
-            ++Count;
             turnPreferentially.Enqueue(info.num); 
         }
     }
@@ -239,7 +260,6 @@ public class BattleManager : MonoBehaviour
         //////////////////////////////////////////////
         ///우선도를 정하는 함수 구현 예정(Delegate를 활용하여 구현해보자)
         //////////////////////////////////////////////
-
         finalinfors.Add(infors[Random.Range(0, infors.Length - 1)]);
 
         return finalinfors.ToArray();
@@ -249,7 +269,7 @@ public class BattleManager : MonoBehaviour
     {
         Information attackInfo = allInformations[attacknum];
 
-        targetObj[0].Hurt(attackInfo.GetStatValue(Stat.STR),deadChracterFuntion);
+        targetObj[0].Hurt(attackInfo.GetStatValue(Stat.STR));
 
         Playlog.text = $"{attackInfo.heroseDate.HeroseName}가 {targetObj[0].heroseDate.HeroseName}에게 {attackInfo.GetStatValue(Stat.STR)}의 기본 공격을 함.";
 
@@ -399,7 +419,7 @@ public class BattleManager : MonoBehaviour
         //피격 당하는 대상. 데미지 관련 버프 Check
         foreach (Information target in targetObjs)
         {
-            target.Hurt(Damage, deadChracterFuntion);
+            target.Hurt(Damage);
         }
 
         //targetObjs => { Hurt(Damage, deadChracterFuntion); }
@@ -460,7 +480,17 @@ public class BattleManager : MonoBehaviour
         deadCharacter.IsDead = true;
 
         //해당 진영 List에서 삭제
-        if (deadCharacter.playrType == PlayerType.Player) playerInfors.Remove(deadCharacter);
-        else enemyInfors.Remove(deadCharacter);
+        if (deadCharacter.playrType == PlayerType.Player)
+        {
+            --playerCount;
+            playerInfors.Remove(deadCharacter);
+        }
+        else
+        {
+            --enemyCount;
+            enemyInfors.Remove(deadCharacter);
+        }
+
+        Destroy(deadCharacter);
     }
 }

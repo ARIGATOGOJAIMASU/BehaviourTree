@@ -6,10 +6,7 @@ public enum State { Ready, Battle }
 
 public class CharacterState : MonoBehaviour
 {
-    State characterState = State.Ready;
+    public State characterState = State.Ready;
 
-    public State GetState()
-    {
-        return characterState;
-    }
+    public State CurState { get { return characterState; } set { characterState = value; } }
 }

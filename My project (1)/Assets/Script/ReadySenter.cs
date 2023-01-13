@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ReadySenter : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class ReadySenter : MonoBehaviour
     [SerializeField] Transform[] startPos;
     [SerializeField] bool[] OnIndex;
     public int characterNum = 0;
+
+    //UI
+    [SerializeField] GameObject GameStartUi;
+    [SerializeField] GameObject CharacterScrollUI;
+
+    [SerializeField] UnityEvent UIActiveEvent;
 
     public void AddReadyCharacter(HeroseName name)
     {
@@ -62,10 +69,10 @@ public class ReadySenter : MonoBehaviour
         Information info = new();
         for (int i = 0; i < readyCharacters.Count; ++i)
         {
-            if (readyCharacters[i].indexNum == chracterNum)
+            if (readyCharacters[i]!= null && readyCharacters[i].indexNum == chracterNum)
             {
+                OnIndex[chracterNum] = false;
                 info = readyCharacters[i];
-                OnIndex[i] = false;
                 readyCharacters[i] = null;
                 break;
             }
@@ -82,19 +89,39 @@ public class ReadySenter : MonoBehaviour
             }
         }
 
-        //아무것도 없으면
-        if (!OnChracter)
+        //객체가 있다면
+        if (OnChracter)
         {
-            OnIndex[changeIndex] = true;
-            readyCharacters[changeIndex] = info;
-            info.startPos = startPos[changeIndex].position;
-            info.transform.position = startPos[changeIndex].position;
-            info.indexNum = changeIndex;
-        }
-        else
-        {
+            Information changedInfo = new();
 
+            for (int i = 0; i < readyCharacters.Count; ++i)
+            {
+                if (readyCharacters[i] != null && readyCharacters[i].indexNum == changeIndex)
+                {
+                    OnIndex[changeIndex] = false;
+                    changedInfo = readyCharacters[i];
+                    readyCharacters[i] = null;
+                    break;
+                }
+            }
+
+            OnIndex[chracterNum] = true;
+            readyCharacters[chracterNum] = null;
+            readyCharacters[chracterNum] = changedInfo;
+            changedInfo.startPos = startPos[chracterNum].position;
+            changedInfo.GetComponent<MouseEvent>().indexNum = chracterNum;
+            changedInfo.transform.position = startPos[chracterNum].position;
+            changedInfo.indexNum = chracterNum;
         }
+
+        //아 이거 진짜 아닌데
+        OnIndex[changeIndex] = true;
+        readyCharacters[changeIndex] = null;
+        readyCharacters[changeIndex] = info;
+        info.startPos = startPos[changeIndex].position;
+        info.GetComponent<MouseEvent>().indexNum = changeIndex;
+        info.transform.position = startPos[changeIndex].position;
+        info.indexNum = changeIndex;
     }
 
     public void OnStartPosCollider()
@@ -111,5 +138,11 @@ public class ReadySenter : MonoBehaviour
         {
             startPos[i].GetComponent<BoxCollider>().enabled = false;
         }
+    }
+
+    public void StartGame()
+    {
+        BattleManager.Instance.GameStart(readyCharacters);
+        UIActiveEvent.Invoke();
     }
 }

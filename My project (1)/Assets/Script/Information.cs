@@ -173,7 +173,7 @@ public class Information : MonoBehaviour
     }
 
     //버프 Duration감소 및 Check
-    public void BuffCheck(Delegate.DeadChracter deadChracter)
+    public void BuffCheck()
     {
         for(int i = 0; i < buffs.Count; ++i)
         {
@@ -183,7 +183,7 @@ public class Information : MonoBehaviour
 
                 if(runTimeStat.CurHP <= 0)
                 {
-                    deadChracter(num);
+                    BattleManager.Instance.DeadChracter(num);
                     return;
                 }
             }
@@ -223,7 +223,7 @@ public class Information : MonoBehaviour
         return buffValue;
     }
 
-    public void Hurt(int damage, Delegate.DeadChracter deadChracter)
+    public void Hurt(int damage)
     {
         //방어력 검사 및 데미지 감소 버프들 확인
         damage -= (GetStatValue(Stat.AGI)/ 5) + (int)((float)damage * (GetBuffValue(Stat.Damage) / 100.0f));
@@ -233,7 +233,7 @@ public class Information : MonoBehaviour
         if (runTimeStat.CurHP <= 0)
         {
             //Delegate호출
-            deadChracter(num);
+            BattleManager.Instance.DeadChracter(num);
         }
     }
 }

@@ -6,41 +6,51 @@ public class MouseEvent : MonoBehaviour
 {
     Vector3 StartPos;
     public CharacterState characterState;
-    public int num;
+    public int indexNum;
+    public int CharacterNum = -1;
 
     private void Start()
     {
         StartPos = transform.position;
-        num = GetComponent<Information>().indexNum;
+        indexNum = GetComponent<Information>().indexNum;
     }
 
     private void OnMouseDrag()
     {
-        Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
-        transform.position = point;
+        if (characterState.CurState == State.Ready)
+        { 
+            Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+            transform.position = point;
+        }
     }
 
     private void OnMouseUp()
     {
-        transform.position = StartPos;
+        if (characterState.CurState == State.Ready)
+            transform.position = StartPos;
     }
 
     private void OnMouseEnter()
     {
-        if (characterState.GetState() == State.Battle)
+        if (CharacterNum == -1)
+        {
+            CharacterNum = GetComponent<Information>().num;
+        }
+
+        if (characterState.CurState == State.Battle)
             OnInfomation();
     }
 
     private void OnMouseExit()
     {
-        if (characterState.GetState() == State.Battle)
+        if (characterState.CurState == State.Battle)
             OffInfomation();
     }
 
     //StatUIÈ£Ãâ ¹× Setting
     public void OnInfomation()
     {
-        BattleManager.Instance.statExpantionUI.SetStatExplanation(num);
+        BattleManager.Instance.statExpantionUI.SetStatExplanation(CharacterNum);
         BattleManager.Instance.statExpantionUI.gameObject.SetActive(true);
     }
 

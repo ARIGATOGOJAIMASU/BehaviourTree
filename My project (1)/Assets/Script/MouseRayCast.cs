@@ -23,11 +23,11 @@ public class MouseRayCast : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
                 MouseEvent mouseEvent = hit.transform.GetComponent<MouseEvent>();
-                if (mouseEvent.characterState.GetState() != State.Ready)
+                if (mouseEvent.characterState.CurState != State.Ready)
                     return;
 
                 ReadySenter.Instance().OnStartPosCollider();
-                readyNum = mouseEvent.num;
+                readyNum = mouseEvent.indexNum;
                 IsHold = true;
             }
         }
