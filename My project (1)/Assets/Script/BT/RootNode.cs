@@ -25,4 +25,8 @@ public class RootNode : Node
 
         return node;
     }
+
+    public override void Init()
+    {
+    }
 }

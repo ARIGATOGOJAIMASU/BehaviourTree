@@ -7,6 +7,10 @@ public class WaitNode : ActionNode
     public float duration = 1;
     float startTime;
 
+    public override void Init()
+    {
+    }
+
     protected override void OnStart()
     {
         startTime = Time.time;

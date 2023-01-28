@@ -34,7 +34,7 @@ public class MouseEvent : MonoBehaviour
     {
         if (CharacterNum == -1)
         {
-            CharacterNum = GetComponent<Information>().num;
+            CharacterNum = GetComponent<Information>().ID;
         }
 
         if (characterState.CurState == State.Battle)

@@ -8,6 +8,10 @@ public class SequencerNode : CompositeNode
 
     int current;
 
+    public override void Init()
+    {
+    }
+
     protected override void OnStart()
     {
         current = 0;

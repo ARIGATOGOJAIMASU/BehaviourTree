@@ -19,13 +19,13 @@ public class ReadySenter : MonoBehaviour
 
     //Ä³¸¯ÅÍ Base
     [SerializeField] GameObject characterBase;
+
     [SerializeField] List<Information> readyCharacters = new();
     [SerializeField] Transform[] startPos;
     [SerializeField] bool[] OnIndex;
-    public int characterNum = 0;
+    public int characterCount = 0;
 
     //UI
-    [SerializeField] GameObject GameStartUi;
     [SerializeField] GameObject CharacterScrollUI;
 
     [SerializeField] UnityEvent UIActiveEvent;
@@ -35,11 +35,11 @@ public class ReadySenter : MonoBehaviour
         HeroseStatData heroseStatData = DataManager.Instance().GetHeroseStatData((int)name);
         Information readyChracter;
 
-        if (characterNum < 5)
+        if (characterCount < 5)
         {
             readyChracter = Instantiate(characterBase).GetComponent<Information>();
-            readyCharacters[characterNum] = readyChracter;
-            ++characterNum;
+            readyCharacters[characterCount] = readyChracter;
+            ++characterCount;
         }
         else
             return;

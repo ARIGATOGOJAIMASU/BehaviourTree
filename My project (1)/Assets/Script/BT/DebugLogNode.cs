@@ -7,6 +7,11 @@ public class DebugLogNode : ActionNode
 {
     public string message;
 
+    public override void Init()
+    {
+        throw new System.NotImplementedException();
+    }
+
     protected override void OnStart()
     {
         Debug.Log($"OnStart{message}");

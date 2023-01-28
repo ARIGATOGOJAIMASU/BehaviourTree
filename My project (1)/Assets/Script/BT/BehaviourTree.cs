@@ -153,9 +153,15 @@ public class BehaviourTree : ScriptableObject
         BehaviourTree tree = Instantiate(this);
         tree.rootNode = tree.rootNode.Clone();
         tree.nodes = new List<Node>();
+
         Traverse(tree.rootNode, (n) =>{
             n.Info = info;
             n.OwnerTransform = transform;
+            n.Init();
+
+            n.OwnerBattle = transform.GetComponent<Battle>();
+            n.playerAnimator = transform.GetComponent<Animator>();
+
             tree.nodes.Add(n);
         });
 

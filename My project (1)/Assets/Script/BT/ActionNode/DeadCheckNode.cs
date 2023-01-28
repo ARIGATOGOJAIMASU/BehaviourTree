@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DeadCheckNode : ActionNode
 {
+    public override void Init()
+    {
+    }
+
     protected override void OnStart()
     {
     }

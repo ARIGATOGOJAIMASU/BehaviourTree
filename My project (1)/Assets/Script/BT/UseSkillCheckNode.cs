@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class UseSkillCheckNode : DecoratorNode
 {
+    public override void Init()
+    {
+    }
+
     protected override void OnStart()
     {
     }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SelectorNode : CompositeNode
 {
+    public override void Init()
+    {
+    }
+
     protected override void OnStart() { }
 
     protected override void OnStop() { }

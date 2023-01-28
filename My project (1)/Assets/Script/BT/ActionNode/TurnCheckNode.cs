@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TurnCheckNode : ActionNode
 {
+    public override void Init()
+    {
+    }
+
     protected override void OnStart()
     {
     }
@@ -14,7 +18,7 @@ public class TurnCheckNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if(BattleManager.Instance.TurnChracter == Info.num)
+        if(BattleManager.Instance.TurnChracter == Info.ID)
         {
             //자신의 턴일 시
             return State.Success;

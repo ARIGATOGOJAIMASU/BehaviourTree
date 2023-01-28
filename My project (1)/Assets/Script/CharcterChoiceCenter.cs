@@ -5,7 +5,6 @@ using UnityEngine;
 public class CharcterChoiceCenter : MonoBehaviour
 {
     [SerializeField] GameObject chracterChoiceUI;
-
     private void Awake()
     {
         HoldHeros[] holdHeros = GameManager.Instance.holdHeros;
@@ -13,6 +12,7 @@ public class CharcterChoiceCenter : MonoBehaviour
         for (int i = 0; i < holdHeros.Length; ++i)
         {
             ChracterChoiceUI choiceUI = Instantiate(chracterChoiceUI, this.transform).GetComponent<ChracterChoiceUI>();
+            choiceUI.createChracter = ReadySenter.Instance().AddReadyCharacter;
             choiceUI.Setting(holdHeros[i]);
         }
     }

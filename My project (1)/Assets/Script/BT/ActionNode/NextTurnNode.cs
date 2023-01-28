@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class NextTurnNode : ActionNode
 {
+    public override void Init()
+    {
+    }
+
     protected override void OnStart()
     {
         
@@ -17,6 +21,7 @@ public class NextTurnNode : ActionNode
     protected override State OnUpdate()
     {
         BattleManager.Instance.NextChracter();
+        Info.UseSkill = false;
         return State.Success;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlayerType { Player, Enemy}
+public enum TargetType { BaseAttack, Skill };
 
 [System.Serializable]
 public struct RunTimeStat
@@ -61,8 +62,6 @@ public class Information : MonoBehaviour
 {
     public HeroseStatData heroseDate;
     public List<SkillData> skillDatas;
-    //레벨 정보
-    //아이템 정보
 
     public PlayerType playrType;
     public RunTimeStat runTimeStat;
@@ -70,7 +69,7 @@ public class Information : MonoBehaviour
     public List<MyBuff> buffs = new ();
 
     //고유 번호
-    public int num = 0;
+    public int ID = 0;
 
     //자신의위치
     public Vector3 startPos;
@@ -94,8 +93,15 @@ public class Information : MonoBehaviour
     [SerializeField] BuffManager buffUiManager;
 
     //Delegate
-    public List<Delegate.GetTarget> getTargetDelegates = new();
-    public List<Delegate.Action> actionDelegates = new();
+    /*public delegate Information[] GetTarget(int playerNum);
+    public GetTarget[] getTarget = new GetTarget[2];*/
+
+    public delegate void Action(int attacknum, Information[] targetObjs);
+
+    //현재 애니메이션 상태
+    public AnimationStateType curAnimationState;
+
+    public Information[] targets;
 
     private void Start()
     {
@@ -183,7 +189,7 @@ public class Information : MonoBehaviour
 
                 if(runTimeStat.CurHP <= 0)
                 {
-                    BattleManager.Instance.DeadChracter(num);
+                    BattleManager.Instance.DeadChracter(ID);
                     return;
                 }
             }
@@ -233,7 +239,7 @@ public class Information : MonoBehaviour
         if (runTimeStat.CurHP <= 0)
         {
             //Delegate호출
-            BattleManager.Instance.DeadChracter(num);
+            BattleManager.Instance.DeadChracter(ID);
         }
     }
 }

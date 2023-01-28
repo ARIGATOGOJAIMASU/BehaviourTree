@@ -1,0 +1,253 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Battle : MonoBehaviour
+{
+    [SerializeField] Information myInfo;
+    public List<Information> targets;
+
+    public delegate Information[] GetTarget(PlayerType playerType);
+    public GetTarget getTarget;
+
+    public void GetBaseAttackTarget()
+    {
+        Information[] infors = null;
+
+        //상대 진영의 List를 반환
+        infors = getTarget(myInfo.playrType == PlayerType.Player ? PlayerType.Enemy : PlayerType.Player);
+
+        //////////////////////////////////////////////
+        ///우선도를 정하는 함수 구현 예정(Delegate를 활용하여 구현해보자)
+        //////////////////////////////////////////////
+        targets.Add(infors[Random.Range(0, infors.Length - 1)]);
+    }
+
+     public void Attack()
+     {
+         targets[0].Hurt(myInfo.GetStatValue(Stat.STR));
+
+         //Playlog.text = $"{attackInfo.heroseDate.HeroseName}가 {targetObj[0].heroseDate.HeroseName}에게 {attackInfo.GetStatValue(Stat.STR)}의 기본 공격을 함.";
+
+         //0보다 작을 시 사망 처리
+         /*if (targetObj[0].runTimeStat.CurHP <= 0)
+         {
+             DeadChracter(targetObj[0].ID);
+         }*/
+     }
+
+    public void GetSkillTarget()
+    {
+        //skill 사용하는 Player정보
+        SkillData skillData = myInfo.skillDatas[myInfo.curSkillIndex];
+
+        //타켓설정 변수들
+        List<Information> oppositeCamps = new();
+
+        //타켓 진영 및 범위를 지정하는 함수
+        oppositeCamps = CheckArea(skillData);
+
+        //우선순위를 통한 타켓 선정.
+        switch (skillData.TargetPriority)
+        {
+            case TARGETPRIORITY.None:
+                targets = oppositeCamps;
+                break;
+            case TARGETPRIORITY.Random:
+                targets.Add(oppositeCamps[Random.Range(0, oppositeCamps.Count - 1)]);
+                break;
+            case TARGETPRIORITY.Hight_HP:
+                {
+                    int hight_HP = oppositeCamps[0].runTimeStat.CurHP;
+                    int index = 0;
+
+                    for (int i = 1; i < oppositeCamps.Count; ++i)
+                    {
+                        if (oppositeCamps[i].runTimeStat.CurHP > hight_HP)
+                        {
+                            hight_HP = oppositeCamps[i].runTimeStat.CurHP;
+                            index = i;
+                        }
+                    }
+
+                    targets.Add(oppositeCamps[index]);
+                }
+                break;
+            case TARGETPRIORITY.Low_HP:
+                {
+                    int low_HP = oppositeCamps[0].runTimeStat.CurHP;
+                    int index = 0;
+
+                    for (int i = 1; i < oppositeCamps.Count; ++i)
+                    {
+                        if (oppositeCamps[i].runTimeStat.CurHP < low_HP)
+                        {
+                            low_HP = oppositeCamps[i].runTimeStat.CurHP;
+                            index = i;
+                        }
+                    }
+
+                    targets.Add(oppositeCamps[index]);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    public List<Information> CheckArea(SkillData skillData)
+    {
+        List<Information> oppositeCamps = new();
+
+        //타켓 진영을 선택
+        if (skillData.TargetPlayerType == PlayerType.Enemy)
+            oppositeCamps.AddRange(myInfo.playrType == PlayerType.Player ? getTarget(PlayerType.Enemy): getTarget(PlayerType.Player));
+        else
+        oppositeCamps.AddRange(myInfo.playrType == PlayerType.Player ? getTarget(PlayerType.Player) : getTarget(PlayerType.Enemy));
+
+    //타켓 범위를 지정
+    switch (skillData.TargetRange)
+        {
+            case TargetArea.Self:
+                {
+                    List<Information> tempInfos = new();
+                    tempInfos.Add(myInfo);
+                    oppositeCamps = tempInfos;
+                }
+                break;
+
+            case TargetArea.FrontRow:
+                {
+                    List<Information> tempInfos = new();
+
+                    foreach (Information info in oppositeCamps)
+                    {
+                        if (info.charcterArea == Area.Front) tempInfos.Add(info);
+                    }
+
+                    if (tempInfos.Count != 0) oppositeCamps = tempInfos;
+                }
+                break;
+
+            case TargetArea.BackRow:
+                {
+                    List<Information> tempInfos = new();
+
+                    foreach (Information info in oppositeCamps)
+                    {
+                        if (info.charcterArea == Area.Back) tempInfos.Add(info);
+                    }
+
+                    if (tempInfos.Count != 0) oppositeCamps = tempInfos;
+                }
+                break;
+
+            default:
+                break;
+        }
+
+        return oppositeCamps;
+    }
+
+    public void UseSkill()
+    {
+    //다음게임으로 진행이 불가능 할 시 return;
+    if (!BattleManager.Instance.PossibleNextGame())
+    {
+        return;
+    }
+
+    for (int i = 0; i < myInfo.skillDatas.Count; ++i)
+    {
+        SkillData skillData = myInfo.skillDatas[i];
+
+        switch (skillData.SkillType)
+        {
+            case SKILLTYPE.ATTACK:
+                SkillAttack(skillData);
+                break;
+            case SKILLTYPE.HELL:
+                SKillHeal(skillData);
+                break;
+            case SKILLTYPE.BUFF:
+                SkillBuff(skillData);
+                break;
+        }
+    }
+    }
+
+    //SkillAction Delegate키워드 사용
+    public void SkillAttack(SkillData skillData)
+    {
+        int Damage = myInfo.GetSkillValue();
+
+        //스킬 사용자. 데미지관련 버프 Check
+        if (myInfo.GetBuffValue(Stat.Damage) != 0)
+        {
+            Damage += (int)((float)Damage * ((float)myInfo.GetBuffValue(Stat.Damage) / 100.0f));
+        }
+
+        //피격 당하는 대상. 데미지 관련 버프 Check
+        foreach (Information target in targets)
+        {
+            target.Hurt(Damage);
+        }
+
+        //targetObjs => { Hurt(Damage, deadChracterFuntion); }
+
+        //Playlog.text = $"{useSkillObj.heroseDate.HeroseName}가 {Damage}데미지의 스킬 공격";
+    }
+
+    //SkillAction Delegate키워드 사용
+    public void SKillHeal(SkillData skillData)
+    {
+        foreach (Information target in targets)
+        {
+            if (target.runTimeStat.CurHP + myInfo.GetSkillValue() > target.runTimeStat.MaxHP) target.runTimeStat.CurHP = target.runTimeStat.MaxHP;
+            else target.runTimeStat.CurHP += myInfo.GetSkillValue();
+        }
+
+        //Playlog.text = $"{useSkillObj.heroseDate.HeroseName}가 {useSkillObj.GetSkillValue()}의 힐을 사용";
+    }
+
+    //SkillAction Delegate키워드 사용
+    public void SkillBuff(SkillData skillData)
+    {
+        BuffSkillData buffData = (BuffSkillData)skillData;
+
+        foreach (Information target in targets)
+        {
+            int buffValue = 0;
+
+            switch (skillData.BonusStatType)
+            {
+                case Stat.None:
+                    buffValue = (int)skillData.BonusStatValue;
+                    break;
+                default:
+                    buffValue = (int)((float)myInfo.GetStatValue(skillData.BonusStatType) * skillData.BonusStatValue / 100.0f);
+                    break;
+            }
+
+            Buff skillbuff = buffData.GetBuff;
+
+            MyBuff buff = new MyBuff(skillbuff.buffType, skillbuff.buffStat, skillbuff.duration, buffValue, skillbuff.buffIcon);
+
+            //Playlog.text = $"{useSkillObj.heroseDate.HeroseName}가 버프스킬을 사용.";
+
+            target.AddBuff(buff);
+        }
+    }
+
+    public void Action()
+    {
+        if (myInfo.UseSkill)
+        {
+            UseSkill();
+        }
+        else
+            Attack();
+
+        targets.Clear();
+    }
+}
