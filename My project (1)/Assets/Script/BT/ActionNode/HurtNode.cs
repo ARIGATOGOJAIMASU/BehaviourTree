@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HurtNode : MonoBehaviour
+public class HurtNode : ActionNode
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Init()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnStart()
     {
-        
+    }
+
+    protected override void OnStop()
+    {
+    }
+
+    protected override State OnUpdate()
+    {
+        if (Info.IsHurt)
+        {
+            Info.IsHurt = false;
+            return State.Success;
+        }
+
+        return State.Failure;
     }
 }

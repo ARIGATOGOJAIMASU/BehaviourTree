@@ -17,7 +17,7 @@ MonoBehaviour:
   heroseType: 0
   heroseFraction: 2
   heroSprite: {fileID: 21300000, guid: 890801a108063f545b9b606e055f5d93, type: 3}
-  hp: 500
+  hp: 100
   mp: 50
   strong: 38
   intelligence: 76

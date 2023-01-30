@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edabf03c5ab51c49b677e75857ffa00, type: 3}
   m_Name: Max
   m_EditorClassIdentifier: 
-  heroseName: Max
+  heroseName: 0
   heroseClass: 0
   heroseType: 0
   heroseFraction: 1
-  hp: 530
+  heroSprite: {fileID: 0}
+  hp: 106
   mp: 50
   strong: 80
   intelligence: 39

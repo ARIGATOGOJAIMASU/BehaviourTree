@@ -44,6 +44,9 @@ public class BattleManager : MonoBehaviour
     public GameObject winUI;
     public GameObject loseUI;
 
+    //EffectManager
+    [SerializeField] EffectManager effectManager;
+
     public void GameStart(List<Information> playerCharacters)
     {
         //준비된 정보받기
@@ -57,9 +60,11 @@ public class BattleManager : MonoBehaviour
             if (playerInfors[i] != null)
             {
                 playerInfors[i].playrType = PlayerType.Player;
+                playerInfors[i].useEffect = effectManager.EffectEmerge;
 
                 //Delegate설정
-                playerInfors[i].GetComponent<Battle>().getTarget = GetTargets;
+                Battle BattleComponent = playerInfors[i].GetComponent<Battle>();
+                BattleComponent.getTarget = GetTargets;
 
                 playerInfors[i].GetComponent<CharacterState>().CurState = State.Battle;
 
@@ -79,9 +84,11 @@ public class BattleManager : MonoBehaviour
             enemyInfors[i].transform.localRotation = Quaternion.Euler(0, 90, 0);
             enemyInfors[i].gameObject.SetActive(true);
             enemyInfors[i].playrType = PlayerType.Enemy;
+            enemyInfors[i].useEffect = effectManager.EffectEmerge;
 
-            //Delegate설정
-            enemyInfors[i].GetComponent<Battle>().getTarget = GetTargets;
+            //BattleDelegate설정
+            Battle BattleComponent = enemyInfors[i].GetComponent<Battle>();
+            BattleComponent.getTarget = GetTargets;
 
             enemyInfors[i].GetComponent<CharacterState>().CurState = State.Battle;
 
@@ -233,8 +240,6 @@ public class BattleManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
-    //-----------------------------------------------------------배틀 관련--------------------------------------------------------------
 
     public Information[] GetTargets(PlayerType playertype)
     {

@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 public class BehaviourTreeView : GraphView
 {
     public Action<NodeView> OnNodeSelected;
@@ -176,4 +176,4 @@ public class BehaviourTreeView : GraphView
         }); 
     }
 }
-#endif
+//#endif

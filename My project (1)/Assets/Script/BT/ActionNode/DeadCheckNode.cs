@@ -18,13 +18,8 @@ public class DeadCheckNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (!Info.IsDead)
-        {
-            return State.Success;
-        }
+        if (!Info.IsDead) return State.Failure;
 
-        Info.OnUpdate = false;
-        OwnerTransform.gameObject.SetActive(false);
-        return State.Failure;
+        return State.Success;
     }
 }

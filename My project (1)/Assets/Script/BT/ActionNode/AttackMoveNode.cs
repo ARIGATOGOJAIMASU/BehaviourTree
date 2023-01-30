@@ -35,8 +35,7 @@ public class AttackMoveNode : ActionNode
             Info.runTimeStat.CurMP += Random.Range(0 , 50);
         }
 
-        playerAnimator.SetBool(AnimationStateType.Move.ToString(), false);
-        Info.curAnimationState = AnimationStateType.BaseAttack;
+        //Info.curAnimationState = AnimationStateType.BaseAttack;
         return State.Success;
     }
 }

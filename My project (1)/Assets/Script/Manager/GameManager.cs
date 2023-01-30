@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance
     {
         get
-        { 
-            if(_Instance == null)
+        {
+            if (_Instance == null)
             {
                 _Instance = FindObjectOfType(typeof(GameManager)) as GameManager;
             }

@@ -12,13 +12,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90eefadbd77c30d4cbff3efa590e4d13, type: 3}
   m_Name: SelectorNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 09ac537f54c0b654685326079c95df1e
-  position: {x: -86.99999, y: 241.54076}
+  position: {x: -227.84042, y: 284.43445}
   children:
   - {fileID: -6056937287592520961}
-  - {fileID: -3095674165028772043}
+  - {fileID: -8306275184103240578}
+--- !u!114 &-8306275184103240578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90eefadbd77c30d4cbff3efa590e4d13, type: 3}
+  m_Name: SelectorNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: 3c005115eb2833d46a22a00d49fb2a4c
+  position: {x: 374, y: 465}
+  children:
+  - {fileID: 2785439922306528396}
+  - {fileID: -4898620067824487069}
+--- !u!114 &-8267121092373656974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e3623ad7d75b7479e039048149ba67, type: 3}
+  m_Name: AnimationNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: 016f7375ffe3216469d3cd8453b603ad
+  position: {x: 196, y: 766}
+  animationStateName: Die
+  OnRepeat: 0
+--- !u!114 &-7794857452781910259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269d0b7e7368b2f418d1160849d7321f, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: e4044ec9ea47064439fdf7f2ecc0b361
+  position: {x: -1158, y: 799}
+  children:
+  - {fileID: 2264342883733821087}
+  - {fileID: -810635483244486401}
+--- !u!114 &-7370937031164754185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269d0b7e7368b2f418d1160849d7321f, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: 8e0a38d624f7f2140bcda0b02d21e71d
+  position: {x: -810, y: 795}
+  children:
+  - {fileID: -4049357896625927020}
+  - {fileID: 4690968595057012930}
 --- !u!114 &-6678357003722534030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,10 +116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89e6904ae5f58649930728350117b02, type: 3}
   m_Name: RootNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 0cc89f7f99146c5418eb9541a8a031b6
-  position: {x: -94.00004, y: 30.7}
+  position: {x: -234.8404, y: 73.434456}
   child: {fileID: 1260321690256885183}
 --- !u!114 &-6056937287592520961
 MonoBehaviour:
@@ -48,15 +135,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269d0b7e7368b2f418d1160849d7321f, type: 3}
   m_Name: SequencerNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 68b2d022c26638f438220461b1c35dd4
-  position: {x: -312, y: 372}
+  position: {x: -802, y: 457}
   children:
   - {fileID: 9143072367999447354}
+  - {fileID: -3304816730416319662}
+  - {fileID: 5496793993914358679}
   - {fileID: -1153998750049017453}
+  - {fileID: 5509573207352819892}
   - {fileID: -2836741500811136582}
   - {fileID: -3696465017943108027}
+  - {fileID: 7625885526738704474}
+--- !u!114 &-4898620067824487069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269d0b7e7368b2f418d1160849d7321f, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: 34180fb99f28cec4b944af0cf3486311
+  position: {x: 554, y: 641}
+  children:
+  - {fileID: -4821880113517286362}
+  - {fileID: 7660623400331666089}
+  - {fileID: -3626979798331586506}
+--- !u!114 &-4821880113517286362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9d831a177ed974c904bc5b44c34515, type: 3}
+  m_Name: HurtNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: 783659e391b24314d9cfe3623a8f1f4b
+  position: {x: 374, y: 772}
 --- !u!114 &-4049357896625927020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,10 +202,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13c1f30cd15d8e43a7e8ab7e65a7cfd, type: 3}
   m_Name: AttackMoveNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: bff42b633f3f32f4baea971e790497ee
-  position: {x: -318.75, y: 727.0001}
+  position: {x: -896, y: 929}
 --- !u!114 &-3696465017943108027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,10 +220,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140c28cbdc57ca445b9dff36912894ea, type: 3}
   m_Name: NextTurnNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: b1325c678c033164695b75946aaeda5d
-  position: {x: -0.9999838, y: 556.99994}
+  position: {x: -446, y: 633}
+--- !u!114 &-3626979798331586506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e3623ad7d75b7479e039048149ba67, type: 3}
+  m_Name: AnimationNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: 6c8f5a7d0041d4246b10a4277d791344
+  position: {x: 742, y: 772}
+  animationStateName: Idle
+  OnRepeat: 1
+--- !u!114 &-3304816730416319662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a035dc4e533994ea395a083c516e73, type: 3}
+  m_Name: GetTargetNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: e5631c29914fc1c45803f4b8e6fc80ed
+  position: {x: -1307, y: 633}
 --- !u!114 &-3095674165028772043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,10 +276,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7926fc59a44f64db42cec2028689e7, type: 3}
   m_Name: DeadCheckNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 51ada5c005d0db743a36352d7a0980c1
-  position: {x: 84.99997, y: 380}
+  position: {x: 26, y: 764}
 --- !u!114 &-2836741500811136582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,10 +294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7705e881c51dcc245b356f93f4937eea, type: 3}
   m_Name: BackMoveNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 26fbed93bfa4a3247b16f0adf884c33a
-  position: {x: -196.00012, y: 559.42}
+  position: {x: -616, y: 633}
 --- !u!114 &-1153998750049017453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,13 +312,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90eefadbd77c30d4cbff3efa590e4d13, type: 3}
   m_Name: SelectorNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 425260ba04fabfd489d405efb35c3969
-  position: {x: -432.62238, y: 554.485}
+  position: {x: -947, y: 625}
   children:
-  - {fileID: 2264342883733821087}
-  - {fileID: -4049357896625927020}
+  - {fileID: -7794857452781910259}
+  - {fileID: -7370937031164754185}
+--- !u!114 &-810635483244486401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e3623ad7d75b7479e039048149ba67, type: 3}
+  m_Name: AnimationNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: 638b0dd2d2b24a1439553e9818b3f376
+  position: {x: -1080, y: 935}
+  animationStateName: Skill
+  OnRepeat: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +369,19 @@ MonoBehaviour:
   - {fileID: -1153998750049017453}
   - {fileID: 5496793993914358679}
   - {fileID: 4690968595057012930}
+  - {fileID: -8306275184103240578}
+  - {fileID: -4898620067824487069}
+  - {fileID: 2785439922306528396}
+  - {fileID: 7660623400331666089}
+  - {fileID: -8267121092373656974}
+  - {fileID: -4821880113517286362}
+  - {fileID: -3304816730416319662}
+  - {fileID: -7794857452781910259}
+  - {fileID: -7370937031164754185}
+  - {fileID: -810635483244486401}
+  - {fileID: 5509573207352819892}
+  - {fileID: 7625885526738704474}
+  - {fileID: -3626979798331586506}
 --- !u!114 &1260321690256885183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,10 +394,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efcb1a4ca99f8548a653cb0dca14316, type: 3}
   m_Name: RepeatNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 6f67356b3e4c5984aaaa089c0e62ca7f
-  position: {x: -89.40003, y: 126.70002}
+  position: {x: -229.84036, y: 169.43446}
   child: {fileID: -9046480659353627988}
 --- !u!114 &2264342883733821087
 MonoBehaviour:
@@ -197,10 +413,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374f86c2e5b93d64d86b193e5697cc3b, type: 3}
   m_Name: SkillNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 51aee4d37f8dd34448a8bd074b8f87ba
-  position: {x: -569.62415, y: 718.98816}
+  position: {x: -1244, y: 935}
+--- !u!114 &2785439922306528396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269d0b7e7368b2f418d1160849d7321f, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: ee0b36977d6803e4f8c39790f9aef363
+  position: {x: 128, y: 633}
+  children:
+  - {fileID: -3095674165028772043}
+  - {fileID: -8267121092373656974}
 --- !u!114 &4690968595057012930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,10 +452,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e3623ad7d75b7479e039048149ba67, type: 3}
   m_Name: AnimationNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 1446ade9e5806bd4cbbeed30d51f358e
-  position: {x: -148.00009, y: 835}
+  position: {x: -686.00006, y: 937}
+  animationStateName: Attack
+  OnRepeat: 0
 --- !u!114 &5496793993914358679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,10 +472,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e3623ad7d75b7479e039048149ba67, type: 3}
   m_Name: AnimationNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 3f0641eb59db39841acdc5d9b54641c7
-  position: {x: -536.0002, y: 835.00006}
+  position: {x: -1124, y: 633}
+  animationStateName: Move
+  OnRepeat: 1
+--- !u!114 &5509573207352819892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e3623ad7d75b7479e039048149ba67, type: 3}
+  m_Name: AnimationNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: d4ab1bb7647c8344a9d62606b6a25eea
+  position: {x: -783, y: 633}
+  animationStateName: Move
+  OnRepeat: 1
+--- !u!114 &7625885526738704474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e3623ad7d75b7479e039048149ba67, type: 3}
+  m_Name: AnimationNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: 3db05b1ae19e94e4ab51414aa9a85eb2
+  position: {x: -282.00003, y: 633}
+  animationStateName: Idle
+  OnRepeat: 1
+--- !u!114 &7660623400331666089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e3623ad7d75b7479e039048149ba67, type: 3}
+  m_Name: AnimationNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: adfa68fc1201b6d43b6c81614b2ec153
+  position: {x: 562, y: 772}
+  animationStateName: Hurt
+  OnRepeat: 0
 --- !u!114 &9143072367999447354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1352934ba61325345ad284fad2e81f96, type: 3}
   m_Name: TurnCheckNode
   m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
   state: 0
   started: 0
   guid: 9c759526901977741919da90174717b7
-  position: {x: -629.62244, y: 541.485}
+  position: {x: -1473.2705, y: 633}

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 public class InspectorView : VisualElement
 {
     public new class UxmlFactory : UxmlFactory<InspectorView, VisualElement.UxmlTraits> { }
@@ -32,4 +32,4 @@ public class InspectorView : VisualElement
         Add(container);
     }
 }
-#endif
+//#endif

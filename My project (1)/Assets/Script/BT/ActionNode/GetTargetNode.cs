@@ -22,7 +22,7 @@ public class GetTargetNode : ActionNode
         {
             Info.runTimeStat.CurMP = 0;
             Info.UseSkill = true;
-            Info.curAnimationState = AnimationStateType.Skill;
+            //Info.curAnimationState = AnimationStateType.Skill;
             OwnerBattle.GetSkillTarget();
         }
         else

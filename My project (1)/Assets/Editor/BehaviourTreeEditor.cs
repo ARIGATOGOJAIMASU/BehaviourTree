@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 using UnityEditor.Callbacks;
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 public class BehaviourTreeEditor : EditorWindow
 {
     BehaviourTreeView treeView;
@@ -118,4 +118,4 @@ public class BehaviourTreeEditor : EditorWindow
         treeView?.UpdateNodeState();
     }
 }
-#endif
+//#endif

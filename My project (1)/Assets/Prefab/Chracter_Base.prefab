@@ -434,8 +434,10 @@ GameObject:
   - component: {fileID: 1138179608954804650}
   - component: {fileID: 1344220650778643544}
   - component: {fileID: 6825634404530798736}
-  - component: {fileID: 8946160166926740010}
   - component: {fileID: 8306986421003420513}
+  - component: {fileID: 8946160166926740010}
+  - component: {fileID: 3342537628030814959}
+  - component: {fileID: 181461434225781914}
   m_Layer: 3
   m_Name: Chracter_Base
   m_TagString: Untagged
@@ -487,6 +489,7 @@ MonoBehaviour:
     LUK: 0
   ID: 0
   startPos: {x: 0, y: 0, z: 0}
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
   indexNum: 0
   IsHurt: 0
   IsDead: 0
@@ -497,7 +500,6 @@ MonoBehaviour:
   buffUI_Base: {fileID: 8371298111733495360, guid: 006bbc125ad03bb4bb920b6ede11d8d1,
     type: 3}
   buffUiManager: {fileID: 5053007061403430381}
-  curAnimationState: 0
   targets: []
 --- !u!114 &1138179608954804650
 MonoBehaviour:
@@ -511,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff356d8e23258e42a663eda1dd0d7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: 83220cb88faad2e46a1d5c7d629785ac, type: 2}
+  tree: {fileID: 11400000, guid: 7c328ea23dec63744bf30aa78a0f3b6e, type: 2}
 --- !u!114 &1344220650778643544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,6 +542,20 @@ MonoBehaviour:
   characterState: {fileID: 1344220650778643544}
   indexNum: 0
   CharacterNum: -1
+--- !u!114 &8306986421003420513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191577384546497380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743952a10034bfe48b82eb698d9c446c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myInfo: {fileID: 7879452663062117726}
+  targets: []
 --- !u!95 &8946160166926740010
 Animator:
   serializedVersion: 4
@@ -560,7 +576,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8306986421003420513
+--- !u!136 &3342537628030814959
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191577384546497380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &181461434225781914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -569,11 +599,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8191577384546497380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 743952a10034bfe48b82eb698d9c446c, type: 3}
+  m_Script: {fileID: 11500000, guid: 514c95ee87a96b44880ed0d0fbf6e741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myInfo: {fileID: 7879452663062117726}
-  targets: []
+  AttackEffectSource: {fileID: 321708363350623060, guid: 3e3fc7c38c23e41449b2c92f37139e47,
+    type: 3}
+  SkillEffectSource: {fileID: 321708363350623060, guid: 3e3fc7c38c23e41449b2c92f37139e47,
+    type: 3}
 --- !u!1 &8981842177080154846
 GameObject:
   m_ObjectHideFlags: 0

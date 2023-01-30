@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AnimationStateType { Idle, BaseAttack, Skill, Hurt, Move}
+public enum AnimationStateType { Idle, BaseAttack, Skill, Hurt, Move }
 
 public class AnimationNode : ActionNode
 {
+    public string animationStateName;
+    public bool OnRepeat;
+
     public override void Init()
     {
     }
 
     protected override void OnStart()
     {
-        playerAnimator.SetBool(Info.curAnimationState.ToString(), true);
+        StartAnimation(animationStateName);
     }
 
     protected override void OnStop()
@@ -23,12 +26,22 @@ public class AnimationNode : ActionNode
     {
         AnimatorStateInfo Aniamtioninfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
 
-        if(Aniamtioninfo.IsName(Info.curAnimationState.ToString()) && Aniamtioninfo.normalizedTime > 0.95)
+        if(OnRepeat) return State.Success;
+
+        if (Aniamtioninfo.IsName(animationStateName) && Aniamtioninfo.normalizedTime > 0.95)
         {
-            playerAnimator.SetBool(Info.curAnimationState.ToString(), false); ;
             return State.Success;
         }
 
         return State.Running;
+    }
+
+    void StartAnimation(string animationStateName)
+    {
+        //현재 돌아가는 애니메이션이 이 애니메이션이 맞다면 return;
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationStateName)) return;
+
+        playerAnimator.StopPlayback();
+        playerAnimator.Play(animationStateName);
     }
 }

@@ -20,7 +20,6 @@ public class SkillNode : ActionNode
             index = 0;
             Info.curSkillIndex = 0;
             SetSkillPosition(index);
-            playerAnimator.SetBool(AnimationStateType.Move.ToString(), true);
         }
     }
 
@@ -42,7 +41,6 @@ public class SkillNode : ActionNode
             else
             {
                 OwnerTransform.rotation = Info.startRotation;
-                playerAnimator.SetBool(AnimationStateType.Move.ToString(), false);
                 return State.Success;
             }
         }
