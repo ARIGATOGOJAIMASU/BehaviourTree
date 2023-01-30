@@ -54,6 +54,8 @@ public class ReadySenter : MonoBehaviour
             {
                 OnIndex[i] = true;
                 readyChracter.transform.position = startPos[i].position;
+                readyChracter.transform.localRotation = Quaternion.Euler(0, -90, 0);
+                readyChracter.startRotation = Quaternion.Euler(0, -90, 0);
                 readyChracter.indexNum = i;
                 break;
             }

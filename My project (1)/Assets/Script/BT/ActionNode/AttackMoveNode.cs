@@ -11,6 +11,7 @@ public class AttackMoveNode : ActionNode
     protected override void OnStart()
     {
         playerAnimator.SetBool(AnimationStateType.Move.ToString(), true);
+        OwnerTransform.LookAt(OwnerBattle.targets[0].transform.position);
     }
 
     protected override void OnStop()
@@ -20,9 +21,9 @@ public class AttackMoveNode : ActionNode
     protected override State OnUpdate()
     {
         //타켓을 쫓아감
-        if ((OwnerTransform.position - OwnerBattle.targets[0].transform.position).magnitude > 0.5f)
+        if ((OwnerTransform.position - OwnerBattle.targets[0].transform.position).magnitude > 2.5f)
         {
-            OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, OwnerBattle.targets[0].transform.position, Time.deltaTime * 30f);
+            OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, OwnerBattle.targets[0].transform.position, Time.deltaTime * 10f);
             return State.Running;
         }
         //타켓 앞까지 옴

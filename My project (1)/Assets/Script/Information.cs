@@ -13,7 +13,7 @@ public struct RunTimeStat
         MaxHP = base_HP;
         CurHP = base_HP;
         MaxMP = base_MP;
-        CurMP = base_MP;
+        CurMP = 0;
         STR = base_STR;
         INT= base_INT;
         AGI = base_AGI;
@@ -73,6 +73,7 @@ public class Information : MonoBehaviour
 
     //자신의위치
     public Vector3 startPos;
+    public Quaternion startRotation;
 
     //자기 자리의 인덱스번호
     public int indexNum = 0;
@@ -91,12 +92,6 @@ public class Information : MonoBehaviour
     //Buff
     public GameObject buffUI_Base;
     [SerializeField] BuffManager buffUiManager;
-
-    //Delegate
-    /*public delegate Information[] GetTarget(int playerNum);
-    public GetTarget[] getTarget = new GetTarget[2];*/
-
-    public delegate void Action(int attacknum, Information[] targetObjs);
 
     //현재 애니메이션 상태
     public AnimationStateType curAnimationState;

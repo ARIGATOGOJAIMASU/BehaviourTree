@@ -75,6 +75,8 @@ public class BattleManager : MonoBehaviour
 
         for (int i = 0; i < 5; ++i)
         {
+            enemyInfors[i].startRotation = Quaternion.Euler(0 , 90, 0);
+            enemyInfors[i].transform.localRotation = Quaternion.Euler(0, 90, 0);
             enemyInfors[i].gameObject.SetActive(true);
             enemyInfors[i].playrType = PlayerType.Enemy;
 

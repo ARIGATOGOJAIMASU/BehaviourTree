@@ -11,6 +11,7 @@ public class BackMoveNode : ActionNode
     protected override void OnStart()
     {
         playerAnimator.SetBool(AnimationStateType.Move.ToString(), true);
+        OwnerTransform.LookAt(Info.startPos);
     }
 
     protected override void OnStop()
@@ -19,12 +20,13 @@ public class BackMoveNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if ((OwnerTransform.position - Info.startPos).magnitude > 0.5f)
+        if ((OwnerTransform.position - Info.startPos).magnitude > 0.1f)
         {
-            OwnerTransform.position = Vector3.Lerp(OwnerTransform.position, Info.startPos, Time.deltaTime * 4);
+            OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, Info.startPos, Time.deltaTime * 10f);
             return State.Running;
         }
 
+        OwnerTransform.localRotation = Info.startRotation;
         playerAnimator.SetBool(AnimationStateType.Move.ToString(), false);
         return State.Success;
     }
