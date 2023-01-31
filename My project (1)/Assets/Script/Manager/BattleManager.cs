@@ -61,6 +61,7 @@ public class BattleManager : MonoBehaviour
             {
                 playerInfors[i].playrType = PlayerType.Player;
                 playerInfors[i].useEffect = effectManager.EffectEmerge;
+                playerInfors[i].playerDead = DeadChracter;
 
                 //Delegate설정
                 Battle BattleComponent = playerInfors[i].GetComponent<Battle>();
@@ -84,7 +85,10 @@ public class BattleManager : MonoBehaviour
             enemyInfors[i].transform.localRotation = Quaternion.Euler(0, 90, 0);
             enemyInfors[i].gameObject.SetActive(true);
             enemyInfors[i].playrType = PlayerType.Enemy;
+
+            //Delegate 설정
             enemyInfors[i].useEffect = effectManager.EffectEmerge;
+            enemyInfors[i].playerDead = DeadChracter;
 
             //BattleDelegate설정
             Battle BattleComponent = enemyInfors[i].GetComponent<Battle>();

@@ -14,6 +14,7 @@ public class UI_Update : MonoBehaviour
     private void Start()
     {
         heroName.text = ownerInfo.heroseDate.HeroseName.ToString();
+        ownerInfo.uiActive = gameObject.SetActive;
     }
 
     private void Update()

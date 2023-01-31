@@ -459,7 +459,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skillDatas.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: db69c4b41eff5ee41b17ee0aabdf23f3,
+      objectReference: {fileID: 11400000, guid: 32fd2c24671da8c4797ffd6791e527d5,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -537,6 +537,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 718b8bc1d8f1d6a4fbc1f78ef56641f4, type: 2}
+    - target: {fileID: 8306986421003420513, guid: 024f46c27254f4f4c88f713cd694713a,
+        type: 3}
+      propertyPath: SkillEffectSource
+      value: 
+      objectReference: {fileID: 6714037650790324515, guid: 4a476f63e4da5ca4fa476ddfbad3ace2,
+        type: 3}
     - target: {fileID: 8889804179831477458, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: m_Camera
@@ -2216,7 +2222,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skillDatas.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 783f62cc77321d349b01ab3dff8550a7,
+      objectReference: {fileID: 11400000, guid: 32fd2c24671da8c4797ffd6791e527d5,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -2294,6 +2300,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 718b8bc1d8f1d6a4fbc1f78ef56641f4, type: 2}
+    - target: {fileID: 8306986421003420513, guid: 024f46c27254f4f4c88f713cd694713a,
+        type: 3}
+      propertyPath: SkillEffectSource
+      value: 
+      objectReference: {fileID: 6714037650790324515, guid: 4a476f63e4da5ca4fa476ddfbad3ace2,
+        type: 3}
     - target: {fileID: 8889804179831477458, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: m_Camera
@@ -2363,7 +2375,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skillDatas.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: a7ca23dc1999e6b4b808f82353afd2ec,
+      objectReference: {fileID: 11400000, guid: 32fd2c24671da8c4797ffd6791e527d5,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -2441,6 +2453,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 718b8bc1d8f1d6a4fbc1f78ef56641f4, type: 2}
+    - target: {fileID: 8306986421003420513, guid: 024f46c27254f4f4c88f713cd694713a,
+        type: 3}
+      propertyPath: SkillEffectSource
+      value: 
+      objectReference: {fileID: 6714037650790324515, guid: 4a476f63e4da5ca4fa476ddfbad3ace2,
+        type: 3}
     - target: {fileID: 8889804179831477458, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: m_Camera
@@ -3803,13 +3821,13 @@ PrefabInstance:
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: skillDatas.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: skillDatas.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ebb22b04352336f4b9f02e07d922ec29,
+      objectReference: {fileID: 11400000, guid: 32fd2c24671da8c4797ffd6791e527d5,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -3840,12 +3858,12 @@ PrefabInstance:
     - target: {fileID: 8191577384546497384, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.053
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8191577384546497384, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.92
+      value: 4.64
       objectReference: {fileID: 0}
     - target: {fileID: 8191577384546497384, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -3887,6 +3905,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 718b8bc1d8f1d6a4fbc1f78ef56641f4, type: 2}
+    - target: {fileID: 8306986421003420513, guid: 024f46c27254f4f4c88f713cd694713a,
+        type: 3}
+      propertyPath: SkillEffectSource
+      value: 
+      objectReference: {fileID: 6714037650790324515, guid: 4a476f63e4da5ca4fa476ddfbad3ace2,
+        type: 3}
     - target: {fileID: 8889804179831477458, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: m_Camera
@@ -4070,13 +4094,13 @@ PrefabInstance:
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: skillDatas.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: skillDatas.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 45306a35a6a22e04d802a614f08c0a1d,
+      objectReference: {fileID: 11400000, guid: 32fd2c24671da8c4797ffd6791e527d5,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -4154,6 +4178,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 718b8bc1d8f1d6a4fbc1f78ef56641f4, type: 2}
+    - target: {fileID: 8306986421003420513, guid: 024f46c27254f4f4c88f713cd694713a,
+        type: 3}
+      propertyPath: SkillEffectSource
+      value: 
+      objectReference: {fileID: 6714037650790324515, guid: 4a476f63e4da5ca4fa476ddfbad3ace2,
+        type: 3}
     - target: {fileID: 8889804179831477458, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
       propertyPath: m_Camera

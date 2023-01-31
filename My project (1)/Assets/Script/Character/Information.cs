@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public enum PlayerType { Player, Enemy}
@@ -13,7 +14,7 @@ public struct RunTimeStat
         MaxHP = base_HP;
         CurHP = base_HP;
         MaxMP = base_MP;
-        CurMP = 0;
+        CurMP = base_MP;
         STR = base_STR;
         INT= base_INT;
         AGI = base_AGI;
@@ -97,7 +98,16 @@ public class Information : MonoBehaviour
     public delegate void UseEffect(EffectName effectName, Vector3 start_Point, Vector3 forward);
     public UseEffect useEffect;
 
-    public Information[] targets;
+    //Dead Deleaget
+    public delegate void PlayerDeadEvent(int ID);
+    public PlayerDeadEvent playerDead;
+
+    public delegate void UiActive(bool on);
+    public UiActive uiActive;
+
+    //Event
+    public UnityEvent DeadEvent = new();
+    private Animator playerAnimator;
 
     private void Start()
     {
@@ -106,6 +116,10 @@ public class Information : MonoBehaviour
 
         //가지고 있는 정보를 토대로 스탯을 수정
         SettingRunTimeStat();
+        playerAnimator = GetComponent<Animator>();
+
+        DeadEvent.AddListener(() => playerDead(ID));
+        DeadEvent.AddListener(() => uiActive(false));
     }
 
     //스태틱값들을 미리 계산
@@ -235,15 +249,21 @@ public class Information : MonoBehaviour
 
         if (runTimeStat.CurHP <= 0)
         {
-            //Delegate호출
-            BattleManager.Instance.DeadChracter(ID);
+            //Event실행
+            DeadEvent.Invoke();
         }
 
+        playerAnimator.Play("Hurt");
         EffectEmerge(EffectName.Attack);
     }
 
     public void EffectEmerge(EffectName effectName)
     {
         useEffect(effectName, transform.position, transform.forward);
+    }
+
+    public void HurtRelese()
+    {
+        IsHurt = false;
     }
 }

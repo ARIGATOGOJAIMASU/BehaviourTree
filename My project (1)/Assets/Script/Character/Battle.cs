@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Battle : MonoBehaviour
 {
@@ -9,6 +10,20 @@ public class Battle : MonoBehaviour
 
     public delegate Information[] GetTarget(PlayerType playerType);
     public GetTarget getTarget;
+
+    //Battle Effect
+    [SerializeField] GameObject AttackEffectSource;
+    [SerializeField] GameObject SkillEffectSource;
+    EffectController AttackEffect;
+    EffectController SkillEffect;
+
+    Vector3 EffectStartPoint;
+
+    private void Start()
+    {
+        AttackEffect = Instantiate(AttackEffectSource).GetComponent<EffectController>();
+        SkillEffect = Instantiate(SkillEffectSource).GetComponent<EffectController>();
+    }
 
     public void GetBaseAttackTarget()
     {
@@ -93,6 +108,7 @@ public class Battle : MonoBehaviour
             default:
                 break;
         }
+        GetSkillEffectPosition();
     }
 
     public List<Information> CheckArea(SkillData skillData)
@@ -151,29 +167,29 @@ public class Battle : MonoBehaviour
 
     public void UseSkill()
     {
-    //다음게임으로 진행이 불가능 할 시 return;
-    if (!BattleManager.Instance.PossibleNextGame())
-    {
-        return;
-    }
-
-    for (int i = 0; i < myInfo.skillDatas.Count; ++i)
-    {
-        SkillData skillData = myInfo.skillDatas[i];
-
-        switch (skillData.SkillType)
+        //다음게임으로 진행이 불가능 할 시 return;
+        if (!BattleManager.Instance.PossibleNextGame())
         {
-            case SKILLTYPE.ATTACK:
-                SkillAttack(skillData);
-                break;
-            case SKILLTYPE.HELL:
-                SKillHeal(skillData);
-                break;
-            case SKILLTYPE.BUFF:
-                SkillBuff(skillData);
-                break;
+            return;
         }
-    }
+
+        for (int i = 0; i < myInfo.skillDatas.Count; ++i)
+        {
+            SkillData skillData = myInfo.skillDatas[i];
+
+            switch (skillData.SkillType)
+            {
+                case SKILLTYPE.ATTACK:
+                    SkillAttack(skillData);
+                    break;
+                case SKILLTYPE.HELL:
+                    SKillHeal(skillData);
+                    break;
+                case SKILLTYPE.BUFF:
+                    SkillBuff(skillData);
+                    break;
+            }
+        }
     }
 
     //SkillAction Delegate키워드 사용
@@ -250,6 +266,7 @@ public class Battle : MonoBehaviour
             Attack();
         }
 
+        //타켓정보들 초기화
         targets.Clear();
     }
 
@@ -262,6 +279,59 @@ public class Battle : MonoBehaviour
         else
         {
             SoundManager.Instance().Play("Sound/Attack");
+        }
+    }
+
+    void AttackEffectEmerge()
+    {
+        //위치 정하기
+        Vector3 EffectStartPoint = new();
+
+        EffectStartPoint = myInfo.heroseDate.AttackType == AttackType.CLOSE ? transform.position : targets[0].startPos;
+
+        AttackEffect.StartEffect(EffectStartPoint, transform.forward);
+    }
+
+    void SkillEffectEmerge()
+    {
+        SkillEffect.StartEffect(EffectStartPoint, transform.forward);
+    }
+
+    void GetSkillEffectPosition()
+    {
+        SkillData curSkillData = myInfo.skillDatas[myInfo.curSkillIndex];
+
+        if (curSkillData.SkillType == SKILLTYPE.ATTACK)
+        {
+            //대상이 하나
+            if (curSkillData.TargetRange == TargetArea.Single)
+            {
+                EffectStartPoint = myInfo.heroseDate.AttackType == AttackType.CLOSE ? transform.position : targets[0].startPos;
+            }
+            else
+            {
+                //우리팀이 상대방을 공격
+                if (curSkillData.TargetRange == TargetArea.FrontRow)
+                {
+                    EffectStartPoint = myInfo.playrType == PlayerType.Player ? Define.EnemyFrontPosition : Define.TeamFrontPosition;
+                }
+                else if (curSkillData.TargetRange == TargetArea.BackRow)
+                {
+                    EffectStartPoint = myInfo.playrType == PlayerType.Player ? Define.EnemyBackPosition : Define.TeamBackPosition;
+                }
+                else
+                {
+                    EffectStartPoint = myInfo.playrType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
+                }
+            }
+        }
+        else if (curSkillData.SkillType == SKILLTYPE.HELL)
+        {
+            EffectStartPoint = targets[0].startPos;
+        }
+        else
+        {
+            EffectStartPoint = transform.position;
         }
     }
 }

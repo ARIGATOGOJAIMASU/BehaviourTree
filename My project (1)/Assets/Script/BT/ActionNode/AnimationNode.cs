@@ -38,6 +38,7 @@ public class AnimationNode : ActionNode
 
     void StartAnimation(string animationStateName)
     {
+        if (OnRepeat && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationStateName)) return;
         //현재 돌아가는 애니메이션이 이 애니메이션이 맞다면 return;
         playerAnimator.Play(animationStateName);
     }

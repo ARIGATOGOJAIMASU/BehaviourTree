@@ -20,6 +20,8 @@ public enum HeroseClass { NORMAL, EXCELLENT, RARE, ELITE, EPIC, LEFGENDARY }
 public enum HeroseType { ATTACK, DEFENSE, SUPPORT }
 //파벌
 public enum HeroseFraction { MINUTEMEN, VINDICATORS, WILDINGS, WATCHERS }
+//근거리 원거리 구분
+public enum AttackType { LONG, CLOSE }
 
 [CreateAssetMenu(fileName = "HeroseStatData", menuName = "Scriptable Object/HeroseStatData", order = int.MaxValue)]
 public class HeroseStatData : ScriptableObject
@@ -38,6 +40,9 @@ public class HeroseStatData : ScriptableObject
 
     [SerializeField] private Sprite heroSprite;
     public Sprite HeroSprite { get { return heroSprite; } }
+
+    [SerializeField] private AttackType attackType;
+    public AttackType AttackType { get { return attackType; } }
 
     [SerializeField] private int hp;
     public int HP { get { return hp; }}

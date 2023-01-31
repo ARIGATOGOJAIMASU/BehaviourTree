@@ -20,10 +20,9 @@ public class HurtNode : ActionNode
     {
         if (Info.IsHurt)
         {
-            Info.IsHurt = false;
-            return State.Success;
+            return State.Failure;
         }
 
-        return State.Failure;
+        return State.Success;
     }
 }
