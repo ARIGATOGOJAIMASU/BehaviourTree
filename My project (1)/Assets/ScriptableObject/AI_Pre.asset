@@ -38,7 +38,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3c005115eb2833d46a22a00d49fb2a4c
-  position: {x: 374, y: 465}
+  position: {x: 244.87927, y: 426.50006}
   children:
   - {fileID: 2785439922306528396}
   - {fileID: -4898620067824487069}
@@ -59,7 +59,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 016f7375ffe3216469d3cd8453b603ad
-  position: {x: 196, y: 766}
+  position: {x: 66.879395, y: 727.50006}
   animationStateName: Die
   OnRepeat: 0
 --- !u!114 &-7794857452781910259
@@ -167,10 +167,9 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 34180fb99f28cec4b944af0cf3486311
-  position: {x: 554, y: 641}
+  position: {x: 447.00012, y: 603.00006}
   children:
-  - {fileID: -4821880113517286362}
-  - {fileID: 7660623400331666089}
+  - {fileID: -3522470036577037380}
   - {fileID: -3626979798331586506}
 --- !u!114 &-4821880113517286362
 MonoBehaviour:
@@ -189,7 +188,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 783659e391b24314d9cfe3623a8f1f4b
-  position: {x: 374, y: 772}
+  position: {x: 231.00002, y: 860.5002}
 --- !u!114 &-4049357896625927020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,9 +242,30 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6c8f5a7d0041d4246b10a4277d791344
-  position: {x: 742, y: 772}
+  position: {x: 640.00006, y: 736}
   animationStateName: Idle
   OnRepeat: 1
+--- !u!114 &-3522470036577037380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269d0b7e7368b2f418d1160849d7321f, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  _battle: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  state: 0
+  started: 0
+  guid: 51cc728be7f6c194eae07d18988b85a8
+  position: {x: 330.99997, y: 736}
+  children:
+  - {fileID: -4821880113517286362}
+  - {fileID: 7660623400331666089}
 --- !u!114 &-3304816730416319662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +301,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 51ada5c005d0db743a36352d7a0980c1
-  position: {x: 26, y: 764}
+  position: {x: -103.120636, y: 725.50006}
 --- !u!114 &-2836741500811136582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +402,7 @@ MonoBehaviour:
   - {fileID: 5509573207352819892}
   - {fileID: 7625885526738704474}
   - {fileID: -3626979798331586506}
+  - {fileID: -3522470036577037380}
 --- !u!114 &1260321690256885183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +457,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ee0b36977d6803e4f8c39790f9aef363
-  position: {x: 128, y: 633}
+  position: {x: -1.1206207, y: 594.50006}
   children:
   - {fileID: -3095674165028772043}
   - {fileID: -8267121092373656974}
@@ -537,7 +558,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: adfa68fc1201b6d43b6c81614b2ec153
-  position: {x: 562, y: 772}
+  position: {x: 416.99997, y: 862.9502}
   animationStateName: Hurt
   OnRepeat: 0
 --- !u!114 &9143072367999447354

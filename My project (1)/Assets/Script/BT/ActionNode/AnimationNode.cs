@@ -28,7 +28,7 @@ public class AnimationNode : ActionNode
 
         if(OnRepeat) return State.Success;
 
-        if (Aniamtioninfo.IsName(animationStateName) && Aniamtioninfo.normalizedTime > 0.95)
+        if (Aniamtioninfo.IsName(animationStateName) && Aniamtioninfo.normalizedTime > 0.95f)
         {
             return State.Success;
         }
@@ -39,9 +39,6 @@ public class AnimationNode : ActionNode
     void StartAnimation(string animationStateName)
     {
         //현재 돌아가는 애니메이션이 이 애니메이션이 맞다면 return;
-        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationStateName)) return;
-
-        playerAnimator.StopPlayback();
         playerAnimator.Play(animationStateName);
     }
 }

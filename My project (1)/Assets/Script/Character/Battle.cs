@@ -246,8 +246,22 @@ public class Battle : MonoBehaviour
             UseSkill();
         }
         else
+        {
             Attack();
+        }
 
         targets.Clear();
+    }
+
+    public void PlaySound()
+    {
+        if (myInfo.UseSkill)
+        {
+            SoundManager.Instance().Play("Sound/Skill");
+        }
+        else
+        {
+            SoundManager.Instance().Play("Sound/Attack");
+        }
     }
 }

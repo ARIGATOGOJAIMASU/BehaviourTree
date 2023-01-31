@@ -93,10 +93,9 @@ public class Information : MonoBehaviour
     public GameObject buffUI_Base;
     [SerializeField] BuffManager buffUiManager;
 
+    //Delegate
     public delegate void UseEffect(EffectName effectName, Vector3 start_Point, Vector3 forward);
     public UseEffect useEffect;
-    /*//현재 애니메이션 상태
-    public AnimationStateType curAnimationState;*/
 
     public Information[] targets;
 
