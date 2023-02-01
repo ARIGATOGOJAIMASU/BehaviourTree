@@ -13,7 +13,7 @@ public struct HoldHeros
     public int Skill1_leve4;*/
 }
 
-public enum HeroseName { Benson, Bolton, Chihilo, Enrique, Harman, Jesi, Kaya, Natsumi, QianQian, Queen}
+public enum HeroseName { Samuri, GoblinWarrior, Wizard, Queen}
 //등급
 public enum HeroseClass { NORMAL, EXCELLENT, RARE, ELITE, EPIC, LEFGENDARY }
 //타입

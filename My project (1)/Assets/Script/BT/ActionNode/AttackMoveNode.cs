@@ -21,10 +21,13 @@ public class AttackMoveNode : ActionNode
     protected override State OnUpdate()
     {
         //타켓을 쫓아감
-        if ((OwnerTransform.position - OwnerBattle.targets[0].transform.position).magnitude > 2.5f)
+        if (Info.heroseDate.AttackType == AttackType.CLOSE)
         {
-            OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, OwnerBattle.targets[0].transform.position, Time.deltaTime * 10f);
-            return State.Running;
+            if ((OwnerTransform.position - OwnerBattle.targets[0].transform.position).magnitude > 2.5f)
+            {
+                OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, OwnerBattle.targets[0].transform.position, Time.deltaTime * 10f);
+                return State.Running;
+            }
         }
         //타켓 앞까지 옴
         else

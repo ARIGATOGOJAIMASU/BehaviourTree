@@ -37,7 +37,6 @@ public class SoundManager : MonoBehaviour
             GameObject go = new GameObject { name = soundNames[i] };
             audioSources[i] = go.AddComponent<AudioSource>();
             go.transform.parent = transform;
-            Debug.Log(go);
         }
 
         Play("BGM",Sound.Bgm, 0.8f);

@@ -53,13 +53,25 @@ public class SkillNode : ActionNode
         switch (Info.skillDatas[index].SkillPosition)
         {
             case SkillPosition.Front:
-                if (OwnerBattle.targets.Count == 1) SkillPos = OwnerBattle.targets[0].startPos;
-                else SkillPos = 
-                        OwnerBattle.targets[0].startPos - 
-                        (OwnerBattle.targets[0].startPos - OwnerBattle.targets[OwnerBattle.targets.Count - 1].startPos) / 2;
+                GetFrontSkillPosition();
                 break;
             case SkillPosition.StartPos:
                 SkillPos = Info.transform.position;
+                break;
+        }
+    }
+
+    void GetFrontSkillPosition()
+    {
+        SkillData skillData = Info.skillDatas[Info.curSkillIndex];
+
+        switch (skillData.TargetRange)
+        {
+            case TargetArea.All:
+                SkillPos = Info.playrType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
+                break;
+            default:
+                SkillPos = Define.ActionFrontPoint;
                 break;
         }
     }

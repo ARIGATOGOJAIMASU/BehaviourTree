@@ -12,14 +12,18 @@ public class StatExpantionUI : MonoBehaviour
     public void SetStatExplanation(int num) 
     {
         targetInfo = BattleManager.Instance.allInformations[num];
-        target = targetInfo.gameObject;
-        StatText.text = $"name : {targetInfo.heroseDate.HeroseName} \n" +
-            $"HP : {targetInfo.runTimeStat.CurHP} / {targetInfo.runTimeStat.MaxHP} \n" +
-            $"MP : {targetInfo.runTimeStat.CurMP} / { targetInfo.runTimeStat.MaxMP} \n" +
-            $"STR : {targetInfo.runTimeStat.STR} + {targetInfo.GetBuffValue(Stat.STR)}\n" +
-            $"INT : {targetInfo.runTimeStat.INT} + {targetInfo.GetBuffValue(Stat.INT)}\n" +
-            $"AGI : {targetInfo.runTimeStat.AGI} + {targetInfo.GetBuffValue(Stat.AGI)}\n" +
-            $"LUK : {targetInfo.runTimeStat.LUK} + {targetInfo.GetBuffValue(Stat.LUK)}\n";
+
+        if (!targetInfo.IsDead)
+        {
+            target = targetInfo.gameObject;
+            StatText.text = $"name : {targetInfo.heroseDate.HeroseName} \n" +
+                $"HP : {targetInfo.runTimeStat.CurHP} / {targetInfo.runTimeStat.MaxHP} \n" +
+                $"MP : {targetInfo.runTimeStat.CurMP} / { targetInfo.runTimeStat.MaxMP} \n" +
+                $"STR : {targetInfo.runTimeStat.STR} + {targetInfo.GetBuffValue(Stat.STR)}\n" +
+                $"INT : {targetInfo.runTimeStat.INT} + {targetInfo.GetBuffValue(Stat.INT)}\n" +
+                $"AGI : {targetInfo.runTimeStat.AGI} + {targetInfo.GetBuffValue(Stat.AGI)}\n" +
+                $"LUK : {targetInfo.runTimeStat.LUK} + {targetInfo.GetBuffValue(Stat.LUK)}\n";
+        }
     }
 
     private void LateUpdate()

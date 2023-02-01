@@ -167,7 +167,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 783659e391b24314d9cfe3623a8f1f4b
-  position: {x: 527.5885, y: 742}
+  position: {x: 508, y: 766}
 --- !u!114 &-4049357896625927020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6c8f5a7d0041d4246b10a4277d791344
-  position: {x: 827.0001, y: 740.7002}
+  position: {x: 793.2781, y: 766.0001}
   animationStateName: Idle
   OnRepeat: 1
 --- !u!114 &-3304816730416319662

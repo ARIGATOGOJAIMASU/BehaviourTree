@@ -10,8 +10,14 @@ public class EffectController : MonoBehaviour
     public void StartEffect(Vector3 start_Point, Vector3 forward)
     {
         gameObject.SetActive(true);
-        transform.position = start_Point + (forward * posFoward) + new Vector3(0, 1f, 0);
+        transform.position = start_Point + (forward * posFoward) + new Vector3(0, 0, 0);
         StartCoroutine(LifeTimer());
+    }
+
+    public void ReStart()
+    {
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     IEnumerator LifeTimer()

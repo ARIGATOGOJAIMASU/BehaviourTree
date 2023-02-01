@@ -18,7 +18,7 @@ public class ReadySenter : MonoBehaviour
     }
 
     //캐릭터 Base
-    [SerializeField] GameObject characterBase;
+    [SerializeField] GameObject[] characterBase;
 
     [SerializeField] List<Information> readyCharacters = new();
     [SerializeField] Transform[] startPos;
@@ -33,19 +33,22 @@ public class ReadySenter : MonoBehaviour
     public void AddReadyCharacter(HeroseName name)
     {
         HeroseStatData heroseStatData = DataManager.Instance().GetHeroseStatData((int)name);
-        Information readyChracter;
+        Information CharacterInfo;
 
         if (characterCount < 5)
         {
-            readyChracter = Instantiate(characterBase).GetComponent<Information>();
-            readyCharacters[characterCount] = readyChracter;
+            //해당하는 prefab을 받는다.
+            GameObject Character = Instantiate(characterBase[(int)heroseStatData.HeroseName]);
+
+            CharacterInfo = Character.GetComponent<Information>();
+            readyCharacters[characterCount] = CharacterInfo;
             ++characterCount;
         }
         else
             return;
 
-        readyChracter.heroseDate = heroseStatData;
-        readyChracter.skillDatas.AddRange(DataManager.Instance().GetSkillDatas((int)name));
+        CharacterInfo.heroseDate = heroseStatData;
+        CharacterInfo.skillDatas.AddRange(DataManager.Instance().GetSkillDatas((int)name));
 
         //위치지정
         for (int i = 0; i < 5; ++i)
@@ -53,10 +56,10 @@ public class ReadySenter : MonoBehaviour
             if (OnIndex[i] == false)
             {
                 OnIndex[i] = true;
-                readyChracter.transform.position = startPos[i].position;
-                readyChracter.transform.localRotation = Quaternion.Euler(0, -90, 0);
-                readyChracter.startRotation = Quaternion.Euler(0, -90, 0);
-                readyChracter.indexNum = i;
+                CharacterInfo.transform.position = startPos[i].position;
+                CharacterInfo.transform.localRotation = Quaternion.Euler(0, -90, 0);
+                CharacterInfo.startRotation = Quaternion.Euler(0, -90, 0);
+                CharacterInfo.indexNum = i;
                 break;
             }
         }

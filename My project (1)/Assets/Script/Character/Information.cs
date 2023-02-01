@@ -14,7 +14,7 @@ public struct RunTimeStat
         MaxHP = base_HP;
         CurHP = base_HP;
         MaxMP = base_MP;
-        CurMP = base_MP;
+        CurMP = 0;
         STR = base_STR;
         INT= base_INT;
         AGI = base_AGI;
@@ -98,12 +98,16 @@ public class Information : MonoBehaviour
     public delegate void UseEffect(EffectName effectName, Vector3 start_Point, Vector3 forward);
     public UseEffect useEffect;
 
-    //Dead Deleaget
+    //Dead Deleagete
     public delegate void PlayerDeadEvent(int ID);
     public PlayerDeadEvent playerDead;
 
     public delegate void UiActive(bool on);
     public UiActive uiActive;
+
+    //Camera Delegate
+    public delegate void CameraShaking();
+    public CameraShaking cameraShaking;
 
     //Event
     public UnityEvent DeadEvent = new();
@@ -253,7 +257,15 @@ public class Information : MonoBehaviour
             DeadEvent.Invoke();
         }
 
-        playerAnimator.Play("Hurt");
+        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
+        {
+            playerAnimator.Play("Hurt");
+        }
+        else
+        {
+            playerAnimator.Play("Hurt",0,0);
+        }
+
         EffectEmerge(EffectName.Attack);
     }
 
@@ -262,6 +274,7 @@ public class Information : MonoBehaviour
         useEffect(effectName, transform.position, transform.forward);
     }
 
+    //애니메이션 이벤트로 호출함
     public void HurtRelese()
     {
         IsHurt = false;

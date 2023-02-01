@@ -369,42 +369,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroseStatDatas:
-  - {fileID: 11400000, guid: 212785b9012eca547b7702355d982c58, type: 2}
-  - {fileID: 11400000, guid: 637895df4c767ea4aa08bef62c54ecde, type: 2}
-  - {fileID: 11400000, guid: 641301d0e1b617a4982757de254a4257, type: 2}
-  - {fileID: 11400000, guid: 603d314bf63eef344b220118114609bb, type: 2}
-  - {fileID: 11400000, guid: 19a2d811790cc0f4db734e79acb8a66e, type: 2}
-  - {fileID: 11400000, guid: 3a68c312e19102e4e9d6a827cdbc882f, type: 2}
-  - {fileID: 11400000, guid: 6a13a9a835873474cbd65f1225c7af2d, type: 2}
-  - {fileID: 11400000, guid: 6e8e0bfe613f4774cb0f948822509107, type: 2}
-  - {fileID: 11400000, guid: d440d297c5ad79f40b5f84fc8a82aeff, type: 2}
-  - {fileID: 11400000, guid: d77e7442786c3664b9bb9717869ed660, type: 2}
+  - {fileID: 11400000, guid: 3efd9a45940e9cc45ac36f1b61e4e113, type: 2}
+  - {fileID: 11400000, guid: de658515e1dc7bf4aaf2ab2b9794e27d, type: 2}
+  - {fileID: 11400000, guid: be43bf36a037cd14cbf28571328f1db9, type: 2}
+  - {fileID: 11400000, guid: 19ad784cd37b3364681c091061bc03e6, type: 2}
   skillDatas:
   - skillDatas:
-    - {fileID: 11400000, guid: 5dd962ac2758d9140b980d7718a5369f, type: 2}
-    - {fileID: 11400000, guid: 5d353413d768ba54b99ad5f0f4ad33fc, type: 2}
+    - {fileID: 11400000, guid: 3b9ae570cb034fa4580abe084dace842, type: 2}
   - skillDatas:
-    - {fileID: 11400000, guid: 2df75325f35751142b0787403e512424, type: 2}
-    - {fileID: 11400000, guid: 44c3da9532f00994cb2e374481d668a6, type: 2}
+    - {fileID: 11400000, guid: ee53a331c846f724c827e57e59a8d007, type: 2}
   - skillDatas:
-    - {fileID: 11400000, guid: 6439ca3a4796545488951b75fe2376fd, type: 2}
+    - {fileID: 11400000, guid: 32fd2c24671da8c4797ffd6791e527d5, type: 2}
   - skillDatas:
-    - {fileID: 11400000, guid: 6d11d50692fd96b43b801d7f665f803d, type: 2}
-    - {fileID: 11400000, guid: b51315f5ba0f8674fb305a8968df191a, type: 2}
-  - skillDatas:
-    - {fileID: 11400000, guid: 45306a35a6a22e04d802a614f08c0a1d, type: 2}
-    - {fileID: 11400000, guid: 2bfba95b4933b6b4bb184f463e161abb, type: 2}
-  - skillDatas:
-    - {fileID: 11400000, guid: a7ca23dc1999e6b4b808f82353afd2ec, type: 2}
-  - skillDatas:
-    - {fileID: 11400000, guid: 783f62cc77321d349b01ab3dff8550a7, type: 2}
-  - skillDatas:
-    - {fileID: 11400000, guid: ebb22b04352336f4b9f02e07d922ec29, type: 2}
-    - {fileID: 11400000, guid: 5a90c523689d5514fb240b36a3ddd183, type: 2}
-  - skillDatas:
-    - {fileID: 11400000, guid: db69c4b41eff5ee41b17ee0aabdf23f3, type: 2}
-  - skillDatas:
-    - {fileID: 11400000, guid: 6010836e28009ba4696340f67e15a40f, type: 2}
+    - {fileID: 11400000, guid: 9b160ebff1f519b468e44d21fdb98d22, type: 2}
 --- !u!4 &210492427
 Transform:
   m_ObjectHideFlags: 0
@@ -448,7 +425,7 @@ PrefabInstance:
         type: 3}
       propertyPath: heroseDate
       value: 
-      objectReference: {fileID: 11400000, guid: d440d297c5ad79f40b5f84fc8a82aeff,
+      objectReference: {fileID: 11400000, guid: de658515e1dc7bf4aaf2ab2b9794e27d,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -740,6 +717,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -846,6 +824,21 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69180d8f218c66b4b8ac3f8454ee4c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeDuration: 1
+  magnitude: 0.5
+  StartPos: {x: 0, y: 0, z: 0}
 --- !u!1 &335772836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,7 +2204,7 @@ PrefabInstance:
         type: 3}
       propertyPath: heroseDate
       value: 
-      objectReference: {fileID: 11400000, guid: 6a13a9a835873474cbd65f1225c7af2d,
+      objectReference: {fileID: 11400000, guid: de658515e1dc7bf4aaf2ab2b9794e27d,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -2316,7 +2309,8 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4922798697035853009, guid: 024f46c27254f4f4c88f713cd694713a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 024f46c27254f4f4c88f713cd694713a, type: 3}
 --- !u!114 &781321709 stripped
 MonoBehaviour:
@@ -2364,7 +2358,7 @@ PrefabInstance:
         type: 3}
       propertyPath: heroseDate
       value: 
-      objectReference: {fileID: 11400000, guid: 3a68c312e19102e4e9d6a827cdbc882f,
+      objectReference: {fileID: 11400000, guid: de658515e1dc7bf4aaf2ab2b9794e27d,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -2863,7 +2857,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 841302433}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.64
+  m_Size: 0.384
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3816,7 +3810,7 @@ PrefabInstance:
         type: 3}
       propertyPath: heroseDate
       value: 
-      objectReference: {fileID: 11400000, guid: 6e8e0bfe613f4774cb0f948822509107,
+      objectReference: {fileID: 11400000, guid: de658515e1dc7bf4aaf2ab2b9794e27d,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -4089,7 +4083,7 @@ PrefabInstance:
         type: 3}
       propertyPath: heroseDate
       value: 
-      objectReference: {fileID: 11400000, guid: 19a2d811790cc0f4db734e79acb8a66e,
+      objectReference: {fileID: 11400000, guid: de658515e1dc7bf4aaf2ab2b9794e27d,
         type: 2}
     - target: {fileID: 7879452663062117726, guid: 024f46c27254f4f4c88f713cd694713a,
         type: 3}
@@ -5100,7 +5094,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 150}
-  m_SizeDelta: {x: 3000, y: 300}
+  m_SizeDelta: {x: 5000, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1772946982
 MonoBehaviour:
@@ -5346,8 +5340,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7dfbff0b6442640a1b9b1fa37f0521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterBase: {fileID: 8191577384546497380, guid: 024f46c27254f4f4c88f713cd694713a,
-    type: 3}
+  characterBase:
+  - {fileID: 8191577384546497380, guid: bd8c51502a4aef04ba2bab77f4325e96, type: 3}
+  - {fileID: 8191577384546497380, guid: 932a2664e58bf9d4287181ad08355d7d, type: 3}
+  - {fileID: 8191577384546497380, guid: 425ee9e414565654e8b878dba6c83941, type: 3}
+  - {fileID: 8191577384546497380, guid: 2ecd5d1ab8422c24ab609a992f383c6e, type: 3}
   readyCharacters:
   - {fileID: 0}
   - {fileID: 0}
@@ -5736,18 +5733,6 @@ MonoBehaviour:
     Level: 1
   - heroseName: 3
     Level: 1
-  - heroseName: 4
-    Level: 1
-  - heroseName: 5
-    Level: 1
-  - heroseName: 6
-    Level: 1
-  - heroseName: 7
-    Level: 1
-  - heroseName: 8
-    Level: 1
-  - heroseName: 9
-    Level: 11
 --- !u!1 &2089782825
 GameObject:
   m_ObjectHideFlags: 0

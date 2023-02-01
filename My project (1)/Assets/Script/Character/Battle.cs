@@ -27,6 +27,7 @@ public class Battle : MonoBehaviour
 
     public void GetBaseAttackTarget()
     {
+        targets.Clear();
         Information[] infors = null;
 
         //상대 진영의 List를 반환
@@ -36,6 +37,7 @@ public class Battle : MonoBehaviour
         ///우선도를 정하는 함수 구현 예정(Delegate를 활용하여 구현해보자)
         //////////////////////////////////////////////
         targets.Add(infors[Random.Range(0, infors.Length - 1)]);
+        EffectStartPoint = targets[0].startPos;
     }
 
      public void Attack()
@@ -53,6 +55,7 @@ public class Battle : MonoBehaviour
 
     public void GetSkillTarget()
     {
+        targets.Clear();
         //skill 사용하는 Player정보
         SkillData skillData = myInfo.skillDatas[myInfo.curSkillIndex];
 
@@ -108,6 +111,7 @@ public class Battle : MonoBehaviour
             default:
                 break;
         }
+
         GetSkillEffectPosition();
     }
 
@@ -206,7 +210,10 @@ public class Battle : MonoBehaviour
         //피격 당하는 대상. 데미지 관련 버프 Check
         foreach (Information target in targets)
         {
-            target.Hurt(Damage);
+            if (!target.IsDead)
+            {
+                target.Hurt(Damage);
+            }
         }
 
         //targetObjs => { Hurt(Damage, deadChracterFuntion); }
@@ -255,6 +262,7 @@ public class Battle : MonoBehaviour
         }
     }
 
+    //애니메이션 이벤트함수
     public void Action()
     {
         if (myInfo.UseSkill)
@@ -265,11 +273,9 @@ public class Battle : MonoBehaviour
         {
             Attack();
         }
-
-        //타켓정보들 초기화
-        targets.Clear();
     }
 
+    //애니메이션 이벤트함수
     public void PlaySound()
     {
         if (myInfo.UseSkill)
@@ -282,19 +288,31 @@ public class Battle : MonoBehaviour
         }
     }
 
-    void AttackEffectEmerge()
+    //애니메이션 이벤트함수
+    public void BattleEffectEmerge()
     {
-        //위치 정하기
-        Vector3 EffectStartPoint = new();
-
-        EffectStartPoint = myInfo.heroseDate.AttackType == AttackType.CLOSE ? transform.position : targets[0].startPos;
-
-        AttackEffect.StartEffect(EffectStartPoint, transform.forward);
-    }
-
-    void SkillEffectEmerge()
-    {
-        SkillEffect.StartEffect(EffectStartPoint, transform.forward);
+        if (myInfo.UseSkill)
+        {
+            if (SkillEffect.isActiveAndEnabled == false)
+            {
+                SkillEffect.StartEffect(EffectStartPoint, transform.forward);
+            }
+            else
+            {
+                SkillEffect.ReStart();
+            }
+        }
+        else
+        {
+            if (AttackEffect.isActiveAndEnabled == false)
+            {
+                AttackEffect.StartEffect(EffectStartPoint, transform.forward);
+            }
+            else
+            {
+                AttackEffect.ReStart();
+            }
+        }
     }
 
     void GetSkillEffectPosition()
@@ -325,13 +343,9 @@ public class Battle : MonoBehaviour
                 }
             }
         }
-        else if (curSkillData.SkillType == SKILLTYPE.HELL)
-        {
-            EffectStartPoint = targets[0].startPos;
-        }
         else
         {
-            EffectStartPoint = transform.position;
+            EffectStartPoint = targets[0].startPos;
         }
     }
 }
