@@ -557,7 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myInfo: {fileID: 7879452663062117726}
   targets: []
-  AttackEffectSource: {fileID: 6714037650790324515, guid: 4a476f63e4da5ca4fa476ddfbad3ace2,
+  AttackEffectSource: {fileID: 6714037650790324515, guid: 2f203c5e2e2d2944996f9f93fe4092e7,
     type: 3}
   SkillEffectSource: {fileID: 2850693007004515204, guid: dd1f9ff2665e42e42bf4072a98cba1fb,
     type: 3}

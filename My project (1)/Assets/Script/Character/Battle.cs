@@ -17,6 +17,10 @@ public class Battle : MonoBehaviour
     EffectController AttackEffect;
     EffectController SkillEffect;
 
+    //Camera Delegate
+    public delegate void CameraShaking();
+    public CameraShaking cameraShaking;
+
     Vector3 EffectStartPoint;
 
     private void Start()
@@ -313,6 +317,8 @@ public class Battle : MonoBehaviour
                 AttackEffect.ReStart();
             }
         }
+
+        cameraShaking();
     }
 
     void GetSkillEffectPosition()

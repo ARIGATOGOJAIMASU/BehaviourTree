@@ -23,22 +23,14 @@ public class AttackMoveNode : ActionNode
         //타켓을 쫓아감
         if (Info.heroseDate.AttackType == AttackType.CLOSE)
         {
-            if ((OwnerTransform.position - OwnerBattle.targets[0].transform.position).magnitude > 2.5f)
+            if ((OwnerTransform.position - OwnerBattle.targets[0].transform.position).magnitude > 3f)
             {
                 OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, OwnerBattle.targets[0].transform.position, Time.deltaTime * 10f);
                 return State.Running;
             }
         }
-        //타켓 앞까지 옴
-        else
-        {
-            //다음턴을 넘김
-            //Info.action[0](Info.ID , AttackTarget);
-            //MP업
-            Info.runTimeStat.CurMP += Random.Range(0 , 50);
-        }
-
-        //Info.curAnimationState = AnimationStateType.BaseAttack;
+        //MP업
+        Info.runTimeStat.CurMP += Random.Range(0, 50);
         return State.Success;
     }
 }

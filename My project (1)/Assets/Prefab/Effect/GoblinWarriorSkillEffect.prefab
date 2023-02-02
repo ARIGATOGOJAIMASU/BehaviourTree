@@ -4935,6 +4935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 1
   posFoward: 0
+  WantPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &3563851544838275894
 GameObject:
   m_ObjectHideFlags: 0

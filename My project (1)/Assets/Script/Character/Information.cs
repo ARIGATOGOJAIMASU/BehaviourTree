@@ -94,9 +94,12 @@ public class Information : MonoBehaviour
     public GameObject buffUI_Base;
     [SerializeField] BuffManager buffUiManager;
 
-    //Delegate
+    //Hurt Delegate
     public delegate void UseEffect(EffectName effectName, Vector3 start_Point, Vector3 forward);
     public UseEffect useEffect;
+    public delegate void UseDamageValueEffect(Vector3 start_Point, Vector3 forward, int value);
+    public UseDamageValueEffect useDamageValueEffect;
+    //private UnityEvent HurtEvent;
 
     //Dead Deleagete
     public delegate void PlayerDeadEvent(int ID);
@@ -104,10 +107,6 @@ public class Information : MonoBehaviour
 
     public delegate void UiActive(bool on);
     public UiActive uiActive;
-
-    //Camera Delegate
-    public delegate void CameraShaking();
-    public CameraShaking cameraShaking;
 
     //Event
     public UnityEvent DeadEvent = new();
@@ -266,12 +265,13 @@ public class Information : MonoBehaviour
             playerAnimator.Play("Hurt",0,0);
         }
 
-        EffectEmerge(EffectName.Attack);
+        HurtEffectEmerge(EffectName.Attack, damage);
     }
 
-    public void EffectEmerge(EffectName effectName)
+    public void HurtEffectEmerge(EffectName effectName, int damage)
     {
         useEffect(effectName, transform.position, transform.forward);
+        useDamageValueEffect(transform.position, transform.forward, damage);
     }
 
     //애니메이션 이벤트로 호출함

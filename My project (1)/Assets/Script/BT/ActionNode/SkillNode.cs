@@ -40,7 +40,11 @@ public class SkillNode : ActionNode
             }
             else
             {
+                //타켓이 한명이면
+                if (OwnerBattle.targets.Count == 1) OwnerTransform.LookAt(OwnerBattle.targets[0].transform.position); 
+                else
                 OwnerTransform.rotation = Info.startRotation;
+
                 return State.Success;
             }
         }
@@ -61,17 +65,22 @@ public class SkillNode : ActionNode
         }
     }
 
+    //근접공격 유형
     void GetFrontSkillPosition()
     {
         SkillData skillData = Info.skillDatas[Info.curSkillIndex];
 
         switch (skillData.TargetRange)
         {
-            case TargetArea.All:
-                SkillPos = Info.playrType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
+            case TargetArea.FrontRow:
+                SkillPos = Define.ActionFrontPoint;
+                break;
+            case TargetArea.Single:
+                SkillPos = OwnerBattle.targets[0].transform.position +
+                   (OwnerTransform.position - OwnerBattle.targets[0].transform.position).normalized * 2f;
                 break;
             default:
-                SkillPos = Define.ActionFrontPoint;
+                SkillPos = Info.playrType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
                 break;
         }
     }

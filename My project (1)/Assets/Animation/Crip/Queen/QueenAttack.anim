@@ -89742,7 +89742,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.25
-    functionName: EffectEmerge
+    functionName: BattleEffectEmerge
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

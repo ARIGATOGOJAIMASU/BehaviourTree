@@ -557,7 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myInfo: {fileID: 7879452663062117726}
   targets: []
-  AttackEffectSource: {fileID: 1090515636613164, guid: 306e7743e5cc81f4b9e82b22a0e8bf62,
+  AttackEffectSource: {fileID: 6445826192643391251, guid: 60d310309985b9d4e9917e6e851e63c9,
     type: 3}
   SkillEffectSource: {fileID: 2414816008507225855, guid: aecb0e467a9845a46bd29641d87fb489,
     type: 3}
@@ -571,7 +571,7 @@ Animator:
   m_GameObject: {fileID: 8191577384546497380}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e6f8c6b4cd0c5d24fbefebd224edfdb5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4e4a015a77db0b345942d463075ae3c8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 43a7b2a0ecddc4c479e7a1ef441b6c17, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

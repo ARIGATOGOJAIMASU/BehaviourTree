@@ -17,7 +17,6 @@ public class Billboad : MonoBehaviour
             CameraTransform.rotation.eulerAngles.y,
             CameraTransform.rotation.eulerAngles.z);
 
-        transform.LookAt(transform.position + CameraEulerAngle * Vector3.forward,
-            CameraTransform.transform.rotation * Vector3.up);
+        transform.LookAt(transform.position + CameraEulerAngle * Vector3.forward, CameraTransform.transform.rotation * Vector3.up);
     }
 }

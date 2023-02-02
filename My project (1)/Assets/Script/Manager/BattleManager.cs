@@ -46,6 +46,7 @@ public class BattleManager : MonoBehaviour
 
     //EffectManager
     [SerializeField] EffectManager effectManager;
+    [SerializeField] DamafeEffectUI_Senter damageEffectUI_Senter;
 
     public void GameStart(List<Information> playerCharacters)
     {
@@ -61,11 +62,13 @@ public class BattleManager : MonoBehaviour
             {
                 playerInfors[i].playrType = PlayerType.Player;
                 playerInfors[i].useEffect = effectManager.EffectEmerge;
+                playerInfors[i].useDamageValueEffect = damageEffectUI_Senter.DamageValueEffectEmerge;
                 playerInfors[i].playerDead = DeadChracter;
 
                 //Delegate설정
                 Battle BattleComponent = playerInfors[i].GetComponent<Battle>();
                 BattleComponent.getTarget = GetTargets;
+                BattleComponent.cameraShaking = Camera.main.GetComponent<CameraController>().CameraShacking;
 
                 playerInfors[i].GetComponent<CharacterState>().CurState = State.Battle;
 
@@ -88,11 +91,13 @@ public class BattleManager : MonoBehaviour
 
             //Delegate 설정
             enemyInfors[i].useEffect = effectManager.EffectEmerge;
+            enemyInfors[i].useDamageValueEffect = damageEffectUI_Senter.DamageValueEffectEmerge;
             enemyInfors[i].playerDead = DeadChracter;
 
             //BattleDelegate설정
             Battle BattleComponent = enemyInfors[i].GetComponent<Battle>();
             BattleComponent.getTarget = GetTargets;
+            BattleComponent.cameraShaking = Camera.main.GetComponent<CameraController>().CameraShacking;
 
             enemyInfors[i].GetComponent<CharacterState>().CurState = State.Battle;
 
