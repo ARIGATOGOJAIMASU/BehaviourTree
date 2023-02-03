@@ -12,6 +12,8 @@ public enum Stat { None, HP, STR, INT, AGI, VLT, LUK, Damage }
 
 public enum SkillPosition { Front, StartPos }
 
+public enum SkillStartPosition { None, Mid, EnemyMid }
+
 [CreateAssetMenu(fileName = "SkillData", menuName = "Scriptable Object/SkillData", order = int.MaxValue)]
 public class SkillData : ScriptableObject
 {
@@ -29,6 +31,9 @@ public class SkillData : ScriptableObject
 
     [SerializeField] SkillPosition _skillPosition;
     public SkillPosition SkillPosition { get { return _skillPosition; } }
+
+    [SerializeField] SkillStartPosition _skillStartPosition;
+    public SkillStartPosition SkillStartPosition { get { return _skillStartPosition; } }
 
     [SerializeField] Stat _bonusStatType;
     public Stat BonusStatType { get { return _bonusStatType; } }

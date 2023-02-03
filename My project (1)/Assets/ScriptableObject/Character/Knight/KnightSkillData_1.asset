@@ -17,8 +17,9 @@ MonoBehaviour:
   _targetRange: 0
   _targetPriority: 0
   _skillPosition: 1
+  _skillStartPosition: 0
   _bonusStatType: 4
-  _bonusStatValue: 50
+  _bonusStatValue: 10
   _buff:
     buffType: 0
     buffStat: 4

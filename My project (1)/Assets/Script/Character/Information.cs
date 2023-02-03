@@ -14,7 +14,7 @@ public struct RunTimeStat
         MaxHP = base_HP;
         CurHP = base_HP;
         MaxMP = base_MP;
-        CurMP = 0;
+        CurMP = base_MP;
         STR = base_STR;
         INT= base_INT;
         AGI = base_AGI;
@@ -64,7 +64,7 @@ public class Information : MonoBehaviour
     public HeroseStatData heroseDate;
     public List<SkillData> skillDatas;
 
-    public PlayerType playrType;
+    public PlayerType playerType;
     public RunTimeStat runTimeStat;
 
     public List<MyBuff> buffs = new ();
@@ -97,7 +97,7 @@ public class Information : MonoBehaviour
     //Hurt Delegate
     public delegate void UseEffect(EffectName effectName, Vector3 start_Point, Vector3 forward);
     public UseEffect useEffect;
-    public delegate void UseDamageValueEffect(Vector3 start_Point, Vector3 forward, int value);
+    public delegate void UseDamageValueEffect(SKILLTYPE skillType, Vector3 start_Point, Vector3 forward, int value);
     public UseDamageValueEffect useDamageValueEffect;
     //private UnityEvent HurtEvent;
 
@@ -244,8 +244,11 @@ public class Information : MonoBehaviour
 
     public void Hurt(int damage)
     {
+        if (IsDead == true) return;
+
         IsHurt = true;
         //방어력 검사 및 데미지 감소 버프들 확인
+        Debug.Log(GetStatValue(Stat.AGI) / 5);
         damage -= (GetStatValue(Stat.AGI) / 5) + (int)((float)damage * (GetBuffValue(Stat.Damage) / 100.0f));
 
         if (damage > 0) runTimeStat.CurHP -= damage;
@@ -265,13 +268,14 @@ public class Information : MonoBehaviour
             playerAnimator.Play("Hurt",0,0);
         }
 
-        HurtEffectEmerge(EffectName.Attack, damage);
+        useEffect(EffectName.Attack, transform.position, transform.forward);
+        useDamageValueEffect(SKILLTYPE.ATTACK, transform.position, transform.forward, damage);
     }
 
-    public void HurtEffectEmerge(EffectName effectName, int damage)
+    public void Heal(int healValue)
     {
-        useEffect(effectName, transform.position, transform.forward);
-        useDamageValueEffect(transform.position, transform.forward, damage);
+        runTimeStat.CurHP = runTimeStat.CurHP + healValue > runTimeStat.MaxHP ? runTimeStat.MaxHP : runTimeStat.CurHP + healValue;
+        useDamageValueEffect(SKILLTYPE.HELL, transform.position, transform.forward, healValue);
     }
 
     //애니메이션 이벤트로 호출함

@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1
-  posFoward: 0
   WantPosition: {x: 0, y: 1, z: 0}
+  ChangeRotation: 1
   DamageValue: {fileID: 3072529430629986255}
   rectTransform: {fileID: 3072529430629986254}

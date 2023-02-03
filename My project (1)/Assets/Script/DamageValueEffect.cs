@@ -8,12 +8,22 @@ public class DamageValueEffect : EffectController
     [SerializeField] TextMeshProUGUI DamageValue;
     [SerializeField] RectTransform rectTransform;
     float Timer;
+    string miss = "miss";
 
-    public void StartEffect(Vector3 start_Point, Vector3 forward, int value = 0)
+    public void StartEffect(SKILLTYPE skillType, Vector3 start_Point, Vector3 forward, int value = 0)
     {
-        DamageValue.text = value.ToString();
+        if(value <= 0)
+            DamageValue.text = miss;
+        else
+            DamageValue.text = value.ToString();
+        
         Timer = 0;
-        DamageValue.faceColor = Color.white;
+        if(DamageValue.text == miss)
+            DamageValue.faceColor = Color.white;
+        else if (SKILLTYPE.ATTACK == skillType)
+            DamageValue.faceColor = Color.red;
+        else
+            DamageValue.faceColor = Color.green;
 
         gameObject.SetActive(true);
         transform.position = Camera.main.WorldToScreenPoint(start_Point);

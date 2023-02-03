@@ -5,7 +5,6 @@ using UnityEngine;
 public class SkillNode : ActionNode
 {
     Vector3 SkillPos;
-    int index = 0;
 
     public override void Init()
     {
@@ -17,9 +16,8 @@ public class SkillNode : ActionNode
     {
         if (Info.UseSkill)
         {
-            index = 0;
             Info.curSkillIndex = 0;
-            SetSkillPosition(index);
+            SetSkillPosition();
         }
     }
 
@@ -52,16 +50,29 @@ public class SkillNode : ActionNode
         return State.Failure;
     }
 
-    void SetSkillPosition(int index)
+    void SetSkillPosition()
     {
-        switch (Info.skillDatas[index].SkillPosition)
+        SkillData curSkillData = Info.skillDatas[Info.curSkillIndex];
+
+        if (curSkillData.SkillStartPosition == SkillStartPosition.None)
         {
-            case SkillPosition.Front:
-                GetFrontSkillPosition();
-                break;
-            case SkillPosition.StartPos:
-                SkillPos = Info.transform.position;
-                break;
+            switch (curSkillData.SkillPosition)
+            {
+                case SkillPosition.Front:
+                    GetFrontSkillPosition();
+                    break;
+                case SkillPosition.StartPos:
+                    SkillPos = Info.transform.position;
+                    break;
+            }
+        }
+        else if(curSkillData.SkillStartPosition == SkillStartPosition.Mid)
+        {
+            SkillPos = Define.ActionFrontPoint;
+        }
+        else
+        {
+            SkillPos = Info.playerType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
         }
     }
 
@@ -80,7 +91,7 @@ public class SkillNode : ActionNode
                    (OwnerTransform.position - OwnerBattle.targets[0].transform.position).normalized * 2f;
                 break;
             default:
-                SkillPos = Info.playrType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
+                SkillPos = Info.playerType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
                 break;
         }
     }

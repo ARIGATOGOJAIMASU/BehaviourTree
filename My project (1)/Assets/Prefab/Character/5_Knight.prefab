@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.132}
-  m_SizeDelta: {x: 1.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.26, y: 1.132}
+  m_SizeDelta: {x: 6, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5301835566321437242
 CanvasRenderer:
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroseDate: {fileID: 11400000, guid: 212785b9012eca547b7702355d982c58, type: 2}
   skillDatas: []
-  playrType: 0
+  playerType: 0
   runTimeStat:
     MaxHP: 0
     CurHP: 0
@@ -557,9 +557,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myInfo: {fileID: 7879452663062117726}
   targets: []
+  AttackCombo: 0
   AttackEffectSource: {fileID: 1090515636613164, guid: 306e7743e5cc81f4b9e82b22a0e8bf62,
     type: 3}
-  SkillEffectSource: {fileID: 321708363350623060, guid: 3e3fc7c38c23e41449b2c92f37139e47,
+  SkillEffectSource: {fileID: 1338169166719577240, guid: 195f31a06b3f620468cc963ea9e14195,
     type: 3}
 --- !u!95 &8946160166926740010
 Animator:

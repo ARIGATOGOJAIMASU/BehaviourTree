@@ -11,6 +11,9 @@ public class Battle : MonoBehaviour
     public delegate Information[] GetTarget(PlayerType playerType);
     public GetTarget getTarget;
 
+    //공격 횟수
+    public int AttackCombo = 0;
+
     //Battle Effect
     [SerializeField] GameObject AttackEffectSource;
     [SerializeField] GameObject SkillEffectSource;
@@ -35,7 +38,7 @@ public class Battle : MonoBehaviour
         Information[] infors = null;
 
         //상대 진영의 List를 반환
-        infors = getTarget(myInfo.playrType == PlayerType.Player ? PlayerType.Enemy : PlayerType.Player);
+        infors = getTarget(myInfo.playerType == PlayerType.Player ? PlayerType.Enemy : PlayerType.Player);
 
         //////////////////////////////////////////////
         ///우선도를 정하는 함수 구현 예정(Delegate를 활용하여 구현해보자)
@@ -46,7 +49,14 @@ public class Battle : MonoBehaviour
 
      public void Attack()
      {
-         targets[0].Hurt(myInfo.GetStatValue(Stat.STR));
+        if (AttackCombo != 0)
+        {
+            targets[0].Hurt(myInfo.GetStatValue(Stat.STR) / 2);
+        }
+        else
+        {
+            targets[0].Hurt(myInfo.GetStatValue(Stat.STR));
+        }
 
          //Playlog.text = $"{attackInfo.heroseDate.HeroseName}가 {targetObj[0].heroseDate.HeroseName}에게 {attackInfo.GetStatValue(Stat.STR)}의 기본 공격을 함.";
 
@@ -116,7 +126,7 @@ public class Battle : MonoBehaviour
                 break;
         }
 
-        GetSkillEffectPosition();
+        //GetSkillEffectPosition();
     }
 
     public List<Information> CheckArea(SkillData skillData)
@@ -125,9 +135,9 @@ public class Battle : MonoBehaviour
 
         //타켓 진영을 선택
         if (skillData.TargetPlayerType == PlayerType.Enemy)
-            oppositeCamps.AddRange(myInfo.playrType == PlayerType.Player ? getTarget(PlayerType.Enemy): getTarget(PlayerType.Player));
+            oppositeCamps.AddRange(myInfo.playerType == PlayerType.Player ? getTarget(PlayerType.Enemy): getTarget(PlayerType.Player));
         else
-        oppositeCamps.AddRange(myInfo.playrType == PlayerType.Player ? getTarget(PlayerType.Player) : getTarget(PlayerType.Enemy));
+        oppositeCamps.AddRange(myInfo.playerType == PlayerType.Player ? getTarget(PlayerType.Player) : getTarget(PlayerType.Enemy));
 
     //타켓 범위를 지정
     switch (skillData.TargetRange)
@@ -230,8 +240,9 @@ public class Battle : MonoBehaviour
     {
         foreach (Information target in targets)
         {
-            if (target.runTimeStat.CurHP + myInfo.GetSkillValue() > target.runTimeStat.MaxHP) target.runTimeStat.CurHP = target.runTimeStat.MaxHP;
-            else target.runTimeStat.CurHP += myInfo.GetSkillValue();
+            target.Heal(myInfo.GetSkillValue());
+            /*if (target.runTimeStat.CurHP + myInfo.GetSkillValue() > target.runTimeStat.MaxHP) target.runTimeStat.CurHP = target.runTimeStat.MaxHP;
+            else target.runTimeStat.CurHP += myInfo.GetSkillValue();*/
         }
 
         //Playlog.text = $"{useSkillObj.heroseDate.HeroseName}가 {useSkillObj.GetSkillValue()}의 힐을 사용";
@@ -297,6 +308,8 @@ public class Battle : MonoBehaviour
     {
         if (myInfo.UseSkill)
         {
+            GetSkillEffectPosition();
+
             if (SkillEffect.isActiveAndEnabled == false)
             {
                 SkillEffect.StartEffect(EffectStartPoint, transform.forward);
@@ -305,6 +318,8 @@ public class Battle : MonoBehaviour
             {
                 SkillEffect.ReStart();
             }
+
+            if(myInfo.skillDatas[myInfo.curSkillIndex].SkillType == SKILLTYPE.ATTACK) cameraShaking();
         }
         else
         {
@@ -316,9 +331,9 @@ public class Battle : MonoBehaviour
             {
                 AttackEffect.ReStart();
             }
-        }
 
-        cameraShaking();
+            cameraShaking();
+        }
     }
 
     void GetSkillEffectPosition()
@@ -337,21 +352,28 @@ public class Battle : MonoBehaviour
                 //우리팀이 상대방을 공격
                 if (curSkillData.TargetRange == TargetArea.FrontRow)
                 {
-                    EffectStartPoint = myInfo.playrType == PlayerType.Player ? Define.EnemyFrontPosition : Define.TeamFrontPosition;
+                    EffectStartPoint = myInfo.playerType == PlayerType.Player ? Define.EnemyFrontPosition : Define.TeamFrontPosition;
                 }
                 else if (curSkillData.TargetRange == TargetArea.BackRow)
                 {
-                    EffectStartPoint = myInfo.playrType == PlayerType.Player ? Define.EnemyBackPosition : Define.TeamBackPosition;
+                    EffectStartPoint = myInfo.playerType == PlayerType.Player ? Define.EnemyBackPosition : Define.TeamBackPosition;
                 }
                 else
                 {
-                    EffectStartPoint = myInfo.playrType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
+                    EffectStartPoint = myInfo.playerType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
                 }
             }
         }
         else
         {
-            EffectStartPoint = targets[0].startPos;
+            if (curSkillData.TargetRange == TargetArea.Single)
+            {
+                EffectStartPoint = targets[0].startPos;
+            }
+            else
+            {
+                EffectStartPoint = myInfo.playerType == PlayerType.Player ? Define.TeamMidPosition : Define.EnemyMidPosition;
+            }
         }
     }
 }

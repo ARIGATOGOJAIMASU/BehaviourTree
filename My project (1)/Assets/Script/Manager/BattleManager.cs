@@ -60,7 +60,7 @@ public class BattleManager : MonoBehaviour
         {
             if (playerInfors[i] != null)
             {
-                playerInfors[i].playrType = PlayerType.Player;
+                playerInfors[i].playerType = PlayerType.Player;
                 playerInfors[i].useEffect = effectManager.EffectEmerge;
                 playerInfors[i].useDamageValueEffect = damageEffectUI_Senter.DamageValueEffectEmerge;
                 playerInfors[i].playerDead = DeadChracter;
@@ -87,7 +87,7 @@ public class BattleManager : MonoBehaviour
             enemyInfors[i].startRotation = Quaternion.Euler(0 , 90, 0);
             enemyInfors[i].transform.localRotation = Quaternion.Euler(0, 90, 0);
             enemyInfors[i].gameObject.SetActive(true);
-            enemyInfors[i].playrType = PlayerType.Enemy;
+            enemyInfors[i].playerType = PlayerType.Enemy;
 
             //Delegate 설정
             enemyInfors[i].useEffect = effectManager.EffectEmerge;
@@ -261,7 +261,7 @@ public class BattleManager : MonoBehaviour
         deadCharacter.IsDead = true;
 
         //해당 진영 List에서 삭제
-        if (deadCharacter.playrType == PlayerType.Player)
+        if (deadCharacter.playerType == PlayerType.Player)
         {
             --playerCount;
             playerInfors.Remove(deadCharacter);

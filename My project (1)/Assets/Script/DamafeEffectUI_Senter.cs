@@ -16,10 +16,10 @@ public class DamafeEffectUI_Senter : MonoBehaviour
         }
     }
  
-    public void DamageValueEffectEmerge(Vector3 start_Point, Vector3 forward, int value)
+    public void DamageValueEffectEmerge(SKILLTYPE sKILLTYPE, Vector3 start_Point, Vector3 forward, int value)
     {
         DamageValueEffect emergeEffect = damageValueEffectPool.Dequeue();
-        emergeEffect.StartEffect(start_Point, forward, value);
+        emergeEffect.StartEffect(sKILLTYPE, start_Point, forward, value);
         damageValueEffectPool.Enqueue(emergeEffect);
     }
 }
