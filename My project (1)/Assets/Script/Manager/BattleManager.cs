@@ -48,6 +48,11 @@ public class BattleManager : MonoBehaviour
     [SerializeField] EffectManager effectManager;
     [SerializeField] DamafeEffectUI_Senter damageEffectUI_Senter;
 
+    [SerializeField] float TurnDelay;
+
+    //CameraTarget
+    [SerializeField] CameraTarget cameraTarget;
+
     public void GameStart(List<Information> playerCharacters)
     {
         //준비된 정보받기
@@ -69,6 +74,8 @@ public class BattleManager : MonoBehaviour
                 Battle BattleComponent = playerInfors[i].GetComponent<Battle>();
                 BattleComponent.getTarget = GetTargets;
                 BattleComponent.cameraShaking = Camera.main.GetComponent<CameraController>().CameraShacking;
+                BattleComponent.battleMode = Camera.main.GetComponent<CameraController>().CameraBattleMode;
+                BattleComponent.cameraTarget = cameraTarget;
 
                 playerInfors[i].GetComponent<CharacterState>().CurState = State.Battle;
 
@@ -98,6 +105,8 @@ public class BattleManager : MonoBehaviour
             Battle BattleComponent = enemyInfors[i].GetComponent<Battle>();
             BattleComponent.getTarget = GetTargets;
             BattleComponent.cameraShaking = Camera.main.GetComponent<CameraController>().CameraShacking;
+            BattleComponent.battleMode = Camera.main.GetComponent<CameraController>().CameraBattleMode;
+            BattleComponent.cameraTarget = cameraTarget;
 
             enemyInfors[i].GetComponent<CharacterState>().CurState = State.Battle;
 
@@ -167,7 +176,7 @@ public class BattleManager : MonoBehaviour
                 }
                 else
                 {
-                    TurnChracter = NextChracterNum;
+                    StartCoroutine(TrunDelayCoroutine(NextChracterNum));
                     return;
                 }
             }
@@ -216,11 +225,12 @@ public class BattleManager : MonoBehaviour
 
     void GameOver()
     {
-        Playlog.text = "";
-
         foreach (Information info in allInformations)
         {
-            info.OnUpdate = false;
+            if (!info.IsDead)
+            {
+                info.victory = true;
+            }
         }
 
         if (playerInfors.Count == 0) loseUI.SetActive(true);
@@ -272,6 +282,17 @@ public class BattleManager : MonoBehaviour
             enemyInfors.Remove(deadCharacter);
         }
 
-        Destroy(deadCharacter);
+        //Destroy(deadCharacter);
+    }
+
+    IEnumerator TrunDelayCoroutine(int NextChracterNum)
+    {
+        GameStop();
+        Camera.main.GetComponent<CameraController>().CameraBattleMode(false);
+        yield return new WaitForSeconds(TurnDelay);
+
+        //Camera.main.GetComponent<CameraController>().CameraBattleMode(true, allInformations[NextChracterNum].transform);
+        TurnChracter = NextChracterNum;
+        GamePlay();
     }
 }

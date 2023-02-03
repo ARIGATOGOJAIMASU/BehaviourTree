@@ -37,15 +37,15 @@ public class MouseEvent : MonoBehaviour
             CharacterNum = GetComponent<Information>().ID;
         }
 
-        if (characterState.CurState == State.Battle)
-            OnInfomation();
+        /*if (characterState.CurState == State.Battle)
+            OnInfomation();*/
     }
 
-    private void OnMouseExit()
+   /* private void OnMouseExit()
     {
         if (characterState.CurState == State.Battle)
             OffInfomation();
-    }
+    }*/
 
     //StatUIÈ£Ãâ ¹× Setting
     public void OnInfomation()

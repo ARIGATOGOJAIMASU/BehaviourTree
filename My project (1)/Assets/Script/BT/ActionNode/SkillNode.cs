@@ -63,17 +63,30 @@ public class SkillNode : ActionNode
                     break;
                 case SkillPosition.StartPos:
                     SkillPos = Info.transform.position;
+                    if (curSkillData.SkillType != SKILLTYPE.ATTACK)
+                    {
+                        OwnerBattle.cameraTarget.SetTarget(OwnerTransform);
+                    }
+                    else
+                    {
+                        Vector3 TargetPoint = Info.playerType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
+                        OwnerBattle.cameraTarget.SetPosition(Vector3.Lerp(OwnerTransform.position ,TargetPoint, 0.6f));
+                    }
                     break;
             }
         }
         else if(curSkillData.SkillStartPosition == SkillStartPosition.Mid)
         {
             SkillPos = Define.ActionFrontPoint;
+            OwnerBattle.cameraTarget.SetTarget(OwnerTransform);
         }
         else
         {
             SkillPos = Info.playerType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
+            OwnerBattle.cameraTarget.SetTarget(OwnerTransform);
         }
+
+        OwnerBattle.battleMode(true);
     }
 
     //근접공격 유형
@@ -94,5 +107,7 @@ public class SkillNode : ActionNode
                 SkillPos = Info.playerType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
                 break;
         }
+
+        OwnerBattle.cameraTarget.SetTarget(OwnerTransform);
     }
 }

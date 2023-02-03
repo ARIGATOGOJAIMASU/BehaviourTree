@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnCheckNode : ActionNode
+public class VictoryCheckNode : ActionNode
 {
     public override void Init()
     {
@@ -18,9 +18,9 @@ public class TurnCheckNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if(!Info.victory && BattleManager.Instance.TurnChracter == Info.ID)
+        if(Info.victory)
         {
-            //자신의 턴일 시
+            //Info.OnUpdate = false;
             return State.Success;
         }
 

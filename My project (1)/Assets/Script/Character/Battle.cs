@@ -8,9 +8,6 @@ public class Battle : MonoBehaviour
     [SerializeField] Information myInfo;
     public List<Information> targets;
 
-    public delegate Information[] GetTarget(PlayerType playerType);
-    public GetTarget getTarget;
-
     //°ø°Ý È½¼ö
     public int AttackCombo = 0;
 
@@ -20,9 +17,20 @@ public class Battle : MonoBehaviour
     EffectController AttackEffect;
     EffectController SkillEffect;
 
+    //Target Delegate
+    public delegate Information[] GetTarget(PlayerType playerType);
+    public GetTarget getTarget;
+
     //Camera Delegate
-    public delegate void CameraShaking();
+    public delegate void CameraShaking(float duration, float magnitude);
     public CameraShaking cameraShaking;
+
+    //Camera Delegate
+    public delegate void CameraBattleMode(bool on);
+    public CameraBattleMode battleMode;
+
+    //Camera Target Delegate
+    public CameraTarget cameraTarget;
 
     Vector3 EffectStartPoint;
 
@@ -45,6 +53,18 @@ public class Battle : MonoBehaviour
         //////////////////////////////////////////////
         targets.Add(infors[Random.Range(0, infors.Length - 1)]);
         EffectStartPoint = targets[0].startPos;
+
+        if(myInfo.heroseDate.AttackType == AttackType.LONG)
+        {
+            //Camera.main.GetComponent<CameraController>().CameraBattleMode(true, targets[0].transform);
+            cameraTarget.SetPosition(Vector3.Lerp(targets[0].transform.position, transform.position, 0.5f));
+        }
+        else
+        {
+            cameraTarget.SetTarget(transform);
+        }
+
+        battleMode(true);
     }
 
      public void Attack()
@@ -125,7 +145,6 @@ public class Battle : MonoBehaviour
             default:
                 break;
         }
-
         //GetSkillEffectPosition();
     }
 
@@ -175,11 +194,9 @@ public class Battle : MonoBehaviour
                     if (tempInfos.Count != 0) oppositeCamps = tempInfos;
                 }
                 break;
-
             default:
                 break;
         }
-
         return oppositeCamps;
     }
 
@@ -319,7 +336,7 @@ public class Battle : MonoBehaviour
                 SkillEffect.ReStart();
             }
 
-            if(myInfo.skillDatas[myInfo.curSkillIndex].SkillType == SKILLTYPE.ATTACK) cameraShaking();
+            if(myInfo.skillDatas[myInfo.curSkillIndex].SkillType == SKILLTYPE.ATTACK) cameraShaking(0.15f, 1.2f);
         }
         else
         {
@@ -332,7 +349,7 @@ public class Battle : MonoBehaviour
                 AttackEffect.ReStart();
             }
 
-            cameraShaking();
+            cameraShaking(0.15f, 0.8f);
         }
     }
 
@@ -346,6 +363,7 @@ public class Battle : MonoBehaviour
             if (curSkillData.TargetRange == TargetArea.Single)
             {
                 EffectStartPoint = myInfo.heroseDate.AttackType == AttackType.CLOSE ? transform.position : targets[0].startPos;
+                cameraTarget.SetTarget(transform);
             }
             else
             {
@@ -362,6 +380,8 @@ public class Battle : MonoBehaviour
                 {
                     EffectStartPoint = myInfo.playerType == PlayerType.Player ? Define.EnemyMidPosition : Define.TeamMidPosition;
                 }
+
+                cameraTarget.SetPosition(Vector3.Lerp(transform.position, EffectStartPoint, 0.8f));
             }
         }
         else

@@ -14,7 +14,7 @@ public struct RunTimeStat
         MaxHP = base_HP;
         CurHP = base_HP;
         MaxMP = base_MP;
-        CurMP = base_MP;
+        CurMP = 0;
         STR = base_STR;
         INT= base_INT;
         AGI = base_AGI;
@@ -112,6 +112,9 @@ public class Information : MonoBehaviour
     public UnityEvent DeadEvent = new();
     private Animator playerAnimator;
 
+    //Victory
+    public bool victory = false;
+
     private void Start()
     {
         //교체 예정
@@ -198,13 +201,7 @@ public class Information : MonoBehaviour
         {
             if(buffs[i].buffType == BuffType.TurnDamage)
             {
-                runTimeStat.CurHP -= buffs[i].value;
-
-                if(runTimeStat.CurHP <= 0)
-                {
-                    BattleManager.Instance.DeadChracter(ID);
-                    return;
-                }
+                Hurt(buffs[i].value);
             }
 
             //Duration이 0일시 true반환
@@ -248,7 +245,6 @@ public class Information : MonoBehaviour
 
         IsHurt = true;
         //방어력 검사 및 데미지 감소 버프들 확인
-        Debug.Log(GetStatValue(Stat.AGI) / 5);
         damage -= (GetStatValue(Stat.AGI) / 5) + (int)((float)damage * (GetBuffValue(Stat.Damage) / 100.0f));
 
         if (damage > 0) runTimeStat.CurHP -= damage;
@@ -283,4 +279,7 @@ public class Information : MonoBehaviour
     {
         IsHurt = false;
     }
+
+    //Vector3(2.398,7.28999996,11.5)
+    //40도
 }

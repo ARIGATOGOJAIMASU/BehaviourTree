@@ -12,6 +12,7 @@ public class BackMoveNode : ActionNode
     {
         playerAnimator.SetBool(AnimationStateType.Move.ToString(), true);
         OwnerTransform.LookAt(Info.startPos);
+        OwnerBattle.battleMode(false);
     }
 
     protected override void OnStop()

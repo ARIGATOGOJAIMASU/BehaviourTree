@@ -19,4 +19,4 @@ MonoBehaviour:
   _skillPosition: 0
   _skillStartPosition: 1
   _bonusStatType: 2
-  _bonusStatValue: 50
+  _bonusStatValue: 20

@@ -11,6 +11,10 @@ public class SoundManager : MonoBehaviour
 
     private static SoundManager _instance;
 
+    //Volume
+    public float BGM_Volume= 0.5f;
+    public float SFX_Volume;
+
     public static SoundManager Instance()
     {
         if(_instance == null)
@@ -28,8 +32,6 @@ public class SoundManager : MonoBehaviour
 
     public void Init()
     {
-        Object.DontDestroyOnLoad(transform);
-
         string[] soundNames = System.Enum.GetNames(typeof(Sound));
 
         for(int i = 0; i < soundNames.Length - 1; ++i)
@@ -39,7 +41,7 @@ public class SoundManager : MonoBehaviour
             go.transform.parent = transform;
         }
 
-        Play("BGM",Sound.Bgm, 0.8f);
+        Play("BGM_2",Sound.Bgm);
         audioSources[(int)Sound.Bgm].loop = true;
     }
 
@@ -108,12 +110,15 @@ public class SoundManager : MonoBehaviour
 
             audioSource.pitch = pitch;
             audioSource.clip = audioClip;
+            audioSource.volume = BGM_Volume;
+
             audioSource.Play();
         }
         else
         {
             AudioSource audioSource = audioSources[(int)Sound.Effect];
             audioSource.pitch = pitch;
+            audioSource.volume = SFX_Volume;
 
             audioSource.PlayOneShot(audioClip);
         }
