@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class TurnCheck_UI : MonoBehaviour
 {
     Text turnUI;
+    int curTurn;
 
     private void Start()
     {
         turnUI = GetComponent<Text>();
     }
 
-    private void Update()
+    public void NextTurn()
     {
-        turnUI.text = "현재의 턴 : " + BattleManager.Instance.turn.ToString();
+        turnUI.text = "턴 : " + ++curTurn;
     }
 }

@@ -21,6 +21,7 @@ public class TurnCheckNode : ActionNode
         if(!Info.victory && BattleManager.Instance.TurnChracter == Info.ID)
         {
             //자신의 턴일 시
+            OwnerBattle.turnIndigate.SetActive(true);
             return State.Success;
         }
 

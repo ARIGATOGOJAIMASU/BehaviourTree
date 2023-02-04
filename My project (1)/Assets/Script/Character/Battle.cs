@@ -32,6 +32,9 @@ public class Battle : MonoBehaviour
     //Camera Target Delegate
     public CameraTarget cameraTarget;
 
+    //TurnIndigate
+    public GameObject turnIndigate;
+
     Vector3 EffectStartPoint;
 
     private void Start()

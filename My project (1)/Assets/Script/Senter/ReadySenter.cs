@@ -148,6 +148,10 @@ public class ReadySenter : MonoBehaviour
     public void StartGame()
     {
         BattleManager.Instance.GameStart(readyCharacters);
+        for(int i = 0; i < startPos.Length; ++i)
+        {
+            startPos[i].gameObject.SetActive(false);
+        }
         UIActiveEvent.Invoke();
     }
 }

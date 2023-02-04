@@ -37,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 2043315953217891628}
   - {fileID: 8467999975657038360}
+  - {fileID: 1599167494739365971}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,6 +82,7 @@ MonoBehaviour:
   DeadEvent:
     m_PersistentCalls:
       m_Calls: []
+  victory: 0
 --- !u!114 &1138179608954804650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +143,8 @@ MonoBehaviour:
     type: 3}
   SkillEffectSource: {fileID: 1338169166719577240, guid: 195f31a06b3f620468cc963ea9e14195,
     type: 3}
+  cameraTarget: {fileID: 0}
+  turnIndigate: {fileID: 1596488812034639493}
 --- !u!95 &8946160166926740010
 Animator:
   serializedVersion: 4
@@ -237,6 +241,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4647292827260564, guid: 02b2773a4d8f69c4891ba89e457efd58,
     type: 3}
   m_PrefabInstance: {fileID: 2038956046719007672}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5944149313209150613
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8191577384546497384}
+    m_Modifications:
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925251698534083088, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_Name
+      value: Indigate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925251698534083088, guid: 447198e58e9161145b5f6a2efef58e46,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 447198e58e9161145b5f6a2efef58e46, type: 3}
+--- !u!1 &1596488812034639493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4925251698534083088, guid: 447198e58e9161145b5f6a2efef58e46,
+    type: 3}
+  m_PrefabInstance: {fileID: 5944149313209150613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1599167494739365971 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4921517484004883654, guid: 447198e58e9161145b5f6a2efef58e46,
+    type: 3}
+  m_PrefabInstance: {fileID: 5944149313209150613}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8471515934191054863
 PrefabInstance:

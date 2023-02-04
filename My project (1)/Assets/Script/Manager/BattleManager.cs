@@ -40,13 +40,14 @@ public class BattleManager : MonoBehaviour
     public StatExpantionUI statExpantionUI;
     [SerializeField] Text Playlog;
     [SerializeField] GameObject RestartButton;
+    [SerializeField] TurnCheck_UI turnCheckUI;
 
     public GameObject winUI;
     public GameObject loseUI;
 
     //EffectManager
     [SerializeField] EffectManager effectManager;
-    [SerializeField] DamafeEffectUI_Senter damageEffectUI_Senter;
+    [SerializeField] DamageEffectUI_Senter damageEffectUI_Senter;
 
     [SerializeField] float TurnDelay;
 
@@ -123,7 +124,7 @@ public class BattleManager : MonoBehaviour
         playerCount = playerInfors.Count;
         enemyCount = enemyInfors.Count;
 
-        GamePlay();
+        GamePlayAndStop(true);
 
         NextTurn();
     }
@@ -142,9 +143,10 @@ public class BattleManager : MonoBehaviour
     private void NextTurn()
     {
         ++turn;
+        turnCheckUI.NextTurn();
 
         //buff Check±¸°£
-        foreach(Information info in allInformations)
+        foreach (Information info in allInformations)
         {
             if(!info.IsDead)
             info.BuffCheck();
@@ -239,19 +241,11 @@ public class BattleManager : MonoBehaviour
         RestartButton.SetActive(true);
     }
 
-    public void GamePlay()
+    public void GamePlayAndStop(bool on)
     {
         foreach (Information info in allInformations)
         {
-            info.OnUpdate = true;
-        }
-    }
-
-    public void GameStop()
-    {
-        foreach (Information info in allInformations)
-        {
-            info.OnUpdate = false;
+            info.OnUpdate = on;
         }
     }
 
@@ -287,12 +281,12 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator TrunDelayCoroutine(int NextChracterNum)
     {
-        GameStop();
+        GamePlayAndStop(false);
         Camera.main.GetComponent<CameraController>().CameraBattleMode(false);
         yield return new WaitForSeconds(TurnDelay);
 
         //Camera.main.GetComponent<CameraController>().CameraBattleMode(true, allInformations[NextChracterNum].transform);
         TurnChracter = NextChracterNum;
-        GamePlay();
+        GamePlayAndStop(true);
     }
 }

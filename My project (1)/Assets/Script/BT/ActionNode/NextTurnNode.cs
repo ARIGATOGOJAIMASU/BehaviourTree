@@ -23,6 +23,7 @@ public class NextTurnNode : ActionNode
         BattleManager.Instance.NextChracter();
         Info.UseSkill = false;
         Info.curSkillIndex = 0;
+        OwnerBattle.turnIndigate.SetActive(false);
         return State.Success;
     }
 }
