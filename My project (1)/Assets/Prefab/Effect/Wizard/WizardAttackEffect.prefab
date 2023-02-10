@@ -4910,8 +4910,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1.5
-  WantPosition: {x: 0, y: 1.2, z: 0}
-  ChangeRotation: 0
+  wantPosition: {x: 0, y: 0, z: 0}
+  changeRotation: 1
 --- !u!1 &4035222792055163486
 GameObject:
   m_ObjectHideFlags: 0
@@ -9808,8 +9808,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1.5
-  WantPosition: {x: 0, y: 1.2, z: 0}
-  ChangeRotation: 0
+  wantPosition: {x: 0, y: 0, z: 0}
+  changeRotation: 1
 --- !u!1 &5112403345868107898
 GameObject:
   m_ObjectHideFlags: 0
@@ -14557,8 +14557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1.5
-  WantPosition: {x: 0, y: 1.2, z: 0}
-  ChangeRotation: 0
+  wantPosition: {x: 0, y: 1.2, z: 0}
+  changeRotation: 1
 --- !u!1 &5112403347238810573
 GameObject:
   m_ObjectHideFlags: 0
@@ -19455,8 +19455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1.5
-  WantPosition: {x: 0, y: 1.2, z: 0}
-  ChangeRotation: 0
+  wantPosition: {x: 0, y: 0, z: 0}
+  changeRotation: 1
 --- !u!1 &7531768400295773593
 GameObject:
   m_ObjectHideFlags: 0
@@ -24245,5 +24245,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1.5
-  WantPosition: {x: 0, y: 1.2, z: 0}
-  ChangeRotation: 0
+  wantPosition: {x: 0, y: 0, z: 0}
+  changeRotation: 1

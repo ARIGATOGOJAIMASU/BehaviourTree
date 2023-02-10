@@ -10,7 +10,6 @@ public class BackMoveNode : ActionNode
 
     protected override void OnStart()
     {
-        playerAnimator.SetBool(AnimationStateType.Move.ToString(), true);
         OwnerTransform.LookAt(Info.startPos);
         OwnerBattle.battleMode(false);
     }
@@ -28,7 +27,6 @@ public class BackMoveNode : ActionNode
         }
 
         OwnerTransform.localRotation = Info.startRotation;
-        playerAnimator.SetBool(AnimationStateType.Move.ToString(), false);
         return State.Success;
     }
 }

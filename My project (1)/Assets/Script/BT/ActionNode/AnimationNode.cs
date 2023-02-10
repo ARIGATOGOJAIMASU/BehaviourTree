@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AnimationStateType { Idle, BaseAttack, Skill, Hurt, Move }
-
 public class AnimationNode : ActionNode
 {
     public string animationStateName;

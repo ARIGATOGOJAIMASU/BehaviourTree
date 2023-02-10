@@ -9496,8 +9496,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1.5
-  WantPosition: {x: 0, y: 1.5, z: 0}
-  ChangeRotation: 1
+  wantPosition: {x: 0, y: 1.2, z: 0}
+  changeRotation: 1
 --- !u!1 &1180277928579822
 GameObject:
   m_ObjectHideFlags: 0

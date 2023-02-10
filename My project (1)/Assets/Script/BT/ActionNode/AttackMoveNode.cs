@@ -10,7 +10,6 @@ public class AttackMoveNode : ActionNode
 
     protected override void OnStart()
     {
-        playerAnimator.SetBool(AnimationStateType.Move.ToString(), true);
         OwnerTransform.LookAt(OwnerBattle.targets[0].transform.position);
     }
 
