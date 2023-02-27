@@ -71,6 +71,8 @@ public class Information : MonoBehaviour
 
     //고유 번호
     public int ID = 0;
+    enum Gender { Man,Girl}
+    [SerializeField] Gender gender;
 
     //자신의위치
     public Vector3 startPos;
@@ -114,6 +116,16 @@ public class Information : MonoBehaviour
 
     //Victory
     public bool victory = false;
+
+    [System.Serializable]
+    struct SoundList
+    {
+        public string Hit;
+        public string Attack;
+        public string Skill;
+    }
+
+    [SerializeField] SoundList soundList;
 
     private void Start()
     {
@@ -258,6 +270,7 @@ public class Information : MonoBehaviour
         if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
         {
             playerAnimator.Play("Hurt");
+            //SoundManager.Instance().Play(gender == );
         }
         else
         {
@@ -279,7 +292,4 @@ public class Information : MonoBehaviour
     {
         IsHurt = false;
     }
-
-    //Vector3(2.398,7.28999996,11.5)
-    //40도
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18151568, g: 0.22715344, b: 0.30740166, a: 1}
+  m_IndirectSpecularColor: {r: 0.18151322, g: 0.22715098, b: 0.30740148, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -357,6 +357,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5cbb30370490f4db88c0248bcb09df, type: 3}
+--- !u!1 &112708731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112708733}
+  - component: {fileID: 112708732}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &112708732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112708731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe284a892bd84c4881298cd51bd64dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeroStats: {fileID: 11400000, guid: a8c5dedf84bb46f4eb09369b0d4028c4, type: 2}
+--- !u!4 &112708733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112708731}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1103.6058, y: 541.46204, z: -6.5364685}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &121017767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -628,10 +673,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7879452663062117726, guid: 5cc4661fc5040ff4ab0f2e11f36b3a65,
         type: 3}
+      propertyPath: gender
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 5cc4661fc5040ff4ab0f2e11f36b3a65,
+        type: 3}
       propertyPath: heroseDate
       value: 
       objectReference: {fileID: 11400000, guid: 46efa59922e011741bbaec71308d98d2,
         type: 2}
+    - target: {fileID: 7879452663062117726, guid: 5cc4661fc5040ff4ab0f2e11f36b3a65,
+        type: 3}
+      propertyPath: soundList.Hit
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8191577384546497380, guid: 5cc4661fc5040ff4ab0f2e11f36b3a65,
         type: 3}
       propertyPath: m_Name
