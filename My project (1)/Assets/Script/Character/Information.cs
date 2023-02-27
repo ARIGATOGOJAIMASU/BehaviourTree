@@ -118,14 +118,14 @@ public class Information : MonoBehaviour
     public bool victory = false;
 
     [System.Serializable]
-    struct SoundList
+    public struct SoundList
     {
         public string Hit;
         public string Attack;
         public string Skill;
     }
 
-    [SerializeField] SoundList soundList;
+    public SoundList soundList;
 
     private void Start()
     {
@@ -270,13 +270,13 @@ public class Information : MonoBehaviour
         if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
         {
             playerAnimator.Play("Hurt");
-            //SoundManager.Instance().Play(gender == );
         }
         else
         {
             playerAnimator.Play("Hurt",0,0);
         }
 
+        SoundManager.Instance().Play(soundList.Hit);
         useEffect(EffectName.Attack, transform.position, transform.forward);
         useDamageValueEffect(SKILLTYPE.ATTACK, transform.position, transform.forward, damage);
     }

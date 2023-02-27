@@ -67,6 +67,7 @@ MonoBehaviour:
     VLT: 0
     LUK: 0
   ID: 0
+  gender: 0
   startPos: {x: 0, y: 0, z: 0}
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   indexNum: 0
@@ -83,6 +84,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   victory: 0
+  soundList:
+    Hit: Girl_Hit
+    Attack: LongAttack
+    Skill: Skill
 --- !u!114 &1138179608954804650
 MonoBehaviour:
   m_ObjectHideFlags: 0

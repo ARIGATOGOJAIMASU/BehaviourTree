@@ -425,6 +425,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3eca3b27690860248ac184b00fd82c56,
         type: 2}
+    - target: {fileID: 7879452663062117726, guid: c62f98b0caaa4f44083aceffbd49dd7e,
+        type: 3}
+      propertyPath: soundList.Hit
+      value: Man_Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: c62f98b0caaa4f44083aceffbd49dd7e,
+        type: 3}
+      propertyPath: soundList.Skill
+      value: Skill
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: c62f98b0caaa4f44083aceffbd49dd7e,
+        type: 3}
+      propertyPath: soundList.Attack
+      value: HammerAttack
+      objectReference: {fileID: 0}
     - target: {fileID: 8191577384546497380, guid: c62f98b0caaa4f44083aceffbd49dd7e,
         type: 3}
       propertyPath: m_Name
@@ -685,7 +700,17 @@ PrefabInstance:
     - target: {fileID: 7879452663062117726, guid: 5cc4661fc5040ff4ab0f2e11f36b3a65,
         type: 3}
       propertyPath: soundList.Hit
-      value: 3
+      value: Girl_Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 5cc4661fc5040ff4ab0f2e11f36b3a65,
+        type: 3}
+      propertyPath: soundList.Skill
+      value: Skill
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 5cc4661fc5040ff4ab0f2e11f36b3a65,
+        type: 3}
+      propertyPath: soundList.Attack
+      value: LongAttack
       objectReference: {fileID: 0}
     - target: {fileID: 8191577384546497380, guid: 5cc4661fc5040ff4ab0f2e11f36b3a65,
         type: 3}
@@ -3700,6 +3725,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 2f2fc9d9ff7983643a92e512166b8d0b,
+        type: 3}
+      propertyPath: soundList.Hit
+      value: Man_Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 2f2fc9d9ff7983643a92e512166b8d0b,
+        type: 3}
+      propertyPath: soundList.Skill
+      value: Skill
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 2f2fc9d9ff7983643a92e512166b8d0b,
+        type: 3}
+      propertyPath: soundList.Attack
+      value: GoblinAttack
+      objectReference: {fileID: 0}
     - target: {fileID: 8191577384546497380, guid: 2f2fc9d9ff7983643a92e512166b8d0b,
         type: 3}
       propertyPath: m_Name
@@ -5241,6 +5281,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: dfbf539ee67d34d4fbd2fddea3f41c1f,
         type: 2}
+    - target: {fileID: 7879452663062117726, guid: 994f514a3f956104ebfdfd69158b1862,
+        type: 3}
+      propertyPath: soundList.Hit
+      value: Man_Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 994f514a3f956104ebfdfd69158b1862,
+        type: 3}
+      propertyPath: soundList.Skill
+      value: Skill
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 994f514a3f956104ebfdfd69158b1862,
+        type: 3}
+      propertyPath: soundList.Attack
+      value: Attack
+      objectReference: {fileID: 0}
     - target: {fileID: 8191577384546497380, guid: 994f514a3f956104ebfdfd69158b1862,
         type: 3}
       propertyPath: m_Name
@@ -5339,6 +5394,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2075b2158fd91f345a4dd2cd2be53bec,
         type: 2}
+    - target: {fileID: 7879452663062117726, guid: 0f8cd5d243bdefc4294f5bc440186c38,
+        type: 3}
+      propertyPath: soundList.Hit
+      value: Man_Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 0f8cd5d243bdefc4294f5bc440186c38,
+        type: 3}
+      propertyPath: soundList.Skill
+      value: Skill
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879452663062117726, guid: 0f8cd5d243bdefc4294f5bc440186c38,
+        type: 3}
+      propertyPath: soundList.Attack
+      value: HammerAttack
+      objectReference: {fileID: 0}
     - target: {fileID: 8191577384546497380, guid: 0f8cd5d243bdefc4294f5bc440186c38,
         type: 3}
       propertyPath: m_Name

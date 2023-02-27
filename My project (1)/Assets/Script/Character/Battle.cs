@@ -315,11 +315,11 @@ public class Battle : MonoBehaviour
     {
         if (myInfo.UseSkill)
         {
-            SoundManager.Instance().Play("Sound/Skill");
+            SoundManager.Instance().Play(myInfo.soundList.Skill);
         }
         else
         {
-            SoundManager.Instance().Play("Sound/Attack");
+            SoundManager.Instance().Play(myInfo.soundList.Attack);
         }
     }
 
