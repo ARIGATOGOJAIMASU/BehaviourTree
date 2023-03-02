@@ -311,19 +311,6 @@ public class Battle : MonoBehaviour
     }
 
     //애니메이션 이벤트함수
-    public void PlaySound()
-    {
-        if (myInfo.UseSkill)
-        {
-            SoundManager.Instance().Play(myInfo.soundList.Skill);
-        }
-        else
-        {
-            SoundManager.Instance().Play(myInfo.soundList.Attack);
-        }
-    }
-
-    //애니메이션 이벤트함수
     public void BattleEffectEmerge()
     {
         if (myInfo.UseSkill)

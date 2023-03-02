@@ -18,8 +18,6 @@ public enum HeroseName { Samuri, GoblinWarrior, Wizard, Queen, Knight, Witch, Sk
 public enum HeroseClass { NORMAL, EXCELLENT, RARE, ELITE, EPIC, LEFGENDARY }
 //타입
 public enum HeroseType { ATTACK, DEFENSE, SUPPORT }
-//파벌
-public enum HeroseFraction { MINUTEMEN, VINDICATORS, WILDINGS, WATCHERS }
 //근거리 원거리 구분
 public enum AttackType { LONG, CLOSE }
 
@@ -34,9 +32,6 @@ public class HeroseStatData : ScriptableObject
 
     [SerializeField] private HeroseType heroseType;
     public HeroseType HeroseType { get { return heroseType; } }
-
-    [SerializeField] private HeroseFraction heroseFraction;
-    public HeroseFraction HeroseFraction { get { return heroseFraction; } }
 
     [SerializeField] private Sprite heroSprite;
     public Sprite HeroSprite { get { return heroSprite; } }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8306986421003420513}
   - component: {fileID: 8946160166926740010}
   - component: {fileID: 3342537628030814959}
+  - component: {fileID: 2278061175933432789}
   m_Layer: 3
   m_Name: 10_Skeleton
   m_TagString: Untagged
@@ -68,6 +69,7 @@ MonoBehaviour:
     VLT: 0
     LUK: 0
   ID: 0
+  gender: 0
   startPos: {x: 0, y: 0, z: 0}
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   indexNum: 0
@@ -180,6 +182,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2278061175933432789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191577384546497380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b301461181ec7c488ac80be00603690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundList:
+    Hit: Man_Hit
+    Attack: Attack
+    Skill: Skill
 --- !u!1001 &2064362211248289169
 PrefabInstance:
   m_ObjectHideFlags: 0

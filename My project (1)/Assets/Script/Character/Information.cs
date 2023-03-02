@@ -14,7 +14,7 @@ public struct RunTimeStat
         MaxHP = base_HP;
         CurHP = base_HP;
         MaxMP = base_MP;
-        CurMP = 0;
+        CurMP = base_MP;
         STR = base_STR;
         INT= base_INT;
         AGI = base_AGI;
@@ -117,15 +117,6 @@ public class Information : MonoBehaviour
     //Victory
     public bool victory = false;
 
-    [System.Serializable]
-    public struct SoundList
-    {
-        public string Hit;
-        public string Attack;
-        public string Skill;
-    }
-
-    public SoundList soundList;
 
     private void Start()
     {
@@ -154,7 +145,7 @@ public class Information : MonoBehaviour
         //////////////////////////////////////////////////////////
 
         //////////////////////////////////////////////////////////
-        ///Acitive Skill 확인
+        ///Acitive Skill 계산
         //////////////////////////////////////////////////////////
     }
 
@@ -276,7 +267,6 @@ public class Information : MonoBehaviour
             playerAnimator.Play("Hurt",0,0);
         }
 
-        SoundManager.Instance().Play(soundList.Hit);
         useEffect(EffectName.Attack, transform.position, transform.forward);
         useDamageValueEffect(SKILLTYPE.ATTACK, transform.position, transform.forward, damage);
     }

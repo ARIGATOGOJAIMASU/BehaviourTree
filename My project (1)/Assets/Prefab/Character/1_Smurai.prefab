@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1344220650778643544}
   - component: {fileID: 6825634404530798736}
   - component: {fileID: 8306986421003420513}
+  - component: {fileID: -5394236596000282889}
   - component: {fileID: 8946160166926740010}
   - component: {fileID: 3342537628030814959}
   m_Layer: 3
@@ -84,10 +85,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   victory: 0
-  soundList:
-    Hit: Man_Hit
-    Attack: Attack
-    Skill: Skill
 --- !u!114 &1138179608954804650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +147,22 @@ MonoBehaviour:
     type: 3}
   cameraTarget: {fileID: 0}
   turnIndigate: {fileID: 4813135158513208562}
+--- !u!114 &-5394236596000282889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191577384546497380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b301461181ec7c488ac80be00603690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundList:
+    Hit: Man_Hit
+    Attack: Attack
+    Skill: Skill
 --- !u!95 &8946160166926740010
 Animator:
   serializedVersion: 4
