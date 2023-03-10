@@ -13,7 +13,7 @@ public struct HoldHeros
     public int Skill1_leve4;*/
 }
 
-public enum HeroseName { Samuri, GoblinWarrior, Wizard, Queen, Knight, Witch, SkeletonKnight, SkeletonSolider, RockGolem, Skeleton }
+public enum HeroseName { Samuri, GoblinWarrior, Wizard, Queen, Knight, Witch, SkeletonKnight, SkeletonSoldier, RockGolem, Skeleton }
 //등급
 public enum HeroseClass { NORMAL, EXCELLENT, RARE, ELITE, EPIC, LEFGENDARY }
 //타입
