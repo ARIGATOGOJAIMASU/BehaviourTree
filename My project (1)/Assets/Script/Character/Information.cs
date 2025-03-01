@@ -14,7 +14,7 @@ public struct RunTimeStat
         MaxHP = base_HP;
         CurHP = base_HP;
         MaxMP = base_MP;
-        CurMP = 0;
+        CurMP = base_MP;
         STR = base_STR;
         INT= base_INT;
         AGI = base_AGI;
