@@ -161,8 +161,8 @@ public class Battle : MonoBehaviour
         else
         oppositeCamps.AddRange(myInfo.playerType == PlayerType.Player ? getTarget(PlayerType.Player) : getTarget(PlayerType.Enemy));
 
-    //타켓 범위를 지정
-    switch (skillData.TargetRange)
+        //타켓 범위를 지정
+        switch (skillData.TargetRange)
         {
             case TargetArea.Self:
                 {
