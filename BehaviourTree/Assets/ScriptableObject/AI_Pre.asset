@@ -79,7 +79,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e4044ec9ea47064439fdf7f2ecc0b361
-  position: {x: -1331.3214, y: 763.99994}
+  position: {x: -1323.0002, y: 770.85}
   children:
   - {fileID: 2264342883733821087}
   - {fileID: -810635483244486401}
@@ -206,7 +206,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: bff42b633f3f32f4baea971e790497ee
-  position: {x: -1020.32153, y: 883.99994}
+  position: {x: -1004.0002, y: 908}
 --- !u!114 &-3696465017943108027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b1325c678c033164695b75946aaeda5d
-  position: {x: -441.32144, y: 592.9999}
+  position: {x: -433, y: 604}
 --- !u!114 &-3626979798331586506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 51ada5c005d0db743a36352d7a0980c1
-  position: {x: 125.99603, y: 957}
+  position: {x: 133, y: 948}
 --- !u!114 &-2836741500811136582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d10840abd2ebcf14eb11a4a2b6208978
-  position: {x: 159.99995, y: 449.06805}
+  position: {x: 170.00006, y: 467.49994}
   children:
   - {fileID: -4539895516102832425}
   - {fileID: -8306275184103240578}
@@ -337,7 +337,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 425260ba04fabfd489d405efb35c3969
-  position: {x: -1120.3214, y: 589.9999}
+  position: {x: -1123.6006, y: 596.75}
   children:
   - {fileID: -7794857452781910259}
   - {fileID: -7370937031164754185}
@@ -358,7 +358,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 638b0dd2d2b24a1439553e9818b3f376
-  position: {x: -1253.3214, y: 899.9998}
+  position: {x: -1224.3004, y: 903.40015}
   animationStateName: Skill
   OnRepeat: 0
 --- !u!114 &-776820714758569192
@@ -462,7 +462,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 51aee4d37f8dd34448a8bd074b8f87ba
-  position: {x: -1417.3214, y: 899.9998}
+  position: {x: -1401.0002, y: 908}
 --- !u!114 &2785439922306528396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 1446ade9e5806bd4cbbeed30d51f358e
-  position: {x: -810.3214, y: 891.99994}
+  position: {x: -809.80023, y: 911.0001}
   animationStateName: Attack
   OnRepeat: 0
 --- !u!114 &5496793993914358679
@@ -619,4 +619,4 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 9c759526901977741919da90174717b7
-  position: {x: -1646.3214, y: 597.9999}
+  position: {x: -1661, y: 598}

@@ -20,14 +20,12 @@ public class AttackMoveNode : ActionNode
     protected override State OnUpdate()
     {
         //타켓을 쫓아감
-        if (Info.heroseDate.AttackType == AttackType.CLOSE)
+        if (Info.heroseDate.AttackType == AttackType.CLOSE && (OwnerTransform.position - OwnerBattle.targets[0].transform.position).magnitude > 3f)
         {
-            if ((OwnerTransform.position - OwnerBattle.targets[0].transform.position).magnitude > 3f)
-            {
-                OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, OwnerBattle.targets[0].transform.position, Time.deltaTime * 10f);
-                return State.Running;
-            }
+            OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, OwnerBattle.targets[0].transform.position, Time.deltaTime * 10f);
+            return State.Running;
         }
+
         //MP업
         Info.runTimeStat.CurMP += Random.Range(0, 50);
         return State.Success;

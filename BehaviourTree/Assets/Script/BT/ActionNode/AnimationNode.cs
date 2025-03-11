@@ -26,12 +26,10 @@ public class AnimationNode : ActionNode
 
         if(OnRepeat) return State.Success;
 
-        if (Aniamtioninfo.IsName(animationStateName) && Aniamtioninfo.normalizedTime > 0.95f)
-        {
-            return State.Success;
-        }
+        if (Aniamtioninfo.IsName(animationStateName) == false || Aniamtioninfo.normalizedTime <= 0.95f)
+            return State.Running;
 
-        return State.Running;
+        return State.Success;
     }
 
     void StartAnimation(string animationStateName)

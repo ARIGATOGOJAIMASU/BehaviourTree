@@ -20,9 +20,7 @@ public class SelectorNode : CompositeNode
             State result = children[i].Update();
 
             if (result != State.Failure)
-            {
                 return result;
-            }
         }
 
         return State.Failure;

@@ -27,27 +27,22 @@ public class SkillNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (Info.UseSkill)
-        {
-            //스킬사용 위치까지 이동
-            if (Info.skillDatas[0].SkillPosition == SkillPosition.Front
-                && (OwnerTransform.position - SkillPos).magnitude > 0.5f)
-            {
-                OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, SkillPos, Time.deltaTime * 10f);
-                return State.Running;
-            }
-            else
-            {
-                //타켓이 한명이면
-                if (OwnerBattle.targets.Count == 1) OwnerTransform.LookAt(OwnerBattle.targets[0].transform.position); 
-                else
-                OwnerTransform.rotation = Info.startRotation;
+        if (Info.UseSkill == false)
+            return State.Failure;
 
-                return State.Success;
-            }
+        //스킬사용 위치까지 이동
+        if (Info.skillDatas[0].SkillPosition == SkillPosition.Front
+            && (OwnerTransform.position - SkillPos).magnitude > 0.5f)
+        {
+            OwnerTransform.position = Vector3.MoveTowards(OwnerTransform.position, SkillPos, Time.deltaTime * 10f);
+            return State.Running;
         }
 
-        return State.Failure;
+        //타켓이 한명이면
+        if (OwnerBattle.targets.Count == 1) OwnerTransform.LookAt(OwnerBattle.targets[0].transform.position); 
+        else OwnerTransform.rotation = Info.startRotation;
+
+        return State.Success;
     }
 
     void SetSkillPosition()

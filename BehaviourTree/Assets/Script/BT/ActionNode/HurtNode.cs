@@ -19,9 +19,7 @@ public class HurtNode : ActionNode
     protected override State OnUpdate()
     {
         if (Info.IsHurt)
-        {
             return State.Failure;
-        }
 
         return State.Success;
     }
